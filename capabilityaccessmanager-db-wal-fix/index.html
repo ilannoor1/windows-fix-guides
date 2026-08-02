@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows 11 C Drive Full Fix: CapabilityAccessManager.db-wal Huge File</title>
+  <meta name="description" content="Check and safely troubleshoot a huge CapabilityAccessManager.db-wal file that can make Windows 11 System & reserved storage and the C drive appear full.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1">
+  <link rel="canonical" href="https://ilannoor1.github.io/windows-fix-guides/capabilityaccessmanager-db-wal-fix/">
+
+  <meta property="og:type" content="video.other">
+  <meta property="og:title" content="Windows 11 C Drive Full Fix: CapabilityAccessManager.db-wal Huge File">
+  <meta property="og:description" content="Learn how to check the exact file, confirm Windows architecture, install the correct update and use safe cleanup methods.">
+  <meta property="og:image" content="https://i.ytimg.com/vi/-geIxg07oWI/maxresdefault.jpg">
+  <meta property="og:url" content="https://ilannoor1.github.io/windows-fix-guides/capabilityaccessmanager-db-wal-fix/">
+  <meta property="og:site_name" content="UniTech LK Windows Fix Guides">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Windows 11 C Drive Full Fix: CapabilityAccessManager.db-wal Huge File">
+  <meta name="twitter:description" content="A safe Windows 11 troubleshooting guide for unusually large System & reserved storage.">
+  <meta name="twitter:image" content="https://i.ytimg.com/vi/-geIxg07oWI/maxresdefault.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Windows 11 C Drive Full Fix | CapabilityAccessManager.db-wal Huge File",
+    "description": "A step-by-step Windows 11 troubleshooting video showing how to check whether CapabilityAccessManager.db-wal is consuming excessive C drive space, verify Windows version and architecture, install the appropriate Windows update, restart and use safe Temporary files cleanup.",
+    "thumbnailUrl": [
+      "https://i.ytimg.com/vi/-geIxg07oWI/maxresdefault.jpg",
+      "https://i.ytimg.com/vi/-geIxg07oWI/hqdefault.jpg"
+    ],
+    "uploadDate": "2026-07-09",
+    "embedUrl": "https://www.youtube.com/embed/-geIxg07oWI",
+    "contentUrl": "https://www.youtube.com/watch?v=-geIxg07oWI",
+    "mainEntityOfPage": "https://ilannoor1.github.io/windows-fix-guides/capabilityaccessmanager-db-wal-fix/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "UniTech LK"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why can CapabilityAccessManager.db-wal make the Windows 11 C drive full?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On affected systems, the CapabilityAccessManager.db-wal file can grow unusually large and be counted under System & reserved storage, reducing available C drive space."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the safest first fix for a huge CapabilityAccessManager.db-wal file?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First confirm the Windows build and system architecture, install the latest applicable Windows update, restart the computer and then use Windows Temporary files cleanup. Do not manually delete Windows system folders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does KB5095093 address CapabilityAccessManager.db-wal disk usage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Microsoft states that KB5095093 improves disk space usage for the CapabilityAccessManager.db-wal file on applicable Windows 11 version 24H2 and 25H2 devices."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      color: #172033;
+      background: #eef2f7;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header, main, footer {
+      width: min(980px, calc(100% - 32px));
+      margin: auto;
+    }
+    header { padding: 42px 0 20px; }
+    h1 {
+      margin: 0 0 12px;
+      line-height: 1.12;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      color: #0f172a;
+    }
+    h2 { margin-top: 0; color: #0f172a; }
+    h3 { color: #172033; }
+    a { color: #075eb5; }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: #075eb5;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .82rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, .08);
+    }
+    .video {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+    }
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .warning, .note {
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin: 18px 0;
+    }
+    .warning {
+      border-left: 5px solid #c62828;
+      background: #fff1f1;
+    }
+    .note {
+      border-left: 5px solid #075eb5;
+      background: #eef7ff;
+    }
+    pre {
+      overflow-x: auto;
+      background: #101827;
+      color: #f8fafc;
+      padding: 18px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    code { font-family: Consolas, "Courier New", monospace; }
+    ol li, ul li { margin: 8px 0; }
+    .related a {
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .related a:last-child { border-bottom: 0; }
+    footer {
+      color: #64748b;
+      font-size: .92rem;
+      padding: 8px 0 46px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="eyebrow">UniTech LK Windows Troubleshooting</span>
+    <h1>Windows 11 C Drive Full: CapabilityAccessManager.db-wal Huge File</h1>
+    <p>Check the exact file, verify your Windows build and architecture, install the correct update, restart, and clean temporary files safely.</p>
+  </header>
+
+  <main>
+    <section class="card" aria-label="Video tutorial">
+      <div class="video">
+        <iframe
+          src="https://www.youtube.com/embed/-geIxg07oWI"
+          title="Windows 11 C Drive Full Fix - CapabilityAccessManager.db-wal Huge File"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What is happening?</h2>
+      <p>Some Windows 11 users find that <strong>System &amp; reserved</strong> storage becomes unusually large and the C drive loses tens or even hundreds of gigabytes. One possible cause is a very large file at:</p>
+      <pre><code>C:\ProgramData\Microsoft\Windows\CapabilityAccessManager\CapabilityAccessManager.db-wal</code></pre>
+      <p>This guide shows how to check the file size and follow a safe troubleshooting order without deleting protected Windows folders.</p>
+      <div class="warning">
+        <strong>Important:</strong> Do not manually delete folders such as System32, WinSxS, ProgramData or CapabilityAccessManager. Incorrect deletion can cause Windows errors, permission problems or system instability.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Checks shown in the video</h2>
+      <ol>
+        <li>Open <strong>winver</strong> and record the Windows version and OS build.</li>
+        <li>Check whether the PC uses <strong>x64</strong> or <strong>ARM64</strong>.</li>
+        <li>Check the C drive free space.</li>
+        <li>Open Settings → System → Storage → System &amp; reserved.</li>
+        <li>Check the exact size of <code>CapabilityAccessManager.db-wal</code>.</li>
+        <li>Install the latest applicable Windows update.</li>
+        <li>Restart Windows.</li>
+        <li>Use Windows Temporary files cleanup.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>PowerShell file-size check</h2>
+      <p>Open PowerShell and run:</p>
+      <pre><code>Get-Item "C:\ProgramData\Microsoft\Windows\CapabilityAccessManager\CapabilityAccessManager.db-wal" -ErrorAction SilentlyContinue | Select-Object FullName,@{Name="SizeGB";Expression={[math]::Round($_.Length/1GB,2)}}</code></pre>
+      <p>If no result appears, the file may not exist at that path or PowerShell may not have access to it.</p>
+    </section>
+
+    <section class="card">
+      <h2>Windows update method</h2>
+      <p>Microsoft documents that the June 23, 2026 preview update <strong>KB5095093</strong> improves disk-space usage for <code>CapabilityAccessManager.db-wal</code> on applicable Windows 11 version 24H2 and 25H2 systems.</p>
+      <p>Use <strong>Settings → Windows Update</strong> first. For manual installation, download only from the Microsoft Update Catalog and select the package matching your Windows version and architecture.</p>
+      <div class="note">
+        A newer cumulative update may already include the same fix. Prefer the latest applicable Windows update offered to your device instead of forcing an older package.
+      </div>
+      <p><a href="https://support.microsoft.com/en-us/servicing/os/windows-11/2026/06/june-23-2026-kb5095093-os-builds-26200-8737-and-26100-8737-preview" rel="noopener noreferrer">Read Microsoft’s KB5095093 release notes</a></p>
+      <p>Example command shown in the video:</p>
+      <pre><code>wusa "C:\Users\YourName\Downloads\windows11-kb5095093.msu" /quiet /norestart</code></pre>
+      <p>Replace the example filename with the exact downloaded MSU filename. Do not run the command unless the package matches your system.</p>
+    </section>
+
+    <section class="card">
+      <h2>Restart command</h2>
+      <pre><code>shutdown /r /t 0</code></pre>
+      <p>Save all open work before running this command because Windows restarts immediately.</p>
+    </section>
+
+    <section class="card">
+      <h2>Safe troubleshooting order</h2>
+      <ol>
+        <li>Check Windows version and build.</li>
+        <li>Check system architecture.</li>
+        <li>Check C drive free space.</li>
+        <li>Check System &amp; reserved storage.</li>
+        <li>Measure the db-wal file.</li>
+        <li>Install the latest applicable Windows update.</li>
+        <li>Restart the computer.</li>
+        <li>Use Temporary files cleanup.</li>
+        <li>Check the C drive and db-wal file size again.</li>
+      </ol>
+    </section>
+
+    <section class="card related">
+      <h2>Related Windows repair videos</h2>
+      <a href="https://youtu.be/HiVSQDLJZZ0">DISM Error 0x800F0915 Fix: Repair Content Could Not Be Found</a>
+      <a href="https://youtu.be/1StePrpEJGA">Complete Guide to Removing Stubborn Windows 11 Printer Drivers</a>
+      <a href="../office-error-30179-28/">Office Error 30179-28: Not Enough Disk Space Fix</a>
+      <a href="../">View all Windows Fix Guides</a>
+    </section>
+
+    <section class="card">
+      <h2>Disclaimer</h2>
+      <p>This guide is for educational and troubleshooting purposes. Back up important files before system repair work. Download Windows updates only from Microsoft and verify that every package matches your Windows version and architecture.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 UniTech LK. Windows troubleshooting guides and YouTube tutorials.</p>
+  </footer>
+</body>
+</html>
