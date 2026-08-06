@@ -246,3 +246,28 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+.guide-thumb-link {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.guide-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #02070e;
+}
+
+.guide-thumb-link:hover .guide-thumb {
+  opacity: 0.9;
+}
+
+.guide-thumb-link:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
