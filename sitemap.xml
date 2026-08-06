@@ -1,60 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/</loc>
     <lastmod>2026-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
 
-  <!-- Office Error 30179-28 -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/office-error-30179-28/</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
-  <!-- Logitech Zone Vibe 100 -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/logitech-zone-vibe-100-reset/</loc>
     <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
-  <!-- CapabilityAccessManager.db-wal -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/capabilityaccessmanager-db-wal-fix/</loc>
     <lastmod>2026-08-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
-  <!-- Microsoft Defender PowerShell -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/microsoft-defender-powershell-malware-scan/</loc>
     <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
-  <!-- WhatsApp Old iPhone -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/whatsapp-stop-working-old-iphone/</loc>
     <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
-  <!-- Windows Server 2019 RDP -->
   <url>
     <loc>https://ilannoor1.github.io/windows-fix-guides/windows-server-2019-rdp-fix/</loc>
     <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 
 </urlset>
