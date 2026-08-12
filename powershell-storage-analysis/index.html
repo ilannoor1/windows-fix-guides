@@ -29,7 +29,6 @@
     href="https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/"
   >
 
-  <!-- Shared UniTech LK stylesheet -->
   <link
     rel="stylesheet"
     href="/windows-fix-guides/assets/style.css"
@@ -84,7 +83,6 @@
     content="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
   >
 
-  <!-- Article dates -->
   <meta
     property="article:published_time"
     content="2026-08-12T20:30:00+03:00"
@@ -125,6 +123,7 @@
           "target": "https://www.youtube.com/watch?v=9CETzmEbF5o"
         }
       },
+
       {
         "@type": "TechArticle",
         "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#article",
@@ -153,6 +152,7 @@
           "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#video"
         }
       },
+
       {
         "@type": "WebPage",
         "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#webpage",
@@ -163,11 +163,9 @@
         "dateModified": "2026-08-12T20:30:00+03:00",
         "breadcrumb": {
           "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#breadcrumb"
-        },
-        "isPartOf": {
-          "@id": "https://ilannoor1.github.io/windows-fix-guides/#website"
         }
       },
+
       {
         "@type": "BreadcrumbList",
         "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#breadcrumb",
@@ -186,6 +184,7 @@
           }
         ]
       },
+
       {
         "@type": "FAQPage",
         "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#faq",
@@ -241,16 +240,20 @@
 
   <header>
     <div class="container">
+
       <a
         href="/windows-fix-guides/"
         aria-label="Back to UniTech LK troubleshooting guides"
       >
         ← UniTech LK Windows Fix Guides
       </a>
+
     </div>
   </header>
 
+
   <main class="container">
+
 
     <!-- Hero -->
     <div class="hero">
@@ -275,7 +278,8 @@
 
     </div>
 
-    <!-- Video -->
+
+    <!-- Main Video -->
     <div class="video-wrapper">
 
       <iframe
@@ -289,15 +293,20 @@
 
     </div>
 
+
     <!-- Overview -->
     <section>
 
       <h2>What This Guide Covers</h2>
 
       <ul class="support-list">
+
         <li>Find Largest Folders</li>
+
         <li>Find Largest Files</li>
+
         <li>Analyze WinSxS</li>
+
       </ul>
 
       <p>
@@ -308,20 +317,21 @@
 
       <p>
         PowerShell gives Windows administrators and advanced users a direct
-        way to inspect disk usage without installing third-party disk-analysis
-        software.
+        way to inspect disk usage without installing third-party
+        disk-analysis software.
       </p>
 
     </section>
 
-    <!-- Check C Drive -->
+
+    <!-- C Drive -->
     <section id="check-drive-space">
 
       <h2>1. Check C Drive Free Space</h2>
 
       <p>
-        Start by checking the total, used and available storage on the system
-        drive.
+        Start by checking the total, used and available storage on the
+        Windows system drive.
       </p>
 
       <div class="command">
@@ -329,11 +339,12 @@ Get-PSDrive C
       </div>
 
       <p>
-        Review the Used and Free columns to confirm whether the C drive is
+        Review the Used and Free values to confirm whether the C drive is
         actually running low on disk space.
       </p>
 
     </section>
+
 
     <!-- Largest Folders -->
     <section id="largest-folders">
@@ -342,15 +353,17 @@ Get-PSDrive C
 
       <p>
         Large folders are often responsible for unexpected C drive usage.
-        Common locations include user profiles, application data, Windows
-        component storage and application caches.
+        Common locations include user profiles, application data,
+        Windows component storage and application caches.
       </p>
 
       <div class="command">
 Get-ChildItem C:\ -Directory -Force -ErrorAction SilentlyContinue |
 ForEach-Object {
-    $size = (Get-ChildItem $_.FullName -File -Recurse -Force -ErrorAction SilentlyContinue |
-        Measure-Object Length -Sum).Sum
+    $size = (
+        Get-ChildItem $_.FullName -File -Recurse -Force -ErrorAction SilentlyContinue |
+        Measure-Object Length -Sum
+    ).Sum
 
     [PSCustomObject]@{
         Folder = $_.FullName
@@ -363,11 +376,12 @@ Select-Object -First 20
 
       <p>
         This calculates folder sizes and lists the largest folders first.
-        Depending on the amount of data on the drive, the scan can take some
-        time to complete.
+        Depending on the amount of data stored on the computer, the scan
+        can take some time.
       </p>
 
     </section>
+
 
     <!-- Largest Files -->
     <section id="largest-files">
@@ -375,7 +389,7 @@ Select-Object -First 20
       <h2>3. Find the Largest Files with PowerShell</h2>
 
       <p>
-        Individual files can sometimes consume tens of gigabytes without being
+        Individual files can sometimes consume many gigabytes without being
         obvious in File Explorer.
       </p>
 
@@ -387,13 +401,16 @@ Select-Object -First 20 FullName,
       </div>
 
       <p>
-        Look carefully at the file path before deleting anything. Large system
-        files such as page files, hibernation files, Windows databases or
-        installer files should not be manually removed simply because they are
-        large.
+        Always check the complete file path before deleting anything.
+      </p>
+
+      <p>
+        Large Windows system files, databases, installer files or application
+        files should not automatically be deleted simply because they are large.
       </p>
 
     </section>
+
 
     <!-- CapabilityAccessManager -->
     <section id="capabilityaccessmanager">
@@ -401,15 +418,18 @@ Select-Object -First 20 FullName,
       <h2>4. CapabilityAccessManager.db-wal Storage Example</h2>
 
       <p>
-        During storage troubleshooting you may find a file named
-        <strong>CapabilityAccessManager.db-wal</strong> consuming an unusually
+        During Windows storage analysis, you may find a file named
+        <strong>CapabilityAccessManager.db-wal</strong> using an unusually
         large amount of disk space.
       </p>
 
       <p>
         This Windows-related database write-ahead log should not be treated
-        like an ordinary temporary file. Investigate why it became large
-        before attempting any cleanup.
+        like an ordinary temporary file.
+      </p>
+
+      <p>
+        Investigate why the file became large before attempting cleanup.
       </p>
 
       <div class="warning">
@@ -417,10 +437,13 @@ Select-Object -First 20 FullName,
         <h3>Important</h3>
 
         <p>
-          Do not manually delete Windows database files simply because a disk
-          scan reports that they are large. First identify which Windows
-          component is using the file and use an appropriate troubleshooting
-          procedure.
+          Do not manually delete Windows database files simply because a
+          PowerShell storage scan reports that they are large.
+        </p>
+
+        <p>
+          First identify the Windows component using the file and follow
+          the appropriate troubleshooting procedure.
         </p>
 
       </div>
@@ -428,12 +451,12 @@ Select-Object -First 20 FullName,
       <a
         class="button"
         href="../capabilityaccessmanager-db-wal-fix/"
-        aria-label="Open the CapabilityAccessManager db-wal troubleshooting guide"
       >
         CapabilityAccessManager.db-wal Fix
       </a>
 
     </section>
+
 
     <!-- WinSxS -->
     <section id="winsxs">
@@ -441,9 +464,12 @@ Select-Object -First 20 FullName,
       <h2>5. Analyze the Windows WinSxS Component Store</h2>
 
       <p>
-        The WinSxS folder is part of the Windows component store. File Explorer
-        can make the folder appear larger than the amount of storage that can
-        actually be reclaimed.
+        The WinSxS directory is part of the Windows component store.
+      </p>
+
+      <p>
+        File Explorer can make this directory appear larger than the amount
+        of disk space that can actually be reclaimed.
       </p>
 
       <p>
@@ -455,20 +481,21 @@ DISM /Online /Cleanup-Image /AnalyzeComponentStore
       </div>
 
       <p>
-        Review the results carefully. DISM reports the component-store size
-        and whether Windows recommends component-store cleanup.
+        DISM reports the actual component-store information and indicates
+        whether component-store cleanup is recommended.
       </p>
 
     </section>
 
-    <!-- Cleanup -->
+
+    <!-- WinSxS Cleanup -->
     <section id="winsxs-cleanup">
 
       <h2>6. Safely Clean WinSxS with DISM</h2>
 
       <p>
-        If DISM reports that component-store cleanup is recommended, use the
-        supported cleanup command:
+        If Windows reports that component-store cleanup is recommended,
+        use the supported DISM cleanup command.
       </p>
 
       <div class="command">
@@ -476,8 +503,8 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
       </div>
 
       <p>
-        This removes superseded Windows components using Microsoft's servicing
-        mechanism.
+        This uses Microsoft's servicing mechanism to remove superseded
+        Windows components safely.
       </p>
 
       <div class="warning">
@@ -485,90 +512,144 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
         <h3>Do Not Manually Delete WinSxS</h3>
 
         <p>
-          Never delete files directly from
-          <strong>C:\Windows\WinSxS</strong>. Manual deletion can damage
-          Windows servicing, updates and system recovery.
+          Never manually delete files from
+          <strong>C:\Windows\WinSxS</strong>.
+        </p>
+
+        <p>
+          Manual deletion can damage Windows Update, system servicing and
+          Windows recovery.
         </p>
 
       </div>
 
     </section>
 
-    <!-- Recommended workflow -->
+
+    <!-- Workflow -->
     <section>
 
       <h2>Recommended Storage Troubleshooting Order</h2>
 
       <ol>
-        <li>Check available C drive space.</li>
-        <li>Find the largest folders.</li>
-        <li>Find the largest individual files.</li>
-        <li>Investigate unusual Windows database or log files.</li>
-        <li>Analyze the WinSxS component store using DISM.</li>
-        <li>Perform supported cleanup only when appropriate.</li>
-        <li>Restart Windows and check disk space again.</li>
+
+        <li>
+          Check available C drive space.
+        </li>
+
+        <li>
+          Find the largest folders.
+        </li>
+
+        <li>
+          Find the largest individual files.
+        </li>
+
+        <li>
+          Investigate unusually large databases, logs or application files.
+        </li>
+
+        <li>
+          Analyze the WinSxS component store using DISM.
+        </li>
+
+        <li>
+          Perform supported cleanup only when appropriate.
+        </li>
+
+        <li>
+          Restart Windows and check available storage again.
+        </li>
+
       </ol>
 
     </section>
 
+
     <!-- Safety -->
     <section class="warning">
 
-      <h2>Important Safety Notes</h2>
+      <h2>Important Storage Cleanup Safety</h2>
 
       <p>
-        Storage-analysis commands are useful for identifying large items, but
-        a large file is not automatically safe to delete.
+        Storage-analysis commands help identify large files and folders,
+        but a large file is not automatically safe to delete.
       </p>
 
       <p>
-        Be especially careful with files located inside:
+        Be especially careful with items located inside:
       </p>
 
       <ul>
-        <li>C:\Windows</li>
-        <li>C:\Windows\System32</li>
-        <li>C:\Windows\WinSxS</li>
-        <li>C:\ProgramData</li>
-        <li>Windows application databases</li>
+
+        <li>
+          C:\Windows
+        </li>
+
+        <li>
+          C:\Windows\System32
+        </li>
+
+        <li>
+          C:\Windows\WinSxS
+        </li>
+
+        <li>
+          C:\ProgramData
+        </li>
+
+        <li>
+          Windows application databases
+        </li>
+
       </ul>
 
       <p>
-        When unsure, identify the file's purpose before making changes.
+        When unsure, determine what created the file before removing it.
       </p>
 
     </section>
+
 
     <!-- FAQ -->
     <section id="faq">
 
       <h2>Frequently Asked Questions</h2>
 
+
       <div class="faq-item">
 
-        <h3>How do I find what is using disk space on Windows 11?</h3>
+        <h3>
+          How do I find what is using disk space on Windows 11?
+        </h3>
 
         <p>
-          Use PowerShell to list and sort large files and folders. This helps
-          identify exactly where storage is being consumed before cleanup.
+          PowerShell can list and sort large files and folders so you can
+          identify exactly where storage is being consumed.
         </p>
 
       </div>
 
+
       <div class="faq-item">
 
-        <h3>Can PowerShell find the largest files on my C drive?</h3>
+        <h3>
+          Can PowerShell find the largest files on my C drive?
+        </h3>
 
         <p>
-          Yes. Get-ChildItem can recursively scan the drive, and Sort-Object
-          can arrange files by size so the largest files appear first.
+          Yes. Get-ChildItem can recursively scan the drive while
+          Sort-Object arranges files by size so the largest items appear first.
         </p>
 
       </div>
 
+
       <div class="faq-item">
 
-        <h3>Why is my Windows 11 C drive suddenly full?</h3>
+        <h3>
+          Why is my Windows 11 C drive suddenly full?
+        </h3>
 
         <p>
           Common causes include application caches, user profile data,
@@ -578,32 +659,43 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
 
       </div>
 
+
       <div class="faq-item">
 
-        <h3>Can I delete the WinSxS folder?</h3>
+        <h3>
+          Can I delete the WinSxS folder?
+        </h3>
 
         <p>
-          No. Do not manually delete WinSxS files. Use DISM's supported
-          component-store analysis and cleanup commands instead.
+          No. Do not manually delete WinSxS files.
+          Use DISM's supported component-store analysis and cleanup commands.
         </p>
 
       </div>
 
+
       <div class="faq-item">
 
-        <h3>What if CapabilityAccessManager.db-wal is very large?</h3>
+        <h3>
+          What if CapabilityAccessManager.db-wal is very large?
+        </h3>
 
         <p>
           Investigate the Windows component creating the file before deleting
-          anything. UniTech LK has a separate troubleshooting guide dedicated
-          to unusually large CapabilityAccessManager.db-wal files.
+          anything.
+        </p>
+
+        <p>
+          UniTech LK has a separate troubleshooting guide dedicated to
+          unusually large CapabilityAccessManager.db-wal files.
         </p>
 
       </div>
 
     </section>
 
-    <!-- Related -->
+
+    <!-- Related Written Guides -->
     <section>
 
       <h2>Related UniTech LK Troubleshooting Guides</h2>
@@ -644,7 +736,8 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
 
     </section>
 
-    <!-- YouTube -->
+
+    <!-- Main YouTube CTA -->
     <section>
 
       <h2>Watch the Full PowerShell Storage Analysis Video</h2>
@@ -666,257 +759,279 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
 
     </section>
 
+
+    <!-- Related Videos -->
     <section id="related-videos">
 
-  <h2>Related UniTech LK Video Tutorials</h2>
-
-  <p>
-    Continue troubleshooting Windows storage, security, Microsoft Office,
-    Remote Desktop and mobile problems with these related UniTech LK video guides.
-  </p>
-
-  <div class="guide-grid">
-
-    <!-- Storage Analysis -->
-    <article class="guide-card">
-
-      <a
-        class="guide-thumb-link"
-        href="https://www.youtube.com/watch?v=9CETzmEbF5o"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Watch PowerShell Storage Analysis on YouTube"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
-          alt="PowerShell Storage Analysis Windows 11"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
-
-      <h3>
-        PowerShell Storage Analysis
-      </h3>
+      <h2>Related UniTech LK Video Tutorials</h2>
 
       <p>
-        Find what is using disk space on Windows 11 with PowerShell.
+        Continue troubleshooting Windows storage, security, Microsoft Office,
+        Remote Desktop and mobile problems with these related UniTech LK videos.
       </p>
 
-      <a
-        class="button"
-        href="https://www.youtube.com/watch?v=9CETzmEbF5o"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Watch on YouTube
-      </a>
 
-    </article>
+      <div class="guide-grid">
 
 
-    <!-- CapabilityAccessManager -->
-    <article class="guide-card">
+        <!-- Storage Analysis -->
+        <article class="guide-card">
 
-      <a
-        class="guide-thumb-link"
-        href="../capabilityaccessmanager-db-wal-fix/"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/-geIxg07oWI/hqdefault.jpg"
-          alt="CapabilityAccessManager db-wal Windows 11 C Drive Full"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
+          <a
+            class="guide-thumb-link"
+            href="https://www.youtube.com/watch?v=9CETzmEbF5o"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
 
-      <h3>
-        CapabilityAccessManager.db-wal C Drive Fix
-      </h3>
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+              alt="PowerShell Storage Analysis Windows 11"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
 
-      <p>
-        Investigate unusually large CapabilityAccessManager.db-wal storage usage.
-      </p>
+          </a>
 
-      <a
-        class="button"
-        href="../capabilityaccessmanager-db-wal-fix/"
-      >
-        Read Guide
-      </a>
+          <h3>
+            PowerShell Storage Analysis
+          </h3>
 
-    </article>
+          <p>
+            Find what is using disk space on Windows 11 with PowerShell.
+          </p>
 
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=9CETzmEbF5o"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
 
-    <!-- Microsoft Defender -->
-    <article class="guide-card">
-
-      <a
-        class="guide-thumb-link"
-        href="https://www.youtube.com/watch?v=r_GsECUSIRM"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/r_GsECUSIRM/hqdefault.jpg"
-          alt="Microsoft Defender PowerShell Malware Scan"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
-
-      <h3>
-        Microsoft Defender PowerShell Commands
-      </h3>
-
-      <p>
-        Run Quick Scan, Full Scan, Offline Scan and check Defender protection.
-      </p>
-
-      <a
-        class="button"
-        href="https://www.youtube.com/watch?v=r_GsECUSIRM"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Watch on YouTube
-      </a>
-
-    </article>
+        </article>
 
 
-    <!-- Office Error -->
-    <article class="guide-card">
+        <!-- CapabilityAccessManager -->
+        <article class="guide-card">
 
-      <a
-        class="guide-thumb-link"
-        href="https://www.youtube.com/watch?v=DRVJuKSqjZU"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/DRVJuKSqjZU/hqdefault.jpg"
-          alt="Office Error 30179-28 Not Enough Disk Space"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
+          <a
+            class="guide-thumb-link"
+            href="../capabilityaccessmanager-db-wal-fix/"
+          >
 
-      <h3>
-        Office Error 30179-28
-      </h3>
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/-geIxg07oWI/hqdefault.jpg"
+              alt="CapabilityAccessManager db-wal Windows 11 C Drive Full"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
 
-      <p>
-        Fix Microsoft Office installation problems caused by low disk space.
-      </p>
+          </a>
 
-      <a
-        class="button"
-        href="https://www.youtube.com/watch?v=DRVJuKSqjZU"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Watch on YouTube
-      </a>
+          <h3>
+            CapabilityAccessManager.db-wal C Drive Fix
+          </h3>
 
-    </article>
+          <p>
+            Investigate unusually large CapabilityAccessManager.db-wal
+            storage usage.
+          </p>
 
+          <a
+            class="button"
+            href="../capabilityaccessmanager-db-wal-fix/"
+          >
+            Read Guide
+          </a>
 
-    <!-- WhatsApp -->
-    <article class="guide-card">
-
-      <a
-        class="guide-thumb-link"
-        href="https://www.youtube.com/watch?v=wbDcZfj4B2w"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/wbDcZfj4B2w/hqdefault.jpg"
-          alt="WhatsApp Stop Working on Old iPhones"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
-
-      <h3>
-        WhatsApp Support on Older iPhones
-      </h3>
-
-      <p>
-        Check iOS compatibility and WhatsApp support requirements.
-      </p>
-
-      <a
-        class="button"
-        href="https://www.youtube.com/watch?v=wbDcZfj4B2w"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Watch on YouTube
-      </a>
-
-    </article>
+        </article>
 
 
-    <!-- Windows Server RDP -->
-    <article class="guide-card">
+        <!-- Microsoft Defender -->
+        <article class="guide-card">
 
-      <a
-        class="guide-thumb-link"
-        href="https://www.youtube.com/watch?v=zi3WycOolYQ"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          class="guide-thumb"
-          src="https://img.youtube.com/vi/zi3WycOolYQ/hqdefault.jpg"
-          alt="Windows Server 2019 RDP Remote Desktop Fix"
-          width="480"
-          height="360"
-          loading="lazy"
-          decoding="async"
-        >
-      </a>
+          <a
+            class="guide-thumb-link"
+            href="https://www.youtube.com/watch?v=r_GsECUSIRM"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
 
-      <h3>
-        Windows Server 2019 RDP Fix
-      </h3>
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/r_GsECUSIRM/hqdefault.jpg"
+              alt="Microsoft Defender PowerShell Malware Scan"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
 
-      <p>
-        Troubleshoot Remote Desktop settings, services, firewall and connectivity.
-      </p>
+          </a>
 
-      <a
-        class="button"
-        href="https://www.youtube.com/watch?v=zi3WycOolYQ"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Watch on YouTube
-      </a>
+          <h3>
+            Microsoft Defender PowerShell Commands
+          </h3>
 
-    </article>
+          <p>
+            Run Quick Scan, Full Scan, Offline Scan and check
+            Microsoft Defender protection.
+          </p>
 
-  </div>
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=r_GsECUSIRM"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
 
-</section>
-    
+        </article>
+
+
+        <!-- Office -->
+        <article class="guide-card">
+
+          <a
+            class="guide-thumb-link"
+            href="https://www.youtube.com/watch?v=DRVJuKSqjZU"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/DRVJuKSqjZU/hqdefault.jpg"
+              alt="Office Error 30179-28 Not Enough Disk Space"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </a>
+
+          <h3>
+            Office Error 30179-28
+          </h3>
+
+          <p>
+            Fix Microsoft Office installation problems caused by
+            insufficient disk space.
+          </p>
+
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=DRVJuKSqjZU"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
+
+        </article>
+
+
+        <!-- WhatsApp -->
+        <article class="guide-card">
+
+          <a
+            class="guide-thumb-link"
+            href="https://www.youtube.com/watch?v=wbDcZfj4B2w"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/wbDcZfj4B2w/hqdefault.jpg"
+              alt="WhatsApp Stop Working on Old iPhones"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </a>
+
+          <h3>
+            WhatsApp Support on Older iPhones
+          </h3>
+
+          <p>
+            Check iOS compatibility and WhatsApp support requirements.
+          </p>
+
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=wbDcZfj4B2w"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
+
+        </article>
+
+
+        <!-- RDP -->
+        <article class="guide-card">
+
+          <a
+            class="guide-thumb-link"
+            href="https://www.youtube.com/watch?v=zi3WycOolYQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/zi3WycOolYQ/hqdefault.jpg"
+              alt="Windows Server 2019 RDP Remote Desktop Fix"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </a>
+
+          <h3>
+            Windows Server 2019 RDP Fix
+          </h3>
+
+          <p>
+            Troubleshoot Remote Desktop settings, services,
+            firewall and network connectivity.
+          </p>
+
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=zi3WycOolYQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- Back Home -->
     <a
       class="back-home"
       href="/windows-fix-guides/"
@@ -924,15 +1039,20 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
       ← Back to UniTech LK Troubleshooting Guides
     </a>
 
+
   </main>
+
 
   <footer>
 
     <div class="container">
+
       © 2026 UniTech LK — Windows, PowerShell and IT troubleshooting guides.
+
     </div>
 
   </footer>
+
 
 </body>
 </html>
