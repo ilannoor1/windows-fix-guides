@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11</title>
+
+  <meta
+    name="description"
+    content="Use PowerShell to analyze Windows 11 disk space, find the largest files and folders, check WinSxS storage and identify what is filling your C drive."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/"
+  >
+
+  <!-- Shared UniTech LK stylesheet -->
+  <link
+    rel="stylesheet"
+    href="/windows-fix-guides/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+
+  <meta
+    property="og:title"
+    content="PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11"
+  >
+
+  <meta
+    property="og:description"
+    content="Find the largest files and folders on Windows 11 using PowerShell, analyze WinSxS and identify hidden storage usage."
+  >
+
+  <meta
+    property="og:url"
+    content="https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- X / Twitter -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Analyze Windows storage with PowerShell and find the largest files, folders and WinSxS usage."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+  >
+
+  <!-- Article dates -->
+  <meta
+    property="article:published_time"
+    content="2026-08-12T20:30:00+03:00"
+  >
+
+  <meta
+    property="article:modified_time"
+    content="2026-08-12T20:30:00+03:00"
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#video",
+        "name": "PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11",
+        "description": "Learn how to use PowerShell to analyze Windows 11 disk space, find the largest files and folders, investigate storage usage and safely analyze the Windows WinSxS component store.",
+        "thumbnailUrl": [
+          "https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+        ],
+        "uploadDate": "2026-08-12T20:30:00+03:00",
+        "contentUrl": "https://www.youtube.com/watch?v=9CETzmEbF5o",
+        "embedUrl": "https://www.youtube.com/embed/9CETzmEbF5o",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/#organization",
+          "name": "UniTech LK",
+          "url": "https://ilannoor1.github.io/windows-fix-guides/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#webpage"
+        },
+        "potentialAction": {
+          "@type": "WatchAction",
+          "target": "https://www.youtube.com/watch?v=9CETzmEbF5o"
+        }
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#article",
+        "headline": "PowerShell Storage Analysis: Find What Is Using Disk Space on Windows 11",
+        "description": "A practical Windows storage troubleshooting guide showing how to find large files and folders with PowerShell and analyze WinSxS storage.",
+        "image": [
+          "https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+        ],
+        "datePublished": "2026-08-12T20:30:00+03:00",
+        "dateModified": "2026-08-12T20:30:00+03:00",
+        "author": {
+          "@type": "Organization",
+          "name": "UniTech LK",
+          "url": "https://ilannoor1.github.io/windows-fix-guides/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/#organization",
+          "name": "UniTech LK",
+          "url": "https://ilannoor1.github.io/windows-fix-guides/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#webpage"
+        },
+        "video": {
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#video"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#webpage",
+        "url": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/",
+        "name": "PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11",
+        "description": "Find large files, folders and Windows component-store usage with PowerShell.",
+        "datePublished": "2026-08-12T20:30:00+03:00",
+        "dateModified": "2026-08-12T20:30:00+03:00",
+        "breadcrumb": {
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#breadcrumb"
+        },
+        "isPartOf": {
+          "@id": "https://ilannoor1.github.io/windows-fix-guides/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK Troubleshooting Guides",
+            "item": "https://ilannoor1.github.io/windows-fix-guides/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PowerShell Storage Analysis",
+            "item": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ilannoor1.github.io/windows-fix-guides/powershell-storage-analysis/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I find what is using disk space on Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PowerShell can scan files and folders, calculate their sizes and sort the results so you can identify which locations are using the most disk space."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I find the largest files with PowerShell?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Get-ChildItem recursively, sort the results by Length in descending order and select the largest files."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the WinSxS folder?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WinSxS is the Windows component store. It contains Windows components needed for servicing, updates and recovery. Do not manually delete files from this folder."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I safely clean WinSxS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Microsoft's DISM component-store cleanup commands rather than manually deleting files from WinSxS."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is CapabilityAccessManager.db-wal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CapabilityAccessManager.db-wal is associated with Windows capability and privacy access data. If it becomes unusually large, investigate the underlying Windows process before attempting any deletion."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a
+        href="/windows-fix-guides/"
+        aria-label="Back to UniTech LK troubleshooting guides"
+      >
+        ← UniTech LK Windows Fix Guides
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+
+      <span class="label">
+        PowerShell Storage Analysis Guide
+      </span>
+
+      <h1>
+        PowerShell Storage Analysis: Find What Is Using Disk Space on Windows 11
+      </h1>
+
+      <p class="intro">
+        Use built-in PowerShell commands to identify large files and folders,
+        investigate C drive storage usage, analyze WinSxS and understand what
+        may be consuming disk space on Windows 11.
+      </p>
+
+      <p class="updated-date">
+        Published: August 12, 2026
+      </p>
+
+    </div>
+
+    <!-- Video -->
+    <div class="video-wrapper">
+
+      <iframe
+        src="https://www.youtube.com/embed/9CETzmEbF5o"
+        title="PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <!-- Overview -->
+    <section>
+
+      <h2>What This Guide Covers</h2>
+
+      <ul class="support-list">
+        <li>Find Largest Folders</li>
+        <li>Find Largest Files</li>
+        <li>Analyze WinSxS</li>
+      </ul>
+
+      <p>
+        If your Windows 11 C drive is unexpectedly full, the first step should
+        be to identify what is actually consuming the storage before deleting
+        anything.
+      </p>
+
+      <p>
+        PowerShell gives Windows administrators and advanced users a direct
+        way to inspect disk usage without installing third-party disk-analysis
+        software.
+      </p>
+
+    </section>
+
+    <!-- Check C Drive -->
+    <section id="check-drive-space">
+
+      <h2>1. Check C Drive Free Space</h2>
+
+      <p>
+        Start by checking the total, used and available storage on the system
+        drive.
+      </p>
+
+      <div class="command">
+Get-PSDrive C
+      </div>
+
+      <p>
+        Review the Used and Free columns to confirm whether the C drive is
+        actually running low on disk space.
+      </p>
+
+    </section>
+
+    <!-- Largest Folders -->
+    <section id="largest-folders">
+
+      <h2>2. Find the Largest Folders with PowerShell</h2>
+
+      <p>
+        Large folders are often responsible for unexpected C drive usage.
+        Common locations include user profiles, application data, Windows
+        component storage and application caches.
+      </p>
+
+      <div class="command">
+Get-ChildItem C:\ -Directory -Force -ErrorAction SilentlyContinue |
+ForEach-Object {
+    $size = (Get-ChildItem $_.FullName -File -Recurse -Force -ErrorAction SilentlyContinue |
+        Measure-Object Length -Sum).Sum
+
+    [PSCustomObject]@{
+        Folder = $_.FullName
+        SizeGB = [math]::Round($size / 1GB, 2)
+    }
+} |
+Sort-Object SizeGB -Descending |
+Select-Object -First 20
+      </div>
+
+      <p>
+        This calculates folder sizes and lists the largest folders first.
+        Depending on the amount of data on the drive, the scan can take some
+        time to complete.
+      </p>
+
+    </section>
+
+    <!-- Largest Files -->
+    <section id="largest-files">
+
+      <h2>3. Find the Largest Files with PowerShell</h2>
+
+      <p>
+        Individual files can sometimes consume tens of gigabytes without being
+        obvious in File Explorer.
+      </p>
+
+      <div class="command">
+Get-ChildItem C:\ -File -Recurse -Force -ErrorAction SilentlyContinue |
+Sort-Object Length -Descending |
+Select-Object -First 20 FullName,
+    @{Name="SizeGB";Expression={[math]::Round($_.Length / 1GB, 2)}}
+      </div>
+
+      <p>
+        Look carefully at the file path before deleting anything. Large system
+        files such as page files, hibernation files, Windows databases or
+        installer files should not be manually removed simply because they are
+        large.
+      </p>
+
+    </section>
+
+    <!-- CapabilityAccessManager -->
+    <section id="capabilityaccessmanager">
+
+      <h2>4. CapabilityAccessManager.db-wal Storage Example</h2>
+
+      <p>
+        During storage troubleshooting you may find a file named
+        <strong>CapabilityAccessManager.db-wal</strong> consuming an unusually
+        large amount of disk space.
+      </p>
+
+      <p>
+        This Windows-related database write-ahead log should not be treated
+        like an ordinary temporary file. Investigate why it became large
+        before attempting any cleanup.
+      </p>
+
+      <div class="warning">
+
+        <h3>Important</h3>
+
+        <p>
+          Do not manually delete Windows database files simply because a disk
+          scan reports that they are large. First identify which Windows
+          component is using the file and use an appropriate troubleshooting
+          procedure.
+        </p>
+
+      </div>
+
+      <a
+        class="button"
+        href="../capabilityaccessmanager-db-wal-fix/"
+        aria-label="Open the CapabilityAccessManager db-wal troubleshooting guide"
+      >
+        CapabilityAccessManager.db-wal Fix
+      </a>
+
+    </section>
+
+    <!-- WinSxS -->
+    <section id="winsxs">
+
+      <h2>5. Analyze the Windows WinSxS Component Store</h2>
+
+      <p>
+        The WinSxS folder is part of the Windows component store. File Explorer
+        can make the folder appear larger than the amount of storage that can
+        actually be reclaimed.
+      </p>
+
+      <p>
+        Use DISM to perform the proper Windows component-store analysis.
+      </p>
+
+      <div class="command">
+DISM /Online /Cleanup-Image /AnalyzeComponentStore
+      </div>
+
+      <p>
+        Review the results carefully. DISM reports the component-store size
+        and whether Windows recommends component-store cleanup.
+      </p>
+
+    </section>
+
+    <!-- Cleanup -->
+    <section id="winsxs-cleanup">
+
+      <h2>6. Safely Clean WinSxS with DISM</h2>
+
+      <p>
+        If DISM reports that component-store cleanup is recommended, use the
+        supported cleanup command:
+      </p>
+
+      <div class="command">
+DISM /Online /Cleanup-Image /StartComponentCleanup
+      </div>
+
+      <p>
+        This removes superseded Windows components using Microsoft's servicing
+        mechanism.
+      </p>
+
+      <div class="warning">
+
+        <h3>Do Not Manually Delete WinSxS</h3>
+
+        <p>
+          Never delete files directly from
+          <strong>C:\Windows\WinSxS</strong>. Manual deletion can damage
+          Windows servicing, updates and system recovery.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- Recommended workflow -->
+    <section>
+
+      <h2>Recommended Storage Troubleshooting Order</h2>
+
+      <ol>
+        <li>Check available C drive space.</li>
+        <li>Find the largest folders.</li>
+        <li>Find the largest individual files.</li>
+        <li>Investigate unusual Windows database or log files.</li>
+        <li>Analyze the WinSxS component store using DISM.</li>
+        <li>Perform supported cleanup only when appropriate.</li>
+        <li>Restart Windows and check disk space again.</li>
+      </ol>
+
+    </section>
+
+    <!-- Safety -->
+    <section class="warning">
+
+      <h2>Important Safety Notes</h2>
+
+      <p>
+        Storage-analysis commands are useful for identifying large items, but
+        a large file is not automatically safe to delete.
+      </p>
+
+      <p>
+        Be especially careful with files located inside:
+      </p>
+
+      <ul>
+        <li>C:\Windows</li>
+        <li>C:\Windows\System32</li>
+        <li>C:\Windows\WinSxS</li>
+        <li>C:\ProgramData</li>
+        <li>Windows application databases</li>
+      </ul>
+
+      <p>
+        When unsure, identify the file's purpose before making changes.
+      </p>
+
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+
+        <h3>How do I find what is using disk space on Windows 11?</h3>
+
+        <p>
+          Use PowerShell to list and sort large files and folders. This helps
+          identify exactly where storage is being consumed before cleanup.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <h3>Can PowerShell find the largest files on my C drive?</h3>
+
+        <p>
+          Yes. Get-ChildItem can recursively scan the drive, and Sort-Object
+          can arrange files by size so the largest files appear first.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <h3>Why is my Windows 11 C drive suddenly full?</h3>
+
+        <p>
+          Common causes include application caches, user profile data,
+          Windows updates, component-store files, temporary data and
+          unexpectedly large database or log files.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <h3>Can I delete the WinSxS folder?</h3>
+
+        <p>
+          No. Do not manually delete WinSxS files. Use DISM's supported
+          component-store analysis and cleanup commands instead.
+        </p>
+
+      </div>
+
+      <div class="faq-item">
+
+        <h3>What if CapabilityAccessManager.db-wal is very large?</h3>
+
+        <p>
+          Investigate the Windows component creating the file before deleting
+          anything. UniTech LK has a separate troubleshooting guide dedicated
+          to unusually large CapabilityAccessManager.db-wal files.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- Related -->
+    <section>
+
+      <h2>Related UniTech LK Troubleshooting Guides</h2>
+
+      <ul class="related-guides">
+
+        <li>
+          <a href="../capabilityaccessmanager-db-wal-fix/">
+            Windows 11 C Drive Full: CapabilityAccessManager.db-wal Fix
+          </a>
+        </li>
+
+        <li>
+          <a href="../microsoft-defender-powershell-malware-scan/">
+            7 Microsoft Defender PowerShell Commands to Scan Windows for Malware
+          </a>
+        </li>
+
+        <li>
+          <a href="../office-error-30179-28/">
+            Office Error 30179-28: Not Enough Disk Space Fix
+          </a>
+        </li>
+
+        <li>
+          <a href="../windows-server-2019-rdp-fix/">
+            Windows Server 2019 RDP Troubleshooting Guide
+          </a>
+        </li>
+
+        <li>
+          <a href="/windows-fix-guides/">
+            All UniTech LK Troubleshooting Guides
+          </a>
+        </li>
+
+      </ul>
+
+    </section>
+
+    <!-- YouTube -->
+    <section>
+
+      <h2>Watch the Full PowerShell Storage Analysis Video</h2>
+
+      <p>
+        Follow the complete demonstration on YouTube to see the PowerShell
+        storage-analysis commands and Windows disk-space results step by step.
+      </p>
+
+      <a
+        class="button"
+        href="https://www.youtube.com/watch?v=9CETzmEbF5o"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Watch PowerShell Storage Analysis on YouTube"
+      >
+        Watch on YouTube
+      </a>
+
+    </section>
+
+    <a
+      class="back-home"
+      href="/windows-fix-guides/"
+    >
+      ← Back to UniTech LK Troubleshooting Guides
+    </a>
+
+  </main>
+
+  <footer>
+
+    <div class="container">
+      © 2026 UniTech LK — Windows, PowerShell and IT troubleshooting guides.
+    </div>
+
+  </footer>
+
+</body>
+</html>
