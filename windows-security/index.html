@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Windows Security & Malware Troubleshooting Guides | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="Windows security troubleshooting guides for Microsoft Defender, malware scans, CMD, Netstat, suspicious processes, network connections and Windows protection checks."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/windows-security/"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:title"
+    content="Windows Security & Malware Troubleshooting Guides"
+  >
+
+  <meta
+    property="og:description"
+    content="Microsoft Defender, malware scan, CMD, Netstat and Windows security troubleshooting guides."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/windows-security/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- Twitter / X -->
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Windows Security Troubleshooting | UniTech LK"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Microsoft Defender, CMD, Netstat and malware investigation guides."
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://unitechlk.com/#organization",
+        "name": "UniTech LK",
+        "url": "https://unitechlk.com/"
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://unitechlk.com/windows-security/#webpage",
+        "url": "https://unitechlk.com/windows-security/",
+        "name": "Windows Security and Malware Troubleshooting Guides",
+        "description": "Windows security troubleshooting guides for Microsoft Defender, malware scans, suspicious network activity, CMD and Netstat.",
+        "isPartOf": {
+          "@id": "https://unitechlk.com/#website"
+        },
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Windows Security"
+          },
+          {
+            "@type": "Thing",
+            "name": "Microsoft Defender"
+          },
+          {
+            "@type": "Thing",
+            "name": "PowerShell malware scan"
+          },
+          {
+            "@type": "Thing",
+            "name": "Netstat"
+          },
+          {
+            "@type": "Thing",
+            "name": "Windows malware investigation"
+          }
+        ],
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Windows Security Guides",
+          "numberOfItems": 2,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Microsoft Defender PowerShell Malware Scan",
+              "url": "https://unitechlk.com/microsoft-defender-powershell-malware-scan/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "CMD and Netstat Malware Investigation",
+              "url": "https://unitechlk.com/cmd-netstat-malware-check/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/windows-security/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Windows Security",
+            "item": "https://unitechlk.com/windows-security/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/windows-security/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How can I scan Windows for malware?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Microsoft Defender can run Quick, Full and Offline scans, and PowerShell can be used to start scans and review Defender status."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Netstat detect malware?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Netstat can help investigate active network connections and process IDs, but it does not by itself prove that a process is malicious."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I check which process is using a network connection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Netstat can show process IDs associated with network connections, and Task Manager, tasklist or PowerShell can be used to identify the corresponding process."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+
+<body>
+
+<header>
+  <div class="container">
+
+    <a
+      href="/"
+      aria-label="Back to UniTech LK troubleshooting guides"
+    >
+      ← UniTech LK Troubleshooting Guides
+    </a>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+
+    <span class="label">
+      Windows Security &amp; Malware Troubleshooting
+    </span>
+
+    <h1>
+      Windows Security &amp; Malware Troubleshooting Guides
+    </h1>
+
+    <p class="intro">
+      Practical Windows security guides for Microsoft Defender,
+      malware scans, suspicious processes, network connections,
+      CMD, Netstat and PowerShell security troubleshooting.
+    </p>
+
+  </div>
+
+
+  <!-- Main Guides -->
+  <section>
+
+    <h2>Windows Security Guides</h2>
+
+    <div class="guide-grid">
+
+
+      <!-- Defender -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/microsoft-defender-powershell-malware-scan/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/r_GsECUSIRM/hqdefault.jpg"
+            alt="Microsoft Defender PowerShell malware scan"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/microsoft-defender-powershell-malware-scan/">
+            Microsoft Defender PowerShell Malware Scan
+          </a>
+        </h2>
+
+        <p>
+          Update Defender security intelligence, run Quick Scan,
+          Full Scan and Offline Scan, review detected threats and
+          verify Defender protection status.
+        </p>
+
+        <a
+          class="button"
+          href="/microsoft-defender-powershell-malware-scan/"
+        >
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- CMD Netstat -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/cmd-netstat-malware-check/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/RedeIZ2zQao/hqdefault.jpg"
+            alt="Windows CMD Netstat malware investigation"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/cmd-netstat-malware-check/">
+            Check Suspicious Connections with CMD &amp; Netstat
+          </a>
+        </h2>
+
+        <p>
+          Inspect active network connections, listening ports and
+          process IDs when investigating suspicious Windows activity.
+        </p>
+
+        <a
+          class="button"
+          href="/cmd-netstat-malware-check/"
+        >
+          Read the Guide
+        </a>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Microsoft Defender Malware Scanning</h2>
+
+    <p>
+      Microsoft Defender is built into supported Windows systems and
+      provides malware protection, security intelligence updates and
+      multiple scan types.
+    </p>
+
+    <p>
+      PowerShell can be useful for administrators who want to check
+      Defender status or run scans directly from the command line.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Windows Malware Investigation with CMD</h2>
+
+    <p>
+      Command Prompt can help investigate network activity and running
+      processes when something appears unusual.
+    </p>
+
+    <p>
+      The goal is to collect evidence before making changes rather than
+      assuming that every unknown process or connection is malicious.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Netstat Network Investigation</h2>
+
+    <p>
+      Netstat can display active TCP connections, listening ports,
+      remote addresses, connection states and process IDs.
+    </p>
+
+    <p>
+      A commonly used diagnostic command is:
+    </p>
+
+    <div class="command">
+netstat -ano
+    </div>
+
+    <p>
+      The process ID can then be investigated using Task Manager,
+      tasklist or PowerShell.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Find a Process by PID</h2>
+
+    <p>
+      If Netstat shows a process ID, you can identify the process using:
+    </p>
+
+    <div class="command">
+tasklist /FI "PID eq 1234"
+    </div>
+
+    <p>
+      Or with PowerShell:
+    </p>
+
+    <div class="command">
+Get-Process -Id 1234
+    </div>
+
+    <p>
+      Replace <strong>1234</strong> with the actual PID you are
+      investigating.
+    </p>
+
+  </section>
+
+
+  <section class="warning">
+
+    <h2>Do Not Assume Every Unknown Connection Is Malware</h2>
+
+    <p>
+      Windows, browsers, cloud services, Microsoft applications,
+      update services, security software and other legitimate programs
+      make network connections.
+    </p>
+
+    <p>
+      Investigate the process name, executable path, publisher,
+      digital signature and associated service before taking action.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Windows Security Search Topics</h2>
+
+    <ul>
+      <li>Windows malware scan</li>
+      <li>Microsoft Defender malware scan</li>
+      <li>Microsoft Defender PowerShell</li>
+      <li>PowerShell virus scan</li>
+      <li>PowerShell malware scan</li>
+      <li>Windows Defender Quick Scan</li>
+      <li>Windows Defender Full Scan</li>
+      <li>Windows Defender Offline Scan</li>
+      <li>Check Defender status PowerShell</li>
+      <li>Check detected threats Windows</li>
+      <li>Windows security commands</li>
+      <li>CMD malware check</li>
+      <li>Netstat malware check</li>
+      <li>Netstat Windows 11</li>
+      <li>Netstat Windows 10</li>
+      <li>Check suspicious connections Windows</li>
+      <li>Find process using network connection</li>
+      <li>Find PID with Netstat</li>
+      <li>Check listening ports Windows</li>
+      <li>Windows suspicious process</li>
+      <li>Windows hacker check</li>
+      <li>Windows network security</li>
+      <li>Windows Defender threat history</li>
+    </ul>
+
+  </section>
+
+
+  <section id="faq">
+
+    <h2>Windows Security Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+
+      <h3>Can PowerShell scan Windows for malware?</h3>
+
+      <p>
+        Microsoft Defender exposes supported PowerShell commands that
+        can update protection data, start scans and display Defender
+        status information.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Can Netstat tell me if I have a virus?</h3>
+
+      <p>
+        No. Netstat shows network activity. It can help identify
+        connections that need further investigation, but a security
+        scanner and additional analysis are needed to confirm malware.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>What does netstat -ano do?</h3>
+
+      <p>
+        It shows active connections and listening ports using numerical
+        addresses and includes the process ID associated with each entry.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Should I kill an unfamiliar process?</h3>
+
+      <p>
+        Not automatically. First identify the executable path, publisher
+        and service associated with the process. Legitimate Windows
+        components can have unfamiliar names.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Related UniTech LK Topics</h2>
+
+    <ul class="related-guides">
+
+      <li>
+        <a href="/powershell/">
+          PowerShell Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/windows-storage/">
+          Windows Storage Troubleshooting
+        </a>
+      </li>
+
+      <li>
+        <a href="/find-computer-serial-number-cmd/">
+          Windows CMD Computer Serial Number Guide
+        </a>
+      </li>
+
+      <li>
+        <a href="/">
+          All UniTech LK Troubleshooting Guides
+        </a>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <a
+    class="back-home"
+    href="/"
+  >
+    ← Back to UniTech LK Troubleshooting Guides
+  </a>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 UniTech LK — Windows security, Microsoft Defender, CMD, PowerShell and IT troubleshooting guides.
+  </div>
+
+</footer>
+
+</body>
+</html>
