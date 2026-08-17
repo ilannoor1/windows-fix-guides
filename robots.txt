@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://unitechlk.com/sitemap.xml
+Sitemap: https://unitechlk.com/video-sitemap.xml
