@@ -8,21 +8,27 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: update-unitechlk-news
+  group: unitechlk-news-and-pages
   cancel-in-progress: false
 
 jobs:
+
   update-news:
     runs-on: ubuntu-latest
 
+    outputs:
+      changed: ${{ steps.changes.outputs.changed }}
+
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          token: ${{ secrets.NEWS_PAT || github.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -43,20 +49,64 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit new news
+      - name: Commit generated news
         if: steps.changes.outputs.changed == 'true'
         shell: bash
         run: |
           git config user.name "UniTech LK News Bot"
           git config user.email "actions@users.noreply.github.com"
 
-          git add news/ sitemap.xml
+          git add news/
 
           git commit -m "Auto update UniTech LK technology news"
 
           git push origin main
 
-      - name: No new news found
+      - name: No new changes
         if: steps.changes.outputs.changed == 'false'
         run: |
-          echo "No new official news items were found."
+          echo "No repository changes were generated."
+
+
+  build-pages:
+    needs: update-news
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout latest repository
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+
+  deploy-pages:
+    needs:
+      - update-news
+      - build-pages
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
