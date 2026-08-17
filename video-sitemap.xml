@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- PowerShell Storage Analysis -->
+  <url>
+    <loc>https://unitechlk.com/powershell-storage-analysis/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/9CETzmEbF5o/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11</video:title>
+
+      <video:description>Learn how to use PowerShell to analyze Windows 11 disk space, find large files and folders, investigate C drive storage usage, and analyze WinSxS storage.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/9CETzmEbF5o</video:player_loc>
+
+      <video:publication_date>2026-08-12T00:00:00+03:00</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Microsoft Defender PowerShell -->
+  <url>
+    <loc>https://unitechlk.com/microsoft-defender-powershell-malware-scan/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/r_GsECUSIRM/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Microsoft Defender PowerShell Commands to Scan Windows for Malware</video:title>
+
+      <video:description>Learn Microsoft Defender PowerShell commands to update security intelligence, run Quick Scan, Full Scan and Offline Scan, check detected threats, review detection history and verify Defender protection status.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/r_GsECUSIRM</video:player_loc>
+
+      <video:publication_date>2026-08-05T20:30:00+03:00</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Office Error 30179-28 -->
+  <url>
+    <loc>https://unitechlk.com/office-error-30179-28/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/DRVJuKSqjZU/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Office Error 30179-28 Not Enough Disk Space Fix</video:title>
+
+      <video:description>Fix Microsoft Office and Microsoft 365 installation error 30179-28 by checking available disk space, Windows storage and installation requirements.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/DRVJuKSqjZU</video:player_loc>
+
+      <video:publication_date>2026-07-22T19:00:00+03:00</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- CapabilityAccessManager.db-wal -->
+  <url>
+    <loc>https://unitechlk.com/capabilityaccessmanager-db-wal-fix/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/-geIxg07oWI/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Windows 11 C Drive Full CapabilityAccessManager.db-wal Huge File Fix</video:title>
+
+      <video:description>Investigate Windows 11 C drive storage problems caused by a large CapabilityAccessManager.db-wal file and learn how to identify what is consuming disk space.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/-geIxg07oWI</video:player_loc>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- WhatsApp Old iPhone -->
+  <url>
+    <loc>https://unitechlk.com/whatsapp-stop-working-old-iphone/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/wbDcZfj4B2w/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>WhatsApp Stop Working on Old iPhones? Check iOS Version Now</video:title>
+
+      <video:description>Learn how to check whether an older iPhone meets WhatsApp system requirements, verify the installed iOS version, update iOS and protect WhatsApp chats.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/wbDcZfj4B2w</video:player_loc>
+
+      <video:publication_date>2026-07-08T00:00:00+03:00</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+</urlset>
