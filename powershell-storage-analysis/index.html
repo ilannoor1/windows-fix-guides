@@ -29,9 +29,10 @@
     href="https://unitechlk.com/powershell-storage-analysis/"
   >
 
+  <!-- Shared stylesheet -->
   <link
     rel="stylesheet"
-    href="/windows-fix-guides/assets/style.css"
+    href="/assets/style.css"
   >
 
   <!-- Open Graph -->
@@ -242,7 +243,7 @@
     <div class="container">
 
       <a
-        href="/windows-fix-guides/"
+        href="/"
         aria-label="Back to UniTech LK troubleshooting guides"
       >
         ← UniTech LK Windows Fix Guides
@@ -300,13 +301,9 @@
       <h2>What This Guide Covers</h2>
 
       <ul class="support-list">
-
         <li>Find Largest Folders</li>
-
         <li>Find Largest Files</li>
-
         <li>Analyze WinSxS</li>
-
       </ul>
 
       <p>
@@ -532,35 +529,13 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
       <h2>Recommended Storage Troubleshooting Order</h2>
 
       <ol>
-
-        <li>
-          Check available C drive space.
-        </li>
-
-        <li>
-          Find the largest folders.
-        </li>
-
-        <li>
-          Find the largest individual files.
-        </li>
-
-        <li>
-          Investigate unusually large databases, logs or application files.
-        </li>
-
-        <li>
-          Analyze the WinSxS component store using DISM.
-        </li>
-
-        <li>
-          Perform supported cleanup only when appropriate.
-        </li>
-
-        <li>
-          Restart Windows and check available storage again.
-        </li>
-
+        <li>Check available C drive space.</li>
+        <li>Find the largest folders.</li>
+        <li>Find the largest individual files.</li>
+        <li>Investigate unusually large databases, logs or application files.</li>
+        <li>Analyze the WinSxS component store using DISM.</li>
+        <li>Perform supported cleanup only when appropriate.</li>
+        <li>Restart Windows and check available storage again.</li>
       </ol>
 
     </section>
@@ -581,27 +556,11 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
       </p>
 
       <ul>
-
-        <li>
-          C:\Windows
-        </li>
-
-        <li>
-          C:\Windows\System32
-        </li>
-
-        <li>
-          C:\Windows\WinSxS
-        </li>
-
-        <li>
-          C:\ProgramData
-        </li>
-
-        <li>
-          Windows application databases
-        </li>
-
+        <li>C:\Windows</li>
+        <li>C:\Windows\System32</li>
+        <li>C:\Windows\WinSxS</li>
+        <li>C:\ProgramData</li>
+        <li>Windows application databases</li>
       </ul>
 
       <p>
@@ -727,7 +686,7 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
         </li>
 
         <li>
-          <a href="/windows-fix-guides/">
+          <a href="/">
             All UniTech LK Troubleshooting Guides
           </a>
         </li>
@@ -1034,7 +993,7 @@ DISM /Online /Cleanup-Image /StartComponentCleanup
     <!-- Back Home -->
     <a
       class="back-home"
-      href="/windows-fix-guides/"
+      href="/"
     >
       ← Back to UniTech LK Troubleshooting Guides
     </a>
