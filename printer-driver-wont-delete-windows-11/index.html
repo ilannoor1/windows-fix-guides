@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Printer Driver Won't Delete in Windows 11? Complete Fix | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="Printer driver won't delete in Windows 11? Fix stuck or old printer drivers using Print Server Properties, Print Spooler, PowerShell and pnputil step by step."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/printer-driver-wont-delete-windows-11/"
+  >
+
+  <!-- Shared UniTech LK CSS -->
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+
+  <meta
+    property="og:title"
+    content="Printer Driver Won't Delete in Windows 11? Complete Fix"
+  >
+
+  <meta
+    property="og:description"
+    content="Remove stuck, old or unused printer drivers from Windows 11 using Print Server Properties, Print Spooler, PowerShell and pnputil."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/printer-driver-wont-delete-windows-11/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://img.youtube.com/vi/1StePrpEJGA/hqdefault.jpg"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- X / Twitter -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Printer Driver Won't Delete in Windows 11? Complete Fix"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Windows printer driver stuck or won't remove? Follow this complete Windows 11 printer driver removal guide."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://img.youtube.com/vi/1StePrpEJGA/hqdefault.jpg"
+  >
+
+  <meta
+    property="article:published_time"
+    content="2026-07-10T00:00:00+03:00"
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#video",
+        "name": "Printer Driver Won't Delete in Windows 11? Complete Fix",
+        "description": "Learn how to remove a stuck, old or unused printer driver from Windows 11 using Print Server Properties, Print Spooler, PowerShell and Windows driver-store tools.",
+        "thumbnailUrl": [
+          "https://img.youtube.com/vi/1StePrpEJGA/hqdefault.jpg"
+        ],
+        "uploadDate": "2026-07-10T00:00:00+03:00",
+        "duration": "PT7M17S",
+        "contentUrl": "https://www.youtube.com/watch?v=1StePrpEJGA",
+        "embedUrl": "https://www.youtube.com/embed/1StePrpEJGA",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://unitechlk.com/#organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#webpage"
+        },
+        "potentialAction": {
+          "@type": "WatchAction",
+          "target": "https://www.youtube.com/watch?v=1StePrpEJGA"
+        }
+      },
+
+      {
+        "@type": "TechArticle",
+        "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#article",
+        "headline": "Printer Driver Won't Delete in Windows 11? Complete Fix",
+        "description": "Step-by-step Windows printer driver removal guide for stuck, old or unavailable printer drivers.",
+        "image": [
+          "https://img.youtube.com/vi/1StePrpEJGA/hqdefault.jpg"
+        ],
+        "datePublished": "2026-07-10T00:00:00+03:00",
+        "author": {
+          "@type": "Organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://unitechlk.com/#organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#webpage"
+        },
+        "video": {
+          "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#video"
+        }
+      },
+
+      {
+        "@type": "WebPage",
+        "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#webpage",
+        "url": "https://unitechlk.com/printer-driver-wont-delete-windows-11/",
+        "name": "Printer Driver Won't Delete in Windows 11? Complete Fix",
+        "description": "Remove stuck printer drivers in Windows 11 using Print Server Properties, Print Spooler, PowerShell and pnputil.",
+        "datePublished": "2026-07-10T00:00:00+03:00",
+        "breadcrumb": {
+          "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#breadcrumb"
+        }
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Printer Troubleshooting",
+            "item": "https://unitechlk.com/printers/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Printer Driver Won't Delete in Windows 11",
+            "item": "https://unitechlk.com/printer-driver-wont-delete-windows-11/"
+          }
+        ]
+      },
+
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/printer-driver-wont-delete-windows-11/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why won't Windows 11 delete my printer driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A printer driver can remain locked when the Print Spooler is using it, a printer queue still references it, or the driver package remains installed in the Windows driver store."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I remove an old printer driver from Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Remove the printer queue first, check Print Server Properties, stop the Print Spooler if required, and then remove the driver package using supported Windows tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PowerShell remove printer drivers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Get-PrinterDriver can list installed printer drivers and Remove-PrinterDriver can remove a selected printer driver when it is no longer in use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does pnputil do for printer drivers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PnPUtil manages driver packages in the Windows driver store and can help identify and remove an old printer driver package when normal printer removal is not enough."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+
+      <a
+        href="/printers/"
+        aria-label="Back to UniTech LK printer troubleshooting guides"
+      >
+        ← UniTech LK Printer Troubleshooting Guides
+      </a>
+
+    </div>
+  </header>
+
+
+  <main class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+
+      <span class="label">
+        Windows Printer Troubleshooting
+      </span>
+
+      <h1>
+        Printer Driver Won't Delete in Windows 11? Complete Fix
+      </h1>
+
+      <p class="intro">
+        Remove stuck, old or unused printer drivers from Windows 11 using
+        Print Server Properties, Print Spooler, PowerShell and Windows
+        driver-store tools.
+      </p>
+
+      <p class="updated-date">
+        Published: July 10, 2026
+      </p>
+
+    </div>
+
+
+    <!-- Main Video -->
+    <div class="video-wrapper">
+
+      <iframe
+        src="https://www.youtube.com/embed/1StePrpEJGA"
+        title="Printer Driver Won't Delete in Windows 11? Complete Fix"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <!-- Overview -->
+    <section>
+
+      <h2>Printer Driver Won't Delete in Windows 11</h2>
+
+      <p>
+        Windows can sometimes refuse to remove an old printer driver even
+        after the printer itself has been deleted.
+      </p>
+
+      <p>
+        This can happen when a printer queue still references the driver,
+        the Print Spooler is using the driver, or the driver package remains
+        installed in the Windows driver store.
+      </p>
+
+      <ul class="support-list">
+
+        <li>Remove Stuck Printer Driver</li>
+
+        <li>Restart Print Spooler</li>
+
+        <li>Remove Old Driver Package</li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- Causes -->
+    <section id="why-driver-wont-delete">
+
+      <h2>Why Won't Windows Delete the Printer Driver?</h2>
+
+      <p>
+        A printer driver may remain installed because Windows still considers
+        the driver to be in use.
+      </p>
+
+      <p>
+        Common causes include:
+      </p>
+
+      <ul>
+        <li>An existing printer queue still uses the driver</li>
+        <li>The Windows Print Spooler has the driver loaded</li>
+        <li>A pending print job is still in the queue</li>
+        <li>The printer driver package remains in the driver store</li>
+        <li>An old printer installation was not completely removed</li>
+      </ul>
+
+    </section>
+
+
+    <!-- Print Server Properties -->
+    <section id="print-server-properties">
+
+      <h2>1. Open Print Server Properties</h2>
+
+      <p>
+        Windows includes Print Server Properties for viewing and removing
+        installed printer drivers.
+      </p>
+
+      <p>
+        Press <strong>Win + R</strong> and use:
+      </p>
+
+      <div class="command">
+printui /s /t2
+      </div>
+
+      <p>
+        Open the <strong>Drivers</strong> tab and locate the old or unwanted
+        printer driver.
+      </p>
+
+      <p>
+        If Windows allows it, remove the driver and its package from here.
+      </p>
+
+    </section>
+
+
+    <!-- Spooler -->
+    <section id="print-spooler">
+
+      <h2>2. Stop the Windows Print Spooler</h2>
+
+      <p>
+        If the printer driver is still in use, the Windows Print Spooler
+        may be keeping the driver loaded.
+      </p>
+
+      <p>
+        Open Command Prompt or PowerShell as Administrator and run:
+      </p>
+
+      <div class="command">
+net stop spooler
+      </div>
+
+      <p>
+        This temporarily stops Windows printing services.
+      </p>
+
+      <div class="warning">
+
+        <h3>Important</h3>
+
+        <p>
+          Printing will not work while the Print Spooler service is stopped.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Print Queue -->
+    <section id="print-queue">
+
+      <h2>3. Check for Stuck Print Jobs</h2>
+
+      <p>
+        Pending or corrupted print jobs can prevent printer components
+        from being removed correctly.
+      </p>
+
+      <p>
+        After stopping the Print Spooler, check the Windows spool folder if
+        troubleshooting requires clearing a stuck print queue:
+      </p>
+
+      <div class="command">
+C:\Windows\System32\spool\PRINTERS
+      </div>
+
+      <p>
+        Only clear pending print-job files when you are intentionally
+        troubleshooting a stuck print queue.
+      </p>
+
+      <p>
+        Do not delete unrelated files from the Windows spool directories.
+      </p>
+
+    </section>
+
+
+    <!-- Restart Spooler -->
+    <section id="restart-spooler">
+
+      <h2>4. Restart the Print Spooler</h2>
+
+      <p>
+        After completing the appropriate troubleshooting step, restart
+        the Print Spooler:
+      </p>
+
+      <div class="command">
+net start spooler
+      </div>
+
+      <p>
+        Windows printing services should now start again.
+      </p>
+
+    </section>
+
+
+    <!-- PowerShell -->
+    <section id="powershell-printer-driver">
+
+      <h2>5. Check Printer Drivers with PowerShell</h2>
+
+      <p>
+        PowerShell can list installed printer drivers directly.
+      </p>
+
+      <div class="command">
+Get-PrinterDriver
+      </div>
+
+      <p>
+        Review the driver names carefully before removing anything.
+      </p>
+
+      <p>
+        To display useful driver information:
+      </p>
+
+      <div class="command">
+Get-PrinterDriver |
+Select-Object Name, Manufacturer, MajorVersion, PrinterEnvironment |
+Format-Table -AutoSize
+      </div>
+
+    </section>
+
+
+    <!-- Remove-PrinterDriver -->
+    <section id="remove-printer-driver">
+
+      <h2>6. Remove a Printer Driver with PowerShell</h2>
+
+      <p>
+        If the old driver is no longer being used by a printer queue,
+        PowerShell can remove it.
+      </p>
+
+      <div class="command">
+Remove-PrinterDriver -Name "PRINTER DRIVER NAME"
+      </div>
+
+      <div class="warning">
+
+        <h3>Replace the Driver Name</h3>
+
+        <p>
+          Replace <strong>PRINTER DRIVER NAME</strong> with the exact
+          driver name returned by Get-PrinterDriver.
+        </p>
+
+        <p>
+          Do not copy the example name literally.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PnPUtil -->
+    <section id="pnputil">
+
+      <h2>7. Find the Printer Driver Package with PnPUtil</h2>
+
+      <p>
+        If the printer driver package still exists in the Windows driver
+        store, PnPUtil can help identify it.
+      </p>
+
+      <div class="command">
+pnputil /enum-drivers
+      </div>
+
+      <p>
+        Locate the correct printer driver package and note its published
+        name, which normally appears in a format such as:
+      </p>
+
+      <div class="command">
+oemXX.inf
+      </div>
+
+      <p>
+        Verify the provider, class and original driver information before
+        removing any package.
+      </p>
+
+    </section>
+
+
+    <!-- Delete package -->
+    <section id="remove-driver-package">
+
+      <h2>8. Remove an Old Driver Package</h2>
+
+      <p>
+        Once the exact unwanted package has been positively identified,
+        Windows PnPUtil can remove it from the driver store.
+      </p>
+
+      <div class="command">
+pnputil /delete-driver oemXX.inf /uninstall
+      </div>
+
+      <div class="warning">
+
+        <h3>Use the Correct OEM INF</h3>
+
+        <p>
+          Replace <strong>oemXX.inf</strong> with the exact published
+          driver package name identified on your PC.
+        </p>
+
+        <p>
+          Removing the wrong driver package can affect another device.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Recommended sequence -->
+    <section>
+
+      <h2>Recommended Printer Driver Removal Order</h2>
+
+      <ol>
+        <li>Remove the old printer from Windows Settings.</li>
+        <li>Check Print Server Properties.</li>
+        <li>Remove the printer driver if Windows allows it.</li>
+        <li>Stop the Print Spooler if the driver remains locked.</li>
+        <li>Check for stuck print jobs.</li>
+        <li>Restart the Print Spooler.</li>
+        <li>Use Get-PrinterDriver to verify installed drivers.</li>
+        <li>Use Remove-PrinterDriver when appropriate.</li>
+        <li>Use PnPUtil only after identifying the exact driver package.</li>
+        <li>Restart Windows and reinstall the correct printer driver if required.</li>
+      </ol>
+
+    </section>
+
+
+    <!-- Search Context -->
+    <section>
+
+      <h2>Windows Printer Driver Troubleshooting</h2>
+
+      <p>
+        This guide can help with closely related Windows printer problems
+        such as a printer driver that won't uninstall, printer driver stuck
+        in Windows 11, old printer driver won't delete, printer driver in use,
+        Print Spooler driver problems and old printer packages remaining in
+        the Windows driver store.
+      </p>
+
+      <h3>Printer Driver Won't Remove</h3>
+
+      <p>
+        If Windows reports that a printer driver is being used, first check
+        whether another printer queue still references the same driver.
+      </p>
+
+      <h3>Old Printer Driver Still Installed</h3>
+
+      <p>
+        Removing a printer device does not always remove the associated
+        driver package. Print Server Properties, PowerShell and PnPUtil
+        provide additional ways to inspect the remaining driver.
+      </p>
+
+      <h3>Windows 11 Printer Driver Stuck</h3>
+
+      <p>
+        Restarting or temporarily stopping the Print Spooler can help when
+        Windows printing components are preventing a driver from being
+        removed.
+      </p>
+
+    </section>
+
+
+    <!-- Safety -->
+    <section class="warning">
+
+      <h2>Printer Driver Removal Safety</h2>
+
+      <p>
+        Do not randomly delete INF packages from the Windows driver store.
+      </p>
+
+      <p>
+        Always confirm the driver provider, device class and published INF
+        name before using PnPUtil to remove a driver package.
+      </p>
+
+      <p>
+        Create a restore point or have the correct replacement driver
+        available when working on an important production computer.
+      </p>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section id="faq">
+
+      <h2>Printer Driver Removal Frequently Asked Questions</h2>
+
+
+      <div class="faq-item">
+
+        <h3>Why can't I delete a printer driver in Windows 11?</h3>
+
+        <p>
+          Windows may still be using the driver through a printer queue,
+          the Print Spooler or another installed printer.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>How do I open Print Server Properties?</h3>
+
+        <p>
+          Press Win + R and run <strong>printui /s /t2</strong> to open
+          Print Server Properties directly on supported Windows systems.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>How do I list printer drivers with PowerShell?</h3>
+
+        <p>
+          Use <strong>Get-PrinterDriver</strong> in an elevated PowerShell
+          window to display installed printer drivers.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>How do I remove a printer driver with PowerShell?</h3>
+
+        <p>
+          After confirming the driver is no longer required, use
+          <strong>Remove-PrinterDriver</strong> with the exact driver name.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>What is oemXX.inf?</h3>
+
+        <p>
+          Windows assigns published names such as oem12.inf to third-party
+          driver packages stored in the Windows driver store.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>Can I reinstall the printer after removing the driver?</h3>
+
+        <p>
+          Yes. After the old driver has been correctly removed, restart
+          Windows if necessary and install the current compatible printer
+          driver.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Related printer guides -->
+    <section>
+
+      <h2>Related UniTech LK Printer Troubleshooting Guides</h2>
+
+      <ul class="related-guides">
+
+        <li>
+          <a href="/printers/">
+            Printer Troubleshooting Guides
+          </a>
+        </li>
+
+        <li>
+          <a href="/canon-g3416-p07-5b00-fix/">
+            Canon G3416 Error P07 / 5B00 Ink Absorber Fix
+          </a>
+        </li>
+
+        <li>
+          <a href="/powershell/">
+            PowerShell Windows Troubleshooting Guides
+          </a>
+        </li>
+
+        <li>
+          <a href="/">
+            All UniTech LK Troubleshooting Guides
+          </a>
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- YouTube CTA -->
+    <section>
+
+      <h2>Watch the Complete Printer Driver Removal Video</h2>
+
+      <p>
+        Watch the complete 7 minute 17 second UniTech LK tutorial showing
+        Windows printer driver troubleshooting and removal steps.
+      </p>
+
+      <a
+        class="button"
+        href="https://www.youtube.com/watch?v=1StePrpEJGA"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Watch Printer Driver Won't Delete Windows 11 fix on YouTube"
+      >
+        Watch on YouTube
+      </a>
+
+    </section>
+
+
+    <!-- Back -->
+    <a
+      class="back-home"
+      href="/printers/"
+    >
+      ← Back to Printer Troubleshooting Guides
+    </a>
+
+  </main>
+
+
+  <footer>
+
+    <div class="container">
+      © 2026 UniTech LK — Printer, Windows, PowerShell and IT troubleshooting guides.
+    </div>
+
+  </footer>
+
+</body>
+</html>
