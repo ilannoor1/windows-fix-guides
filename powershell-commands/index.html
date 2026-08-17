@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>100+ PowerShell Commands A-Z | Windows Admin, Network, Security & Troubleshooting | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="100+ useful PowerShell commands for Windows administration, files, folders, processes, services, networking, DNS, storage, security, Microsoft Defender, users, registry and troubleshooting."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/powershell-commands/"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+
+  <meta
+    property="og:title"
+    content="100+ PowerShell Commands A-Z | Windows Administration & Troubleshooting"
+  >
+
+  <meta
+    property="og:description"
+    content="PowerShell command reference for Windows admins, networking, storage, security, files, services, users and troubleshooting."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/powershell-commands/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+
+  <meta
+    name="twitter:title"
+    content="100+ PowerShell Commands A-Z"
+  >
+
+  <meta
+    name="twitter:description"
+    content="PowerShell commands for Windows administration, networking, storage, security and troubleshooting."
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://unitechlk.com/#organization",
+        "name": "UniTech LK",
+        "url": "https://unitechlk.com/"
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://unitechlk.com/powershell-commands/#article",
+        "headline": "100+ PowerShell Commands A-Z for Windows Administration and Troubleshooting",
+        "description": "A categorized PowerShell command reference covering Windows administration, files, folders, services, processes, networking, DNS, storage, security, Microsoft Defender, users, registry and troubleshooting.",
+        "author": {
+          "@id": "https://unitechlk.com/#organization"
+        },
+        "publisher": {
+          "@id": "https://unitechlk.com/#organization"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/powershell-commands/#webpage"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://unitechlk.com/powershell-commands/#webpage",
+        "url": "https://unitechlk.com/powershell-commands/",
+        "name": "100+ PowerShell Commands A-Z",
+        "description": "PowerShell command reference for Windows administration and troubleshooting."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/powershell-commands/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PowerShell",
+            "item": "https://unitechlk.com/powershell/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "PowerShell Commands",
+            "item": "https://unitechlk.com/powershell-commands/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/powershell-commands/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I find PowerShell commands?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Get-Command to discover available PowerShell commands and Get-Help to read command documentation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get examples for a PowerShell command?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Get-Help followed by the command name and -Examples."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do all PowerShell commands require Administrator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Many information and file commands work without elevation, but administrative operations such as changing services, network settings, security configuration or system files may require Administrator privileges."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+
+<body>
+
+<header>
+  <div class="container">
+
+    <a href="/powershell/">
+      ← PowerShell Troubleshooting Guides
+    </a>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <span class="label">
+      PowerShell Command Reference
+    </span>
+
+    <h1>
+      100+ PowerShell Commands A-Z for Windows Administration &amp; Troubleshooting
+    </h1>
+
+    <p class="intro">
+      A practical PowerShell reference covering command discovery,
+      files, folders, processes, Windows services, system information,
+      networking, DNS, TCP connections, storage, event logs, users,
+      scheduled tasks, registry, security and Microsoft Defender.
+    </p>
+
+  </div>
+
+
+  <section class="warning">
+
+    <h2>Before Running PowerShell Commands</h2>
+
+    <p>
+      Some commands only display information, while others can modify,
+      stop, remove or delete Windows resources.
+    </p>
+
+    <p>
+      Read the purpose of a command before running it. Commands that change
+      services, network settings, registry values, permissions, users,
+      drivers or files may require Administrator privileges.
+    </p>
+
+    <p>
+      Some commands are available only when the required Windows or
+      PowerShell module is installed.
+    </p>
+
+  </section>
+
+
+  <!-- TABLE OF CONTENTS -->
+  <section>
+
+    <h2>PowerShell Command Categories</h2>
+
+    <ul class="related-guides">
+      <li><a href="#help">Help &amp; Command Discovery</a></li>
+      <li><a href="#pipeline">Pipeline, Filtering &amp; Output</a></li>
+      <li><a href="#files">Files &amp; Folders</a></li>
+      <li><a href="#processes">Processes</a></li>
+      <li><a href="#services">Windows Services</a></li>
+      <li><a href="#system">System &amp; Computer Information</a></li>
+      <li><a href="#network">Network Troubleshooting</a></li>
+      <li><a href="#dns">DNS Troubleshooting</a></li>
+      <li><a href="#storage">Disk &amp; Storage</a></li>
+      <li><a href="#events">Windows Event Logs</a></li>
+      <li><a href="#users">Users &amp; Groups</a></li>
+      <li><a href="#scheduled">Scheduled Tasks</a></li>
+      <li><a href="#registry">Registry</a></li>
+      <li><a href="#security">Security &amp; Permissions</a></li>
+      <li><a href="#defender">Microsoft Defender</a></li>
+      <li><a href="#remote">Remote Administration</a></li>
+      <li><a href="#utility">Useful PowerShell Utilities</a></li>
+    </ul>
+
+  </section>
+
+
+  <!-- HELP -->
+  <section id="help">
+
+    <h2>1. PowerShell Help &amp; Command Discovery</h2>
+
+
+    <h3>Get-Help</h3>
+    <p><strong>Use:</strong> Read help for a PowerShell command.</p>
+    <div class="command">Get-Help Get-Process</div>
+
+
+    <h3>Get-Help -Examples</h3>
+    <p><strong>Use:</strong> Show examples for a command.</p>
+    <div class="command">Get-Help Get-Service -Examples</div>
+
+
+    <h3>Get-Help -Full</h3>
+    <p><strong>Use:</strong> Display full help information.</p>
+    <div class="command">Get-Help Get-ChildItem -Full</div>
+
+
+    <h3>Update-Help</h3>
+    <p><strong>Use:</strong> Download updated PowerShell help files where supported.</p>
+    <div class="command">Update-Help</div>
+
+
+    <h3>Get-Command</h3>
+    <p><strong>Use:</strong> List available PowerShell commands.</p>
+    <div class="command">Get-Command</div>
+
+
+    <h3>Get-Command *network*</h3>
+    <p><strong>Use:</strong> Find commands containing a word.</p>
+    <div class="command">Get-Command *network*</div>
+
+
+    <h3>Get-Module</h3>
+    <p><strong>Use:</strong> Display currently loaded PowerShell modules.</p>
+    <div class="command">Get-Module</div>
+
+
+    <h3>Get-Module -ListAvailable</h3>
+    <p><strong>Use:</strong> Show installed modules available to PowerShell.</p>
+    <div class="command">Get-Module -ListAvailable</div>
+
+
+    <h3>Import-Module</h3>
+    <p><strong>Use:</strong> Load a PowerShell module.</p>
+    <div class="command">Import-Module NetTCPIP</div>
+
+
+    <h3>Get-Alias</h3>
+    <p><strong>Use:</strong> Show PowerShell aliases.</p>
+    <div class="command">Get-Alias</div>
+
+  </section>
+
+
+  <!-- PIPELINE -->
+  <section id="pipeline">
+
+    <h2>2. Pipeline, Filtering &amp; Output Commands</h2>
+
+
+    <h3>Where-Object</h3>
+    <p><strong>Use:</strong> Filter PowerShell objects.</p>
+    <div class="command">Get-Service | Where-Object Status -eq "Running"</div>
+
+
+    <h3>Select-Object</h3>
+    <p><strong>Use:</strong> Select specific properties from objects.</p>
+    <div class="command">Get-Process | Select-Object Name, Id, CPU</div>
+
+
+    <h3>Sort-Object</h3>
+    <p><strong>Use:</strong> Sort output.</p>
+    <div class="command">Get-Process | Sort-Object CPU -Descending</div>
+
+
+    <h3>Measure-Object</h3>
+    <p><strong>Use:</strong> Count or calculate values from objects.</p>
+    <div class="command">Get-Process | Measure-Object</div>
+
+
+    <h3>ForEach-Object</h3>
+    <p><strong>Use:</strong> Perform an action for each pipeline object.</p>
+    <div class="command">Get-Service | ForEach-Object { $_.Name }</div>
+
+
+    <h3>Format-Table</h3>
+    <p><strong>Use:</strong> Display output as a table.</p>
+    <div class="command">Get-Service | Format-Table -AutoSize</div>
+
+
+    <h3>Format-List</h3>
+    <p><strong>Use:</strong> Display object properties vertically.</p>
+    <div class="command">Get-Service Spooler | Format-List *</div>
+
+
+    <h3>Out-File</h3>
+    <p><strong>Use:</strong> Save command output to a text file.</p>
+    <div class="command">Get-Process | Out-File C:\Temp\processes.txt</div>
+
+
+    <h3>Export-Csv</h3>
+    <p><strong>Use:</strong> Export objects to CSV.</p>
+    <div class="command">Get-Process | Export-Csv C:\Temp\processes.csv -NoTypeInformation</div>
+
+
+    <h3>ConvertTo-Json</h3>
+    <p><strong>Use:</strong> Convert PowerShell objects into JSON.</p>
+    <div class="command">Get-Service | Select-Object -First 5 | ConvertTo-Json</div>
+
+  </section>
+
+
+  <!-- FILES -->
+  <section id="files">
+
+    <h2>3. PowerShell Files &amp; Folders Commands</h2>
+
+
+    <h3>Get-ChildItem</h3>
+    <p><strong>Use:</strong> List files and folders.</p>
+    <div class="command">Get-ChildItem C:\Users</div>
+
+
+    <h3>Get-ChildItem -Recurse</h3>
+    <p><strong>Use:</strong> Search folders recursively.</p>
+    <div class="command">Get-ChildItem C:\Temp -Recurse</div>
+
+
+    <h3>Get-Item</h3>
+    <p><strong>Use:</strong> Display a specific file, folder or provider item.</p>
+    <div class="command">Get-Item C:\Windows</div>
+
+
+    <h3>New-Item</h3>
+    <p><strong>Use:</strong> Create a new file, folder or other provider item.</p>
+    <div class="command">New-Item -Path C:\Temp\TestFolder -ItemType Directory</div>
+
+
+    <h3>Copy-Item</h3>
+    <p><strong>Use:</strong> Copy files or folders.</p>
+    <div class="command">Copy-Item C:\Temp\file.txt D:\Backup\file.txt</div>
+
+
+    <h3>Move-Item</h3>
+    <p><strong>Use:</strong> Move a file or folder.</p>
+    <div class="command">Move-Item C:\Temp\file.txt D:\Backup\</div>
+
+
+    <h3>Rename-Item</h3>
+    <p><strong>Use:</strong> Rename a file or folder.</p>
+    <div class="command">Rename-Item C:\Temp\old.txt new.txt</div>
+
+
+    <h3>Remove-Item</h3>
+    <p><strong>Use:</strong> Delete a file, folder or supported provider item.</p>
+    <div class="command">Remove-Item C:\Temp\old.txt</div>
+
+    <div class="warning">
+      <p>
+        <strong>Caution:</strong> Verify the path before using Remove-Item.
+      </p>
+    </div>
+
+
+    <h3>Test-Path</h3>
+    <p><strong>Use:</strong> Check whether a path exists.</p>
+    <div class="command">Test-Path C:\Windows</div>
+
+
+    <h3>Get-Content</h3>
+    <p><strong>Use:</strong> Read the contents of a text file.</p>
+    <div class="command">Get-Content C:\Temp\log.txt</div>
+
+
+    <h3>Set-Content</h3>
+    <p><strong>Use:</strong> Write or replace file content.</p>
+    <div class="command">Set-Content C:\Temp\test.txt "Hello World"</div>
+
+
+    <h3>Add-Content</h3>
+    <p><strong>Use:</strong> Append content to a file.</p>
+    <div class="command">Add-Content C:\Temp\test.txt "New line"</div>
+
+
+    <h3>Clear-Content</h3>
+    <p><strong>Use:</strong> Remove file content without deleting the file.</p>
+    <div class="command">Clear-Content C:\Temp\test.txt</div>
+
+
+    <h3>Get-FileHash</h3>
+    <p><strong>Use:</strong> Calculate a cryptographic hash for a file.</p>
+    <div class="command">Get-FileHash C:\Downloads\file.exe -Algorithm SHA256</div>
+
+
+    <h3>Get-Location</h3>
+    <p><strong>Use:</strong> Show the current PowerShell location.</p>
+    <div class="command">Get-Location</div>
+
+
+    <h3>Set-Location</h3>
+    <p><strong>Use:</strong> Change the current directory.</p>
+    <div class="command">Set-Location C:\Windows</div>
+
+  </section>
+
+
+  <!-- PROCESSES -->
+  <section id="processes">
+
+    <h2>4. PowerShell Process Commands</h2>
+
+
+    <h3>Get-Process</h3>
+    <p><strong>Use:</strong> Show running processes.</p>
+    <div class="command">Get-Process</div>
+
+
+    <h3>Get-Process -Id</h3>
+    <p><strong>Use:</strong> Find a process by PID.</p>
+    <div class="command">Get-Process -Id 1234</div>
+
+
+    <h3>Get-Process by Name</h3>
+    <p><strong>Use:</strong> Find a process by executable name.</p>
+    <div class="command">Get-Process chrome</div>
+
+
+    <h3>Stop-Process</h3>
+    <p><strong>Use:</strong> Stop a running process.</p>
+    <div class="command">Stop-Process -Id 1234</div>
+
+
+    <h3>Stop-Process -Force</h3>
+    <p><strong>Use:</strong> Force a process to stop.</p>
+    <div class="command">Stop-Process -Id 1234 -Force</div>
+
+
+    <h3>Start-Process</h3>
+    <p><strong>Use:</strong> Start an application or executable.</p>
+    <div class="command">Start-Process notepad.exe</div>
+
+
+    <h3>Start-Process as Administrator</h3>
+    <p><strong>Use:</strong> Start a process elevated.</p>
+    <div class="command">Start-Process powershell.exe -Verb RunAs</div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section id="services">
+
+    <h2>5. Windows Service Commands</h2>
+
+
+    <h3>Get-Service</h3>
+    <p><strong>Use:</strong> List Windows services.</p>
+    <div class="command">Get-Service</div>
+
+
+    <h3>Get-Service Spooler</h3>
+    <p><strong>Use:</strong> Check the Print Spooler service.</p>
+    <div class="command">Get-Service Spooler</div>
+
+
+    <h3>Start-Service</h3>
+    <p><strong>Use:</strong> Start a Windows service.</p>
+    <div class="command">Start-Service Spooler</div>
+
+
+    <h3>Stop-Service</h3>
+    <p><strong>Use:</strong> Stop a Windows service.</p>
+    <div class="command">Stop-Service Spooler</div>
+
+
+    <h3>Restart-Service</h3>
+    <p><strong>Use:</strong> Restart a service.</p>
+    <div class="command">Restart-Service Spooler</div>
+
+
+    <h3>Set-Service</h3>
+    <p><strong>Use:</strong> Change supported service settings.</p>
+    <div class="command">Set-Service Spooler -StartupType Automatic</div>
+
+  </section>
+
+
+  <!-- SYSTEM INFO -->
+  <section id="system">
+
+    <h2>6. Computer &amp; Windows System Information</h2>
+
+
+    <h3>Get-ComputerInfo</h3>
+    <p><strong>Use:</strong> Display detailed computer and Windows information.</p>
+    <div class="command">Get-ComputerInfo</div>
+
+
+    <h3>Get-CimInstance Win32_OperatingSystem</h3>
+    <p><strong>Use:</strong> Display operating-system details.</p>
+    <div class="command">Get-CimInstance Win32_OperatingSystem</div>
+
+
+    <h3>Get-CimInstance Win32_ComputerSystem</h3>
+    <p><strong>Use:</strong> Display computer manufacturer, model and memory information.</p>
+    <div class="command">Get-CimInstance Win32_ComputerSystem</div>
+
+
+    <h3>Get-CimInstance Win32_BIOS</h3>
+    <p><strong>Use:</strong> Display BIOS information.</p>
+    <div class="command">Get-CimInstance Win32_BIOS</div>
+
+
+    <h3>Get Computer Serial Number</h3>
+    <p><strong>Use:</strong> Retrieve the serial number stored in BIOS/firmware.</p>
+    <div class="command">(Get-CimInstance Win32_BIOS).SerialNumber</div>
+
+
+    <h3>Get-CimInstance Win32_Processor</h3>
+    <p><strong>Use:</strong> Display CPU information.</p>
+    <div class="command">Get-CimInstance Win32_Processor</div>
+
+
+    <h3>Get-CimInstance Win32_PhysicalMemory</h3>
+    <p><strong>Use:</strong> Show physical RAM module information.</p>
+    <div class="command">Get-CimInstance Win32_PhysicalMemory</div>
+
+
+    <h3>Get-Date</h3>
+    <p><strong>Use:</strong> Display current system date and time.</p>
+    <div class="command">Get-Date</div>
+
+
+    <h3>Get-TimeZone</h3>
+    <p><strong>Use:</strong> Show the configured Windows time zone.</p>
+    <div class="command">Get-TimeZone</div>
+
+  </section>
+
+
+  <!-- NETWORK -->
+  <section id="network">
+
+    <h2>7. PowerShell Network Troubleshooting Commands</h2>
+
+
+    <h3>Test-Connection</h3>
+    <p><strong>Use:</strong> Test basic network connectivity using ICMP.</p>
+    <div class="command">Test-Connection 8.8.8.8 -Count 4</div>
+
+
+    <h3>Test-NetConnection</h3>
+    <p><strong>Use:</strong> Test connectivity and collect network diagnostic information.</p>
+    <div class="command">Test-NetConnection google.com</div>
+
+
+    <h3>Test a TCP Port</h3>
+    <p><strong>Use:</strong> Check whether a remote TCP port can be reached.</p>
+    <div class="command">Test-NetConnection google.com -Port 443</div>
+
+
+    <h3>Get-NetAdapter</h3>
+    <p><strong>Use:</strong> List Windows network adapters.</p>
+    <div class="command">Get-NetAdapter</div>
+
+
+    <h3>Get-NetAdapterStatistics</h3>
+    <p><strong>Use:</strong> Show network adapter packet and byte statistics.</p>
+    <div class="command">Get-NetAdapterStatistics</div>
+
+
+    <h3>Get-NetIPAddress</h3>
+    <p><strong>Use:</strong> Show IPv4 and IPv6 address configuration.</p>
+    <div class="command">Get-NetIPAddress</div>
+
+
+    <h3>Get-NetIPConfiguration</h3>
+    <p><strong>Use:</strong> Show interface, IP address, gateway and DNS information.</p>
+    <div class="command">Get-NetIPConfiguration</div>
+
+
+    <h3>Get-NetRoute</h3>
+    <p><strong>Use:</strong> Display the Windows IP routing table.</p>
+    <div class="command">Get-NetRoute</div>
+
+
+    <h3>Get-NetTCPConnection</h3>
+    <p><strong>Use:</strong> Show current TCP connections.</p>
+    <div class="command">Get-NetTCPConnection</div>
+
+
+    <h3>Show Established TCP Connections</h3>
+    <p><strong>Use:</strong> Filter for active established TCP sessions.</p>
+    <div class="command">Get-NetTCPConnection -State Established</div>
+
+
+    <h3>Get-NetUDPEndpoint</h3>
+    <p><strong>Use:</strong> Show local UDP endpoints.</p>
+    <div class="command">Get-NetUDPEndpoint</div>
+
+
+    <h3>Get-NetConnectionProfile</h3>
+    <p><strong>Use:</strong> Display Windows network profile information.</p>
+    <div class="command">Get-NetConnectionProfile</div>
+
+  </section>
+
+
+  <!-- DNS -->
+  <section id="dns">
+
+    <h2>8. PowerShell DNS Troubleshooting Commands</h2>
+
+
+    <h3>Resolve-DnsName</h3>
+    <p><strong>Use:</strong> Perform a DNS lookup.</p>
+    <div class="command">Resolve-DnsName unitechlk.com</div>
+
+
+    <h3>Resolve-DnsName A Record</h3>
+    <p><strong>Use:</strong> Query IPv4 DNS records.</p>
+    <div class="command">Resolve-DnsName unitechlk.com -Type A</div>
+
+
+    <h3>Resolve-DnsName MX</h3>
+    <p><strong>Use:</strong> Check mail-exchanger records for a domain.</p>
+    <div class="command">Resolve-DnsName example.com -Type MX</div>
+
+
+    <h3>Get-DnsClientServerAddress</h3>
+    <p><strong>Use:</strong> Display DNS servers configured on network interfaces.</p>
+    <div class="command">Get-DnsClientServerAddress</div>
+
+
+    <h3>Clear-DnsClientCache</h3>
+    <p><strong>Use:</strong> Clear the Windows DNS client resolver cache.</p>
+    <div class="command">Clear-DnsClientCache</div>
+
+  </section>
+
+
+  <!-- STORAGE -->
+  <section id="storage">
+
+    <h2>9. PowerShell Disk &amp; Storage Commands</h2>
+
+
+    <h3>Get-Volume</h3>
+    <p><strong>Use:</strong> Show Windows volumes and available storage.</p>
+    <div class="command">Get-Volume</div>
+
+
+    <h3>Get-Disk</h3>
+    <p><strong>Use:</strong> Display disks visible to Windows.</p>
+    <div class="command">Get-Disk</div>
+
+
+    <h3>Get-Partition</h3>
+    <p><strong>Use:</strong> Display disk partitions.</p>
+    <div class="command">Get-Partition</div>
+
+
+    <h3>Get-PhysicalDisk</h3>
+    <p><strong>Use:</strong> Display physical disk information where supported.</p>
+    <div class="command">Get-PhysicalDisk</div>
+
+
+    <h3>Get-PSDrive</h3>
+    <p><strong>Use:</strong> Show PowerShell drives and free/used space where supported.</p>
+    <div class="command">Get-PSDrive -PSProvider FileSystem</div>
+
+
+    <h3>Check C Drive Free Space</h3>
+    <p><strong>Use:</strong> Display free and used space for the C drive.</p>
+    <div class="command">Get-PSDrive C</div>
+
+
+    <h3>Find Large Files</h3>
+    <p><strong>Use:</strong> Find the largest files under a folder.</p>
+    <div class="command">Get-ChildItem C:\Users -File -Recurse -ErrorAction SilentlyContinue |
+Sort-Object Length -Descending |
+Select-Object -First 20 FullName, Length</div>
+
+
+    <h3>Measure Folder File Size</h3>
+    <p><strong>Use:</strong> Calculate the combined size of files under a folder.</p>
+    <div class="command">(Get-ChildItem C:\Temp -File -Recurse -ErrorAction SilentlyContinue |
+Measure-Object Length -Sum).Sum</div>
+
+
+    <h3>Get Storage-Specific CIM Information</h3>
+    <p><strong>Use:</strong> Query logical disk information.</p>
+    <div class="command">Get-CimInstance Win32_LogicalDisk</div>
+
+  </section>
+
+
+  <!-- EVENT LOGS -->
+  <section id="events">
+
+    <h2>10. Windows Event Log Commands</h2>
+
+
+    <h3>Get-WinEvent</h3>
+    <p><strong>Use:</strong> Read Windows event logs.</p>
+    <div class="command">Get-WinEvent -LogName System -MaxEvents 20</div>
+
+
+    <h3>Application Events</h3>
+    <p><strong>Use:</strong> Read recent Application log events.</p>
+    <div class="command">Get-WinEvent -LogName Application -MaxEvents 20</div>
+
+
+    <h3>Security Events</h3>
+    <p><strong>Use:</strong> Read Security log events when permissions allow.</p>
+    <div class="command">Get-WinEvent -LogName Security -MaxEvents 20</div>
+
+
+    <h3>Filter Error Events</h3>
+    <p><strong>Use:</strong> Search recent System errors.</p>
+    <div class="command">Get-WinEvent -FilterHashtable @{
+LogName='System'
+Level=2
+} -MaxEvents 50</div>
+
+
+    <h3>Get-EventLog</h3>
+    <p><strong>Use:</strong> Older Windows PowerShell event-log command.</p>
+    <div class="command">Get-EventLog -LogName System -Newest 20</div>
+
+  </section>
+
+
+  <!-- USERS -->
+  <section id="users">
+
+    <h2>11. Windows Local User &amp; Group Commands</h2>
+
+
+    <h3>Get-LocalUser</h3>
+    <p><strong>Use:</strong> Show local user accounts.</p>
+    <div class="command">Get-LocalUser</div>
+
+
+    <h3>Get-LocalGroup</h3>
+    <p><strong>Use:</strong> Show local Windows groups.</p>
+    <div class="command">Get-LocalGroup</div>
+
+
+    <h3>Get-LocalGroupMember</h3>
+    <p><strong>Use:</strong> Display members of a local group.</p>
+    <div class="command">Get-LocalGroupMember Administrators</div>
+
+
+    <h3>New-LocalUser</h3>
+    <p><strong>Use:</strong> Create a local Windows user account.</p>
+    <div class="command">$Password = Read-Host -AsSecureString
+New-LocalUser -Name "TestUser" -Password $Password</div>
+
+
+    <h3>Add-LocalGroupMember</h3>
+    <p><strong>Use:</strong> Add an account to a local group.</p>
+    <div class="command">Add-LocalGroupMember -Group "Users" -Member "TestUser"</div>
+
+
+    <h3>Disable-LocalUser</h3>
+    <p><strong>Use:</strong> Disable a local Windows user.</p>
+    <div class="command">Disable-LocalUser -Name "TestUser"</div>
+
+  </section>
+
+
+  <!-- SCHEDULED TASKS -->
+  <section id="scheduled">
+
+    <h2>12. Windows Scheduled Task Commands</h2>
+
+
+    <h3>Get-ScheduledTask</h3>
+    <p><strong>Use:</strong> List Windows scheduled tasks.</p>
+    <div class="command">Get-ScheduledTask</div>
+
+
+    <h3>Get-ScheduledTaskInfo</h3>
+    <p><strong>Use:</strong> Show runtime information about a scheduled task.</p>
+    <div class="command">Get-ScheduledTask -TaskName "TaskName" | Get-ScheduledTaskInfo</div>
+
+
+    <h3>Start-ScheduledTask</h3>
+    <p><strong>Use:</strong> Manually start a scheduled task.</p>
+    <div class="command">Start-ScheduledTask -TaskName "TaskName"</div>
+
+
+    <h3>Stop-ScheduledTask</h3>
+    <p><strong>Use:</strong> Stop a running scheduled task.</p>
+    <div class="command">Stop-ScheduledTask -TaskName "TaskName"</div>
+
+  </section>
+
+
+  <!-- REGISTRY -->
+  <section id="registry">
+
+    <h2>13. PowerShell Registry Commands</h2>
+
+
+    <h3>Get-ChildItem Registry</h3>
+    <p><strong>Use:</strong> Browse registry keys using the PowerShell registry provider.</p>
+    <div class="command">Get-ChildItem HKLM:\SOFTWARE</div>
+
+
+    <h3>Get-ItemProperty</h3>
+    <p><strong>Use:</strong> Read registry values or other item properties.</p>
+    <div class="command">Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"</div>
+
+
+    <h3>Set-ItemProperty</h3>
+    <p><strong>Use:</strong> Change a registry or supported provider property.</p>
+    <div class="command">Set-ItemProperty -Path "HKCU:\Software\Test" -Name "Value" -Value "Example"</div>
+
+
+    <h3>New-Item Registry Key</h3>
+    <p><strong>Use:</strong> Create a new registry key.</p>
+    <div class="command">New-Item -Path "HKCU:\Software\Test"</div>
+
+
+    <h3>New-ItemProperty</h3>
+    <p><strong>Use:</strong> Create a registry value.</p>
+    <div class="command">New-ItemProperty -Path "HKCU:\Software\Test" -Name "Setting" -Value 1</div>
+
+
+    <h3>Remove-ItemProperty</h3>
+    <p><strong>Use:</strong> Remove a registry value.</p>
+    <div class="command">Remove-ItemProperty -Path "HKCU:\Software\Test" -Name "Setting"</div>
+
+  </section>
+
+
+  <!-- SECURITY -->
+  <section id="security">
+
+    <h2>14. PowerShell Security &amp; Permission Commands</h2>
+
+
+    <h3>Get-Acl</h3>
+    <p><strong>Use:</strong> Read access-control information for a file, folder or other supported item.</p>
+    <div class="command">Get-Acl C:\Temp</div>
+
+
+    <h3>Set-Acl</h3>
+    <p><strong>Use:</strong> Apply an ACL to a supported item.</p>
+    <div class="command">Set-Acl -Path C:\Temp -AclObject $Acl</div>
+
+    <div class="warning">
+      <p>
+        Set-Acl can change permissions. Use only after reviewing the ACL.
+      </p>
+    </div>
+
+
+    <h3>Get-AuthenticodeSignature</h3>
+    <p><strong>Use:</strong> Check the Authenticode signature of a file.</p>
+    <div class="command">Get-AuthenticodeSignature C:\Downloads\file.exe</div>
+
+
+    <h3>Get-ExecutionPolicy</h3>
+    <p><strong>Use:</strong> Display the current PowerShell execution policy.</p>
+    <div class="command">Get-ExecutionPolicy -List</div>
+
+  </section>
+
+
+  <!-- DEFENDER -->
+  <section id="defender">
+
+    <h2>15. Microsoft Defender PowerShell Commands</h2>
+
+
+    <h3>Update-MpSignature</h3>
+    <p><strong>Use:</strong> Update Microsoft Defender security intelligence.</p>
+    <div class="command">Update-MpSignature</div>
+
+
+    <h3>Quick Scan</h3>
+    <p><strong>Use:</strong> Start a Microsoft Defender Quick Scan.</p>
+    <div class="command">Start-MpScan -ScanType QuickScan</div>
+
+
+    <h3>Full Scan</h3>
+    <p><strong>Use:</strong> Start a Microsoft Defender Full Scan.</p>
+    <div class="command">Start-MpScan -ScanType FullScan</div>
+
+
+    <h3>Offline Scan</h3>
+    <p><strong>Use:</strong> Start Microsoft Defender Offline Scan.</p>
+    <div class="command">Start-MpWDOScan</div>
+
+
+    <h3>Get-MpComputerStatus</h3>
+    <p><strong>Use:</strong> Display Microsoft Defender protection status.</p>
+    <div class="command">Get-MpComputerStatus</div>
+
+
+    <h3>Get-MpThreat</h3>
+    <p><strong>Use:</strong> Review threat information known to Microsoft Defender.</p>
+    <div class="command">Get-MpThreat</div>
+
+
+    <h3>Get-MpThreatDetection</h3>
+    <p><strong>Use:</strong> Review Microsoft Defender threat-detection history.</p>
+    <div class="command">Get-MpThreatDetection</div>
+
+
+    <h3>Get-MpPreference</h3>
+    <p><strong>Use:</strong> Display Microsoft Defender preferences.</p>
+    <div class="command">Get-MpPreference</div>
+
+
+    <p>
+      For the complete UniTech LK Defender tutorial:
+    </p>
+
+    <a
+      class="button"
+      href="/microsoft-defender-powershell-malware-scan/"
+    >
+      Microsoft Defender PowerShell Guide
+    </a>
+
+  </section>
+
+
+  <!-- REMOTE -->
+  <section id="remote">
+
+    <h2>16. PowerShell Remote Administration Commands</h2>
+
+
+    <h3>Test-WSMan</h3>
+    <p><strong>Use:</strong> Test whether the WS-Management service is responding.</p>
+    <div class="command">Test-WSMan ComputerName</div>
+
+
+    <h3>Enter-PSSession</h3>
+    <p><strong>Use:</strong> Start an interactive PowerShell remote session when remoting is configured.</p>
+    <div class="command">Enter-PSSession -ComputerName Server01</div>
+
+
+    <h3>Exit-PSSession</h3>
+    <p><strong>Use:</strong> Leave an interactive remote PowerShell session.</p>
+    <div class="command">Exit-PSSession</div>
+
+
+    <h3>Invoke-Command</h3>
+    <p><strong>Use:</strong> Run PowerShell commands on a remote computer when remoting is configured.</p>
+    <div class="command">Invoke-Command -ComputerName Server01 -ScriptBlock { Get-Service }</div>
+
+
+    <h3>New-PSSession</h3>
+    <p><strong>Use:</strong> Create a persistent remote PowerShell session.</p>
+    <div class="command">$Session = New-PSSession -ComputerName Server01</div>
+
+
+    <h3>Remove-PSSession</h3>
+    <p><strong>Use:</strong> Close a persistent PowerShell session.</p>
+    <div class="command">Remove-PSSession $Session</div>
+
+  </section>
+
+
+  <!-- UTILITIES -->
+  <section id="utility">
+
+    <h2>17. Useful PowerShell Utility Commands</h2>
+
+
+    <h3>Clear-Host</h3>
+    <p><strong>Use:</strong> Clear the PowerShell console display.</p>
+    <div class="command">Clear-Host</div>
+
+
+    <h3>Read-Host</h3>
+    <p><strong>Use:</strong> Prompt the user for input.</p>
+    <div class="command">$Name = Read-Host "Enter your name"</div>
+
+
+    <h3>Write-Host</h3>
+    <p><strong>Use:</strong> Write information directly to the host display.</p>
+    <div class="command">Write-Host "PowerShell Test"</div>
+
+
+    <h3>Write-Output</h3>
+    <p><strong>Use:</strong> Send objects or values into the PowerShell output pipeline.</p>
+    <div class="command">Write-Output "PowerShell Test"</div>
+
+
+    <h3>Get-History</h3>
+    <p><strong>Use:</strong> Display commands from the current PowerShell session history.</p>
+    <div class="command">Get-History</div>
+
+
+    <h3>Clear-History</h3>
+    <p><strong>Use:</strong> Clear the in-session PowerShell command history list.</p>
+    <div class="command">Clear-History</div>
+
+
+    <h3>Start-Transcript</h3>
+    <p><strong>Use:</strong> Record a PowerShell session to a text transcript.</p>
+    <div class="command">Start-Transcript -Path C:\Temp\powershell-session.txt</div>
+
+
+    <h3>Stop-Transcript</h3>
+    <p><strong>Use:</strong> Stop recording the current PowerShell transcript.</p>
+    <div class="command">Stop-Transcript</div>
+
+
+    <h3>Get-Clipboard</h3>
+    <p><strong>Use:</strong> Read supported clipboard content.</p>
+    <div class="command">Get-Clipboard</div>
+
+
+    <h3>Set-Clipboard</h3>
+    <p><strong>Use:</strong> Put text or supported content on the clipboard.</p>
+    <div class="command">"UniTech LK" | Set-Clipboard</div>
+
+  </section>
+
+
+  <!-- IMPORTANT SEARCH REFERENCE -->
+  <section>
+
+    <h2>Common PowerShell Commands People Search For</h2>
+
+    <ul>
+      <li>PowerShell commands</li>
+      <li>PowerShell commands list</li>
+      <li>PowerShell commands A-Z</li>
+      <li>PowerShell administrator commands</li>
+      <li>Windows 11 PowerShell commands</li>
+      <li>Windows 10 PowerShell commands</li>
+      <li>Windows Server PowerShell commands</li>
+      <li>PowerShell network commands</li>
+      <li>PowerShell DNS commands</li>
+      <li>PowerShell storage commands</li>
+      <li>PowerShell disk commands</li>
+      <li>PowerShell file commands</li>
+      <li>PowerShell folder commands</li>
+      <li>PowerShell process commands</li>
+      <li>PowerShell service commands</li>
+      <li>PowerShell security commands</li>
+      <li>PowerShell malware scan commands</li>
+      <li>Microsoft Defender PowerShell commands</li>
+      <li>PowerShell user commands</li>
+      <li>PowerShell registry commands</li>
+      <li>PowerShell event log commands</li>
+      <li>PowerShell TCP connection commands</li>
+      <li>PowerShell ping command</li>
+      <li>PowerShell port test</li>
+      <li>PowerShell IP address command</li>
+      <li>PowerShell computer information</li>
+      <li>PowerShell serial number command</li>
+      <li>PowerShell find large files</li>
+      <li>PowerShell C drive analysis</li>
+      <li>PowerShell troubleshooting commands</li>
+    </ul>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section id="faq">
+
+    <h2>PowerShell Commands Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+
+      <h3>How do I find a PowerShell command?</h3>
+
+      <p>
+        Use Get-Command to list available commands. You can also use
+        wildcards to search for a command by keyword.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>How do I learn what a PowerShell command does?</h3>
+
+      <p>
+        Use Get-Help followed by the command name. Add -Examples to see
+        usage examples where help content is available.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Do PowerShell commands work on Windows 11?</h3>
+
+      <p>
+        Many PowerShell commands work on Windows 11, but availability
+        depends on the PowerShell edition, Windows version and installed
+        modules.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Can PowerShell troubleshoot network problems?</h3>
+
+      <p>
+        Yes. Commands such as Test-Connection, Test-NetConnection,
+        Get-NetAdapter, Get-NetIPAddress, Get-NetIPConfiguration and
+        Resolve-DnsName can help investigate Windows network problems.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Can PowerShell scan for malware?</h3>
+
+      <p>
+        On supported Windows systems, Microsoft Defender exposes
+        PowerShell commands for updating security intelligence, starting
+        scans and reviewing protection information.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Should I run every PowerShell command as Administrator?</h3>
+
+      <p>
+        No. Use elevation only when the operation requires administrative
+        privileges. Information-gathering commands often do not require it.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- RELATED -->
+  <section>
+
+    <h2>Related UniTech LK PowerShell Guides</h2>
+
+    <ul class="related-guides">
+
+      <li>
+        <a href="/powershell/">
+          PowerShell Troubleshooting Hub
+        </a>
+      </li>
+
+      <li>
+        <a href="/powershell-storage-analysis/">
+          PowerShell Storage Analysis
+        </a>
+      </li>
+
+      <li>
+        <a href="/microsoft-defender-powershell-malware-scan/">
+          Microsoft Defender PowerShell Malware Scan
+        </a>
+      </li>
+
+      <li>
+        <a href="/windows-security/">
+          Windows Security Troubleshooting
+        </a>
+      </li>
+
+      <li>
+        <a href="/windows-storage/">
+          Windows Storage Troubleshooting
+        </a>
+      </li>
+
+      <li>
+        <a href="/windows/">
+          Windows Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/">
+          All UniTech LK Troubleshooting Guides
+        </a>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <a
+    class="back-home"
+    href="/powershell/"
+  >
+    ← Back to PowerShell Troubleshooting Guides
+  </a>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 UniTech LK — PowerShell, Windows administration, networking, security and IT troubleshooting guides.
+  </div>
+
+</footer>
+
+</body>
+</html>
