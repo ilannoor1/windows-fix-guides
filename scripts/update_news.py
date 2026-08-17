@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
 
-"""
-UniTech LK Automatic Windows News Updater
-
-Purpose:
-- Read official Microsoft Windows RSS feeds.
-- Detect new official Windows articles.
-- Create short UniTech LK summary pages.
-- Preserve the EXACT original Microsoft source URL.
-- Update the Windows news index.
-- Avoid copying full source articles.
-- Avoid duplicate articles.
-
-Generated pages:
-https://unitechlk.com/news/windows/<slug>/
-"""
-
 from __future__ import annotations
 
 import html
@@ -31,28 +15,26 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 
-# ---------------------------------------------------------
-# CONFIGURATION
-# ---------------------------------------------------------
-
 SITE_URL = "https://unitechlk.com"
 
 NEWS_ROOT = Path("news")
 WINDOWS_DIR = NEWS_ROOT / "windows"
+WINDOWS_INDEX = WINDOWS_DIR / "index.html"
+
 STATE_FILE = NEWS_ROOT / ".windows-news-state.json"
 
-MAX_INDEX_ITEMS = 30
+MAX_INDEX_ITEMS = 20
 MAX_NEW_ARTICLES_PER_RUN = 3
 
+AUTO_START = "<!-- AUTO-NEWS-START -->"
+AUTO_END = "<!-- AUTO-NEWS-END -->"
+
 USER_AGENT = (
-    "Mozilla/5.0 (compatible; UniTechLK-NewsBot/1.0; "
+    "Mozilla/5.0 "
+    "(compatible; UniTechLK-NewsBot/2.0; "
     "+https://unitechlk.com/news/)"
 )
 
-
-# ---------------------------------------------------------
-# OFFICIAL SOURCES ONLY
-# ---------------------------------------------------------
 
 SOURCES = [
     {
@@ -67,10 +49,6 @@ SOURCES = [
 ]
 
 
-# ---------------------------------------------------------
-# BASIC HELPERS
-# ---------------------------------------------------------
-
 def log(message: str) -> None:
     print(f"[UniTech LK] {message}")
 
@@ -80,6 +58,7 @@ def escape(value: object) -> str:
 
 
 def clean_text(value: str) -> str:
+
     if not value:
         return ""
 
@@ -97,30 +76,44 @@ def clean_text(value: str) -> str:
         flags=re.I | re.S,
     )
 
-    value = re.sub(r"<[^>]+>", " ", value)
+    value = re.sub(
+        r"<[^>]+>",
+        " ",
+        value,
+    )
 
     value = html.unescape(value)
 
-    value = re.sub(r"\s+", " ", value).strip()
+    value = re.sub(
+        r"\s+",
+        " ",
+        value,
+    ).strip()
 
     return value
 
 
-def shorten(text: str, limit: int = 550) -> str:
+def shorten(text: str, limit: int = 500) -> str:
+
     text = clean_text(text)
 
     if len(text) <= limit:
         return text
 
-    shortened = text[:limit].rsplit(" ", 1)[0].strip()
+    result = text[:limit].rsplit(" ", 1)[0]
 
-    return shortened + "…"
+    return result.strip() + "…"
 
 
 def slugify(title: str) -> str:
+
     value = title.lower()
 
-    value = re.sub(r"[^a-z0-9]+", "-", value)
+    value = re.sub(
+        r"[^a-z0-9]+",
+        "-",
+        value,
+    )
 
     value = value.strip("-")
 
@@ -128,7 +121,9 @@ def slugify(title: str) -> str:
 
 
 def valid_http_url(url: str) -> bool:
+
     try:
+
         parsed = urlparse(url)
 
         return (
@@ -137,94 +132,120 @@ def valid_http_url(url: str) -> bool:
         )
 
     except Exception:
+
         return False
 
 
-def host_allowed(url: str, allowed_hosts: set[str]) -> bool:
-    try:
-        host = urlparse(url).hostname
+def host_allowed(
+    url: str,
+    allowed_hosts: set[str],
+) -> bool:
 
-        if not host:
+    try:
+
+        hostname = urlparse(url).hostname
+
+        if not hostname:
             return False
 
-        host = host.lower()
-
-        return host in allowed_hosts
+        return hostname.lower() in allowed_hosts
 
     except Exception:
+
         return False
 
 
-# ---------------------------------------------------------
-# DATE HANDLING
-# ---------------------------------------------------------
-
 def parse_date(value: str) -> datetime:
+
     if not value:
         return datetime.now(timezone.utc)
 
     try:
+
         dt = parsedate_to_datetime(value)
 
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(
+                tzinfo=timezone.utc
+            )
 
-        return dt.astimezone(timezone.utc)
+        return dt.astimezone(
+            timezone.utc
+        )
 
     except Exception:
         pass
 
     try:
-        value = value.replace("Z", "+00:00")
 
-        dt = datetime.fromisoformat(value)
+        dt = datetime.fromisoformat(
+            value.replace(
+                "Z",
+                "+00:00",
+            )
+        )
 
         if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(
+                tzinfo=timezone.utc
+            )
 
-        return dt.astimezone(timezone.utc)
+        return dt.astimezone(
+            timezone.utc
+        )
 
     except Exception:
-        return datetime.now(timezone.utc)
+
+        return datetime.now(
+            timezone.utc
+        )
 
 
 def display_date(dt: datetime) -> str:
-    return dt.strftime("%B %d, %Y")
 
-
-def iso_date(dt: datetime) -> str:
-    return dt.strftime("%Y-%m-%d")
+    return dt.strftime(
+        "%B %d, %Y"
+    )
 
 
 def iso_datetime(dt: datetime) -> str:
-    return dt.astimezone(timezone.utc).isoformat()
 
+    return dt.astimezone(
+        timezone.utc
+    ).isoformat()
 
-# ---------------------------------------------------------
-# STATE / DUPLICATE PROTECTION
-# ---------------------------------------------------------
 
 def load_state() -> dict:
+
     if not STATE_FILE.exists():
+
         return {
             "initialized": False,
             "seen": [],
         }
 
     try:
-        data = json.loads(
-            STATE_FILE.read_text(encoding="utf-8")
+
+        state = json.loads(
+            STATE_FILE.read_text(
+                encoding="utf-8"
+            )
         )
 
-        if not isinstance(data, dict):
-            raise ValueError("Invalid state")
+        state.setdefault(
+            "initialized",
+            False,
+        )
 
-        data.setdefault("initialized", False)
-        data.setdefault("seen", [])
+        state.setdefault(
+            "seen",
+            [],
+        )
 
-        return data
+        return state
 
     except Exception:
+
         return {
             "initialized": False,
             "seen": [],
@@ -232,14 +253,19 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
+
     STATE_FILE.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    # Prevent unlimited file growth.
     state["seen"] = list(
-        dict.fromkeys(state.get("seen", []))
+        dict.fromkeys(
+            state.get(
+                "seen",
+                [],
+            )
+        )
     )[-1000:]
 
     STATE_FILE.write_text(
@@ -253,11 +279,8 @@ def save_state(state: dict) -> None:
     )
 
 
-# ---------------------------------------------------------
-# DOWNLOAD RSS
-# ---------------------------------------------------------
-
 def download(url: str) -> bytes:
+
     request = urllib.request.Request(
         url,
         headers={
@@ -265,7 +288,8 @@ def download(url: str) -> bytes:
             "Accept": (
                 "application/rss+xml,"
                 "application/atom+xml,"
-                "application/xml,text/xml,*/*"
+                "application/xml,"
+                "text/xml,*/*"
             ),
         },
     )
@@ -274,74 +298,95 @@ def download(url: str) -> bytes:
         request,
         timeout=30,
     ) as response:
+
         return response.read()
 
 
-# ---------------------------------------------------------
-# XML HELPERS
-# ---------------------------------------------------------
-
 def local_name(tag: str) -> str:
+
     return tag.split("}")[-1].lower()
 
 
-def child_text(element, names: set[str]) -> str:
+def child_text(
+    element,
+    names: set[str],
+) -> str:
+
     for child in list(element):
 
-        if local_name(child.tag) in names:
+        if local_name(child.tag) not in names:
+            continue
 
-            text = "".join(
-                child.itertext()
-            ).strip()
+        value = "".join(
+            child.itertext()
+        ).strip()
 
-            if text:
-                return text
+        if value:
+            return value
 
     return ""
 
 
 def entry_link(element) -> str:
-    # RSS <link>URL</link>
+
     for child in list(element):
 
         if local_name(child.tag) != "link":
             continue
 
-        href = child.attrib.get("href", "").strip()
+        href = child.attrib.get(
+            "href",
+            "",
+        ).strip()
 
-        rel = child.attrib.get("rel", "alternate").strip()
+        rel = child.attrib.get(
+            "rel",
+            "alternate",
+        ).strip()
 
-        if href and rel in {"", "alternate"}:
+        if (
+            href
+            and rel in {"", "alternate"}
+        ):
             return href
 
         text = "".join(
             child.itertext()
         ).strip()
 
-        if text.startswith(("http://", "https://")):
+        if text.startswith(
+            ("http://", "https://")
+        ):
             return text
 
     return ""
 
 
-# ---------------------------------------------------------
-# PARSE RSS / ATOM
-# ---------------------------------------------------------
-
 def parse_feed(source: dict) -> list[dict]:
-    log(f"Checking official source: {source['name']}")
 
-    xml_data = download(source["feed"])
+    log(
+        "Checking official source: "
+        + source["name"]
+    )
 
-    root = ET.fromstring(xml_data)
+    xml_data = download(
+        source["feed"]
+    )
+
+    root = ET.fromstring(
+        xml_data
+    )
 
     articles = []
 
     for element in root.iter():
 
-        name = local_name(element.tag)
-
-        if name not in {"item", "entry"}:
+        if local_name(
+            element.tag
+        ) not in {
+            "item",
+            "entry",
+        }:
             continue
 
         title = child_text(
@@ -349,7 +394,9 @@ def parse_feed(source: dict) -> list[dict]:
             {"title"},
         )
 
-        url = entry_link(element)
+        url = entry_link(
+            element
+        )
 
         description = child_text(
             element,
@@ -377,40 +424,43 @@ def parse_feed(source: dict) -> list[dict]:
         if not valid_http_url(url):
             continue
 
-        # SECURITY / SOURCE INTEGRITY:
-        # Do not publish an item pretending to be Microsoft
-        # if the RSS item points outside approved Microsoft hosts.
         if not host_allowed(
             url,
             source["allowed_hosts"],
         ):
+
             log(
-                "Skipped non-approved source URL: "
+                "Skipped non-approved URL: "
                 + url
             )
-            continue
 
-        published = parse_date(published_raw)
+            continue
 
         articles.append(
             {
-                "title": clean_text(title),
+                "title": clean_text(
+                    title
+                ),
                 "url": url,
-                "summary": shorten(description),
-                "published": published,
+                "summary": shorten(
+                    description
+                ),
+                "published": parse_date(
+                    published_raw
+                ),
                 "source": source["name"],
-                "publisher": source["publisher"],
+                "publisher": source[
+                    "publisher"
+                ],
             }
         )
 
     return articles
 
 
-# ---------------------------------------------------------
-# ARTICLE PAGE
-# ---------------------------------------------------------
-
-def create_article_page(article: dict) -> tuple[str, str]:
+def create_article_page(
+    article: dict,
+) -> tuple[str, bool]:
 
     title = article["title"]
     source_url = article["url"]
@@ -419,34 +469,45 @@ def create_article_page(article: dict) -> tuple[str, str]:
     publisher = article["publisher"]
     source_name = article["source"]
 
-    base_slug = slugify(title)
+    base_slug = slugify(
+        title
+    )
 
     slug = base_slug
 
     counter = 2
 
     while (
-        WINDOWS_DIR / slug / "index.html"
+        WINDOWS_DIR
+        / slug
+        / "index.html"
     ).exists():
 
-        existing_file = (
+        existing_path = (
             WINDOWS_DIR
             / slug
             / "index.html"
         )
 
-        existing = existing_file.read_text(
+        existing = existing_path.read_text(
             encoding="utf-8",
             errors="ignore",
         )
 
         if source_url in existing:
-            return slug, "existing"
 
-        slug = f"{base_slug}-{counter}"
+            return slug, False
+
+        slug = (
+            f"{base_slug}-{counter}"
+        )
+
         counter += 1
 
-    article_dir = WINDOWS_DIR / slug
+    article_dir = (
+        WINDOWS_DIR
+        / slug
+    )
 
     article_dir.mkdir(
         parents=True,
@@ -454,31 +515,34 @@ def create_article_page(article: dict) -> tuple[str, str]:
     )
 
     canonical = (
-        f"{SITE_URL}/news/windows/{slug}/"
+        f"{SITE_URL}"
+        f"/news/windows/{slug}/"
     )
 
-    meta_description = (
+    description = shorten(
         summary
         or (
-            f"UniTech LK summary of the latest "
-            f"Windows update published by {publisher}."
-        )
-    )
-
-    meta_description = shorten(
-        meta_description,
+            f"Windows update published "
+            f"by {publisher}."
+        ),
         155,
     )
 
-    page_summary = summary or (
-        "The official source has published a new Windows "
-        "update. Use the original source link below for the "
-        "complete announcement and technical information."
+    article_summary = (
+        summary
+        or (
+            "The official Windows source "
+            "has published a new update. "
+            "Use the original source link "
+            "for complete technical details."
+        )
     )
 
     document = f"""<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -490,7 +554,7 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
   <meta
     name="description"
-    content="{escape(meta_description)}"
+    content="{escape(description)}"
   >
 
   <meta name="author" content="UniTech LK">
@@ -519,17 +583,12 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
   <meta
     property="og:description"
-    content="{escape(meta_description)}"
+    content="{escape(description)}"
   >
 
   <meta
     property="og:url"
     content="{escape(canonical)}"
-  >
-
-  <meta
-    property="article:published_time"
-    content="{escape(iso_datetime(published))}"
   >
 
   <script type="application/ld+json">
@@ -560,19 +619,26 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
 </head>
 
+
 <body>
 
 <header>
+
   <div class="container">
+
     <a href="/news/windows/">
       ← Windows News
     </a>
+
   </div>
+
 </header>
+
 
 <main class="container">
 
   <article>
+
 
     <div class="hero">
 
@@ -580,16 +646,22 @@ def create_article_page(article: dict) -> tuple[str, str]:
         Windows News
       </span>
 
-      <h1>{escape(title)}</h1>
+      <h1>
+        {escape(title)}
+      </h1>
 
       <p>
-        Published by the original source:
-        <strong>{escape(publisher)}</strong>
+        Original publisher:
+        <strong>
+          {escape(publisher)}
+        </strong>
       </p>
 
       <p>
-        Original publication date:
-        <strong>{escape(display_date(published))}</strong>
+        Published:
+        <strong>
+          {escape(display_date(published))}
+        </strong>
       </p>
 
     </div>
@@ -597,28 +669,51 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
     <section class="warning">
 
-      <h2>Original Source</h2>
+      <h2>
+        Original Official Source
+      </h2>
 
       <p>
-        This page is a short UniTech LK summary of information
-        published by {escape(publisher)}.
-        UniTech LK is not the original publisher of this announcement.
+        This page is a short UniTech LK
+        summary based on information
+        published by
+        <strong>
+          {escape(publisher)}
+        </strong>.
       </p>
 
       <p>
-        <strong>Source:</strong>
-        {escape(source_name)}
+        UniTech LK is not the original
+        publisher of this announcement.
       </p>
 
       <p>
-        <a
-          class="button"
-          href="{escape(source_url)}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read the Original {escape(publisher)} Article
-        </a>
+        Source:
+        <strong>
+          {escape(source_name)}
+        </strong>
+      </p>
+
+      <a
+        class="button"
+        href="{escape(source_url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read Original {escape(publisher)} Article
+      </a>
+
+    </section>
+
+
+    <section>
+
+      <h2>
+        Summary
+      </h2>
+
+      <p>
+        {escape(article_summary)}
       </p>
 
     </section>
@@ -626,10 +721,23 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
     <section>
 
-      <h2>Summary</h2>
+      <h2>
+        Why This Matters
+      </h2>
 
       <p>
-        {escape(page_summary)}
+        Windows announcements can
+        include feature updates,
+        security changes,
+        compatibility information,
+        known issues or administrator
+        guidance.
+      </p>
+
+      <p>
+        Review the original publisher's
+        documentation before making
+        important system changes.
       </p>
 
     </section>
@@ -637,36 +745,19 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
     <section>
 
-      <h2>Why This Matters</h2>
-
-      <p>
-        Windows announcements can include operating-system
-        updates, security changes, feature rollouts,
-        compatibility information and administrator guidance.
-      </p>
-
-      <p>
-        Check the original source before installing,
-        removing or changing important system components.
-      </p>
-
-    </section>
-
-
-    <section>
-
-      <h2>Source and Attribution</h2>
+      <h2>
+        Source &amp; Attribution
+      </h2>
 
       <p>
         Original publisher:
-        <strong>{escape(publisher)}</strong>
+        <strong>
+          {escape(publisher)}
+        </strong>
       </p>
 
       <p>
-        UniTech LK provides this page for news discovery,
-        technical context and troubleshooting awareness.
-        The complete original information remains available
-        from the publisher.
+        Original article:
       </p>
 
       <p>
@@ -675,7 +766,7 @@ def create_article_page(article: dict) -> tuple[str, str]:
           target="_blank"
           rel="noopener noreferrer"
         >
-          View original source
+          {escape(source_url)}
         </a>
       </p>
 
@@ -684,19 +775,21 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
     <section>
 
-      <h2>Related UniTech LK Resources</h2>
+      <h2>
+        Related UniTech LK Guides
+      </h2>
 
       <ul class="related-guides">
 
         <li>
           <a href="/windows/">
-            Windows Troubleshooting Guides
+            Windows Troubleshooting
           </a>
         </li>
 
         <li>
           <a href="/windows-security/">
-            Windows Security Guides
+            Windows Security
           </a>
         </li>
 
@@ -716,32 +809,36 @@ def create_article_page(article: dict) -> tuple[str, str]:
 
     </section>
 
+
   </article>
 
 </main>
 
 
 <footer>
+
   <div class="container">
-    © 2026 UniTech LK — Windows news and troubleshooting.
+    © 2026 UniTech LK —
+    Windows news and troubleshooting.
   </div>
+
 </footer>
+
 
 </body>
 </html>
 """
 
-    (article_dir / "index.html").write_text(
+    (
+        article_dir
+        / "index.html"
+    ).write_text(
         document,
         encoding="utf-8",
     )
 
-    return slug, "created"
+    return slug, True
 
-
-# ---------------------------------------------------------
-# WINDOWS NEWS INDEX
-# ---------------------------------------------------------
 
 def find_generated_articles() -> list[dict]:
 
@@ -750,12 +847,15 @@ def find_generated_articles() -> list[dict]:
     if not WINDOWS_DIR.exists():
         return articles
 
-    for path in WINDOWS_DIR.iterdir():
+    for directory in WINDOWS_DIR.iterdir():
 
-        if not path.is_dir():
+        if not directory.is_dir():
             continue
 
-        page = path / "index.html"
+        page = (
+            directory
+            / "index.html"
+        )
 
         if not page.exists():
             continue
@@ -766,7 +866,7 @@ def find_generated_articles() -> list[dict]:
         )
 
         title_match = re.search(
-            r"<h1>(.*?)</h1>",
+            r"<h1>\s*(.*?)\s*</h1>",
             text,
             flags=re.I | re.S,
         )
@@ -784,34 +884,65 @@ def find_generated_articles() -> list[dict]:
         )
 
         if date_match:
+
             published = parse_date(
                 date_match.group(1)
             )
+
         else:
-            published = datetime.fromtimestamp(
-                page.stat().st_mtime,
-                tz=timezone.utc,
+
+            published = (
+                datetime.fromtimestamp(
+                    page.stat().st_mtime,
+                    tz=timezone.utc,
+                )
             )
 
         articles.append(
             {
                 "title": title,
-                "slug": path.name,
+                "slug": directory.name,
                 "published": published,
             }
         )
 
     articles.sort(
-        key=lambda item: item["published"],
+        key=lambda item:
+        item["published"],
         reverse=True,
     )
 
-    return articles[:MAX_INDEX_ITEMS]
+    return articles[
+        :MAX_INDEX_ITEMS
+    ]
 
 
-def update_windows_index() -> None:
+def build_news_cards() -> str:
 
-    articles = find_generated_articles()
+    articles = (
+        find_generated_articles()
+    )
+
+    if not articles:
+
+        return """
+    <article class="guide-card">
+
+      <span class="label">
+        News Monitoring Active
+      </span>
+
+      <h2>
+        Waiting for the next official Windows update
+      </h2>
+
+      <p>
+        UniTech LK is monitoring official Windows sources.
+        New announcements will automatically appear here.
+      </p>
+
+    </article>
+"""
 
     cards = []
 
@@ -819,207 +950,105 @@ def update_windows_index() -> None:
 
         cards.append(
             f"""
-      <article class="guide-card">
+    <article class="guide-card">
 
-        <span class="label">
-          {escape(display_date(article["published"]))}
-        </span>
+      <span class="label">
+        {escape(display_date(article["published"]))}
+      </span>
 
-        <h2>
-          <a href="/news/windows/{escape(article["slug"])}/">
-            {escape(article["title"])}
-          </a>
-        </h2>
-
-        <p>
-          Latest Windows information from an official source,
-          with attribution and a direct link to the original
-          publication.
-        </p>
+      <h2>
 
         <a
-          class="button"
           href="/news/windows/{escape(article["slug"])}/"
         >
-          Read Summary
+          {escape(article["title"])}
         </a>
 
-      </article>
+      </h2>
+
+      <p>
+        Official-source Windows news
+        with clear attribution and a
+        direct link to the original
+        publication.
+      </p>
+
+      <a
+        class="button"
+        href="/news/windows/{escape(article["slug"])}/"
+      >
+        Read Summary
+      </a>
+
+    </article>
 """
         )
 
-    if cards:
-        cards_html = "\n".join(cards)
-    else:
-        cards_html = """
-      <article class="guide-card">
-        <h2>Windows News Monitoring Active</h2>
-        <p>
-          UniTech LK is checking official Windows sources.
-          New items will appear here after they are detected.
-        </p>
-      </article>
-"""
-
-    index_document = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Windows News & Updates | UniTech LK</title>
-
-  <meta
-    name="description"
-    content="Latest Windows news, Microsoft updates, security information and official Windows announcements with direct links to original sources."
-  >
-
-  <meta name="author" content="UniTech LK">
-
-  <meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
-  >
-
-  <link
-    rel="canonical"
-    href="https://unitechlk.com/news/windows/"
-  >
-
-  <link
-    rel="stylesheet"
-    href="/assets/style.css"
-  >
-
-</head>
-
-<body>
-
-<header>
-  <div class="container">
-
-    <a href="/news/">
-      ← UniTech LK Technology News
-    </a>
-
-  </div>
-</header>
+    return "\n".join(cards)
 
 
-<main class="container">
+def update_windows_index() -> None:
 
-  <div class="hero">
+    if not WINDOWS_INDEX.exists():
 
-    <span class="label">
-      Official Source Monitoring
-    </span>
+        log(
+            "Windows news index not found. "
+            "Skipping index update."
+        )
 
-    <h1>
-      Windows News &amp; Updates
-    </h1>
+        return
 
-    <p class="intro">
-      Latest Windows announcements and updates discovered
-      from official sources. Every UniTech LK news page
-      clearly identifies and links to the original publisher.
-    </p>
-
-  </div>
-
-
-  <section>
-
-    <h2>Latest Windows News</h2>
-
-    <div class="guide-grid">
-
-{cards_html}
-
-    </div>
-
-  </section>
-
-
-  <section class="warning">
-
-    <h2>Source Policy</h2>
-
-    <p>
-      UniTech LK does not present third-party announcements
-      as its own reporting. News summaries identify the
-      original publisher and provide a direct link to the
-      original article.
-    </p>
-
-  </section>
-
-
-  <section>
-
-    <h2>Related Topics</h2>
-
-    <ul class="related-guides">
-
-      <li>
-        <a href="/windows/">
-          Windows Troubleshooting
-        </a>
-      </li>
-
-      <li>
-        <a href="/windows-security/">
-          Windows Security
-        </a>
-      </li>
-
-      <li>
-        <a href="/powershell/">
-          PowerShell
-        </a>
-      </li>
-
-      <li>
-        <a href="/news/">
-          All Technology News
-        </a>
-      </li>
-
-    </ul>
-
-  </section>
-
-</main>
-
-
-<footer>
-  <div class="container">
-    © 2026 UniTech LK — Windows news and troubleshooting.
-  </div>
-</footer>
-
-</body>
-</html>
-"""
-
-    WINDOWS_DIR.mkdir(
-        parents=True,
-        exist_ok=True,
+    document = WINDOWS_INDEX.read_text(
+        encoding="utf-8"
     )
 
-    (WINDOWS_DIR / "index.html").write_text(
-        index_document,
-        encoding="utf-8",
+    if (
+        AUTO_START not in document
+        or AUTO_END not in document
+    ):
+
+        log(
+            "AUTO-NEWS markers not found. "
+            "Existing Windows hub was preserved."
+        )
+
+        return
+
+    generated = build_news_cards()
+
+    pattern = (
+        re.escape(AUTO_START)
+        + r".*?"
+        + re.escape(AUTO_END)
     )
 
+    replacement = (
+        AUTO_START
+        + "\n"
+        + generated
+        + "\n"
+        + AUTO_END
+    )
 
-# ---------------------------------------------------------
-# MAIN
-# ---------------------------------------------------------
+    new_document = re.sub(
+        pattern,
+        replacement,
+        document,
+        count=1,
+        flags=re.S,
+    )
+
+    if new_document != document:
+
+        WINDOWS_INDEX.write_text(
+            new_document,
+            encoding="utf-8",
+        )
+
+        log(
+            "Updated Windows news cards."
+        )
+
 
 def main() -> int:
 
@@ -1031,7 +1060,10 @@ def main() -> int:
     state = load_state()
 
     seen = set(
-        state.get("seen", [])
+        state.get(
+            "seen",
+            [],
+        )
     )
 
     all_articles = []
@@ -1039,135 +1071,175 @@ def main() -> int:
     for source in SOURCES:
 
         try:
-            articles = parse_feed(source)
 
-            all_articles.extend(articles)
+            all_articles.extend(
+                parse_feed(source)
+            )
 
         except Exception as error:
 
             log(
                 f"Source failed: "
-                f"{source['name']}: {error}"
+                f"{source['name']}: "
+                f"{error}"
             )
 
     if not all_articles:
 
         log(
-            "No articles could be retrieved. "
-            "Existing site files were left unchanged."
+            "No official feed articles "
+            "could be retrieved."
         )
 
         return 0
 
-    # Remove duplicate URLs.
     unique = {}
 
     for article in all_articles:
-        unique[article["url"]] = article
 
-    all_articles = list(unique.values())
+        unique[
+            article["url"]
+        ] = article
+
+    all_articles = list(
+        unique.values()
+    )
 
     all_articles.sort(
-        key=lambda item: item["published"],
+        key=lambda item:
+        item["published"],
         reverse=True,
     )
 
-    # VERY IMPORTANT:
-    # First execution establishes a baseline.
-    # It does NOT flood the website with old RSS posts.
-    if not state.get("initialized", False):
+
+    if not state.get(
+        "initialized",
+        False,
+    ):
 
         log(
-            "First run detected. Establishing RSS baseline."
+            "First run detected. "
+            "Establishing RSS baseline."
         )
 
         for article in all_articles:
-            seen.add(article["url"])
 
-        state["seen"] = list(seen)
+            seen.add(
+                article["url"]
+            )
+
+        state["seen"] = list(
+            seen
+        )
+
         state["initialized"] = True
 
-        save_state(state)
+        save_state(
+            state
+        )
 
         update_windows_index()
 
         log(
-            "Baseline complete. No historical articles "
+            "Baseline complete. "
+            "No historical articles "
             "were automatically published."
         )
 
         return 0
 
+
     new_articles = [
         article
         for article in all_articles
-        if article["url"] not in seen
+        if article["url"]
+        not in seen
     ]
 
-    # Oldest first so chronological creation is cleaner.
     new_articles.sort(
-        key=lambda item: item["published"]
+        key=lambda item:
+        item["published"]
     )
 
-    new_articles = new_articles[
-        :MAX_NEW_ARTICLES_PER_RUN
-    ]
+    new_articles = (
+        new_articles[
+            :MAX_NEW_ARTICLES_PER_RUN
+        ]
+    )
 
     created = 0
 
     for article in new_articles:
 
         try:
-            slug, status = create_article_page(
-                article
+
+            slug, was_created = (
+                create_article_page(
+                    article
+                )
             )
 
-            seen.add(article["url"])
+            seen.add(
+                article["url"]
+            )
 
-            if status == "created":
+            if was_created:
 
                 created += 1
 
                 log(
-                    f"Created: "
+                    "Created news article: "
                     f"/news/windows/{slug}/"
                 )
 
                 log(
-                    f"Original source: "
-                    f"{article['url']}"
+                    "Original source: "
+                    + article["url"]
                 )
 
         except Exception as error:
 
             log(
-                f"Could not create article "
-                f"{article['title']}: {error}"
+                "Article creation failed: "
+                + str(error)
             )
 
-    state["seen"] = list(seen)
+    state["seen"] = list(
+        seen
+    )
 
-    save_state(state)
+    save_state(
+        state
+    )
 
     update_windows_index()
 
     log(
-        f"Finished. New articles created: {created}"
+        f"Finished. "
+        f"New articles created: {created}"
     )
 
     return 0
 
 
 if __name__ == "__main__":
+
     try:
-        sys.exit(main())
+
+        sys.exit(
+            main()
+        )
 
     except KeyboardInterrupt:
+
         sys.exit(130)
 
     except Exception as error:
+
         print(
-            f"[UniTech LK] Fatal error: {error}",
+            "[UniTech LK] "
+            f"Fatal error: {error}",
             file=sys.stderr,
         )
+
         sys.exit(1)
