@@ -193,4 +193,44 @@
     <priority>0.9</priority>
   </url>
 
+    <!-- Windows Hub -->
+  <url>
+    <loc>https://unitechlk.com/windows/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Windows Storage Hub -->
+  <url>
+    <loc>https://unitechlk.com/windows-storage/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Windows Security Hub -->
+  <url>
+    <loc>https://unitechlk.com/windows-security/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Microsoft Office Hub -->
+  <url>
+    <loc>https://unitechlk.com/microsoft-office/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PowerShell Command Library -->
+  <url>
+    <loc>https://unitechlk.com/powershell-commands/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
 </urlset>
