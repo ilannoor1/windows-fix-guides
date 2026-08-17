@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Windows Storage & C Drive Troubleshooting Guides | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="Windows storage troubleshooting guides for C drive full problems, hidden files, TreeSize, PowerShell storage analysis, HDD and SSD health, WinSxS and disk space issues."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/windows-storage/"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:title"
+    content="Windows Storage & C Drive Troubleshooting Guides"
+  >
+
+  <meta
+    property="og:description"
+    content="Fix C drive full problems, find large files, analyze hidden storage and check HDD or SSD health on Windows."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/windows-storage/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- Twitter / X -->
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Windows Storage Troubleshooting | UniTech LK"
+  >
+
+  <meta
+    name="twitter:description"
+    content="C drive, disk space, TreeSize, PowerShell and HDD/SSD troubleshooting guides."
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://unitechlk.com/#organization",
+        "name": "UniTech LK",
+        "url": "https://unitechlk.com/"
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://unitechlk.com/windows-storage/#webpage",
+        "url": "https://unitechlk.com/windows-storage/",
+        "name": "Windows Storage and C Drive Troubleshooting Guides",
+        "description": "Windows storage troubleshooting for C drive full problems, hidden files, large folders, PowerShell storage analysis, TreeSize, HDD and SSD health and Windows disk space.",
+        "isPartOf": {
+          "@id": "https://unitechlk.com/#website"
+        },
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Windows storage"
+          },
+          {
+            "@type": "Thing",
+            "name": "C drive"
+          },
+          {
+            "@type": "Thing",
+            "name": "PowerShell storage analysis"
+          },
+          {
+            "@type": "Thing",
+            "name": "TreeSize"
+          },
+          {
+            "@type": "Thing",
+            "name": "HDD health"
+          },
+          {
+            "@type": "Thing",
+            "name": "SSD health"
+          }
+        ],
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Windows Storage Troubleshooting Guides",
+          "numberOfItems": 6,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "C Drive Full But No Files",
+              "url": "https://unitechlk.com/c-drive-full-hidden-files/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "PowerShell Storage Analysis",
+              "url": "https://unitechlk.com/powershell-storage-analysis/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "TreeSize Free Storage Analysis",
+              "url": "https://unitechlk.com/treesize-find-c-drive-space/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "CapabilityAccessManager.db-wal Fix",
+              "url": "https://unitechlk.com/capabilityaccessmanager-db-wal-fix/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "HDD and SSD Health Check",
+              "url": "https://unitechlk.com/hard-disk-health-hdd-ssd/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Office Error 30179-28 Disk Space Fix",
+              "url": "https://unitechlk.com/office-error-30179-28/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/windows-storage/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Windows Storage",
+            "item": "https://unitechlk.com/windows-storage/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/windows-storage/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is my Windows C drive full?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The C drive can fill because of applications, hidden files, AppData, temporary files, Windows updates, system files, restore data, browser caches and other storage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find what is using C drive space?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Windows Storage settings, TreeSize or PowerShell to identify the largest files and folders consuming disk space."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can hidden files fill the C drive?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Hidden application data, caches, temporary files, databases and Windows-managed storage can consume significant space."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I check whether my HDD or SSD is healthy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use supported Windows information or trusted disk-health tools to inspect available HDD or SSD reliability and health data."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+
+<body>
+
+<header>
+  <div class="container">
+
+    <a
+      href="/"
+      aria-label="Back to UniTech LK troubleshooting guides"
+    >
+      ← UniTech LK Troubleshooting Guides
+    </a>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+
+    <span class="label">
+      Windows Storage Troubleshooting
+    </span>
+
+    <h1>
+      Windows Storage &amp; C Drive Troubleshooting Guides
+    </h1>
+
+    <p class="intro">
+      Fix C drive full problems, find hidden files and large folders,
+      analyze disk usage with PowerShell or TreeSize and check HDD or SSD
+      health on Windows 11 and Windows 10.
+    </p>
+
+  </div>
+
+
+  <!-- Featured Storage Guides -->
+  <section>
+
+    <h2>Windows Storage Troubleshooting Guides</h2>
+
+    <div class="guide-grid">
+
+
+      <!-- Hidden C Drive -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/c-drive-full-hidden-files/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/H7q6HM5I-eA/hqdefault.jpg"
+            alt="C Drive Full But No Files Windows 11 hidden storage"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/c-drive-full-hidden-files/">
+            C Drive Full But No Files?
+          </a>
+        </h2>
+
+        <p>
+          Find hidden storage, AppData, temporary files and Windows
+          system data consuming C drive space.
+        </p>
+
+        <a class="button" href="/c-drive-full-hidden-files/">
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- PowerShell Storage -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/powershell-storage-analysis/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+            alt="PowerShell Windows storage analysis"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/powershell-storage-analysis/">
+            PowerShell Storage Analysis
+          </a>
+        </h2>
+
+        <p>
+          Find large files and folders, analyze C drive usage and
+          investigate WinSxS storage with PowerShell and Windows tools.
+        </p>
+
+        <a class="button" href="/powershell-storage-analysis/">
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- TreeSize -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/treesize-find-c-drive-space/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/bVa8zncUm5U/hqdefault.jpg"
+            alt="TreeSize Free Windows C drive analysis"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/treesize-find-c-drive-space/">
+            TreeSize Free Storage Analysis
+          </a>
+        </h2>
+
+        <p>
+          Use TreeSize Free to visually identify which folders and files
+          are taking the most space on Windows.
+        </p>
+
+        <a class="button" href="/treesize-find-c-drive-space/">
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- CapabilityAccessManager -->
+      <article class="guide-card">
+
+        <h2>
+          <a href="/capabilityaccessmanager-db-wal-fix/">
+            CapabilityAccessManager.db-wal Huge File
+          </a>
+        </h2>
+
+        <p>
+          Investigate a large CapabilityAccessManager.db-wal file when
+          Windows storage unexpectedly consumes the C drive.
+        </p>
+
+        <a
+          class="button"
+          href="/capabilityaccessmanager-db-wal-fix/"
+        >
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- HDD SSD Health -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/hard-disk-health-hdd-ssd/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/5INTOOkL1j0/hqdefault.jpg"
+            alt="Check HDD and SSD health on Windows"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/hard-disk-health-hdd-ssd/">
+            Check HDD &amp; SSD Health
+          </a>
+        </h2>
+
+        <p>
+          Check drive condition and investigate possible HDD or SSD
+          health warnings on Windows.
+        </p>
+
+        <a class="button" href="/hard-disk-health-hdd-ssd/">
+          Read the Guide
+        </a>
+
+      </article>
+
+
+      <!-- Office Disk Space -->
+      <article class="guide-card">
+
+        <a
+          class="guide-thumb-link"
+          href="/office-error-30179-28/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/DRVJuKSqjZU/hqdefault.jpg"
+            alt="Microsoft Office error 30179-28 disk space"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
+
+        <h2>
+          <a href="/office-error-30179-28/">
+            Office Error 30179-28 — Not Enough Disk Space
+          </a>
+        </h2>
+
+        <p>
+          Fix Microsoft Office and Microsoft 365 installation problems
+          caused by insufficient disk space.
+        </p>
+
+        <a class="button" href="/office-error-30179-28/">
+          Read the Guide
+        </a>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- Main Troubleshooting Section -->
+  <section>
+
+    <h2>Why Is My C Drive Full?</h2>
+
+    <p>
+      Windows storage can be consumed by much more than personal files.
+      Applications, temporary files, Windows updates, AppData, browser
+      caches, system files, databases and restore information can all
+      reduce available disk space.
+    </p>
+
+    <p>
+      A good troubleshooting process is to identify the largest storage
+      categories first and then determine which application or Windows
+      component owns the data before deleting anything.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Find Large Files and Folders on Windows</h2>
+
+    <p>
+      If File Explorer does not clearly show what is consuming disk
+      space, use a dedicated storage-analysis method.
+    </p>
+
+    <h3>TreeSize Free</h3>
+
+    <p>
+      TreeSize provides a visual view of folder sizes and can quickly
+      highlight large directories.
+    </p>
+
+    <h3>PowerShell</h3>
+
+    <p>
+      PowerShell can search files and folders, calculate sizes and sort
+      results to help administrators investigate storage from the
+      command line.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Common Windows Storage Locations</h2>
+
+    <ul>
+      <li>Downloads</li>
+      <li>Desktop</li>
+      <li>Documents</li>
+      <li>AppData</li>
+      <li>ProgramData</li>
+      <li>Windows temporary files</li>
+      <li>Browser caches</li>
+      <li>Application databases</li>
+      <li>Windows Update files</li>
+      <li>WinSxS</li>
+      <li>Page file</li>
+      <li>Hibernation file</li>
+      <li>System Restore data</li>
+    </ul>
+
+  </section>
+
+
+  <section class="warning">
+
+    <h2>Do Not Delete Unknown System Files</h2>
+
+    <p>
+      Large files inside Windows or application folders can be required
+      for normal system operation.
+    </p>
+
+    <p>
+      Never delete files from Windows, WinSxS, System32, ProgramData or
+      application databases simply because they appear large.
+    </p>
+
+    <p>
+      Identify the file owner and use supported cleanup procedures.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Windows Storage Search Topics</h2>
+
+    <ul>
+      <li>Windows 11 C drive full</li>
+      <li>Windows 10 C drive full</li>
+      <li>C drive full but no files</li>
+      <li>C drive full for no reason</li>
+      <li>Hidden files taking disk space</li>
+      <li>Find large files Windows 11</li>
+      <li>Find large folders Windows</li>
+      <li>What is taking up C drive space</li>
+      <li>Windows disk space analyzer</li>
+      <li>PowerShell storage analysis</li>
+      <li>TreeSize Free tutorial</li>
+      <li>AppData taking too much space</li>
+      <li>Temporary files taking space</li>
+      <li>WinSxS disk usage</li>
+      <li>Check HDD health Windows</li>
+      <li>Check SSD health Windows</li>
+      <li>Low disk space Windows 11</li>
+      <li>Disk space disappearing Windows</li>
+      <li>Windows storage full automatically</li>
+    </ul>
+
+  </section>
+
+
+  <section id="faq">
+
+    <h2>Windows Storage Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+
+      <h3>Why is my C drive full but I cannot find the files?</h3>
+
+      <p>
+        Hidden folders, AppData, temporary files, Windows updates,
+        application caches and system-managed files can use significant
+        disk space without being obvious in normal File Explorer views.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>What is the easiest way to find large folders?</h3>
+
+      <p>
+        TreeSize provides a convenient graphical view, while PowerShell
+        can perform detailed command-line storage analysis.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Can I delete everything inside AppData?</h3>
+
+      <p>
+        No. AppData contains important application files. Identify the
+        responsible application before removing data.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Is a full drive the same as a failing drive?</h3>
+
+      <p>
+        No. Disk capacity and disk health are different. A healthy drive
+        can be full, while a drive with free space can still have hardware
+        problems.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Related UniTech LK Topics</h2>
+
+    <ul class="related-guides">
+
+      <li>
+        <a href="/powershell/">
+          PowerShell Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/printers/">
+          Printer Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/">
+          All UniTech LK Troubleshooting Guides
+        </a>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <a
+    class="back-home"
+    href="/"
+  >
+    ← Back to UniTech LK Troubleshooting Guides
+  </a>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 UniTech LK — Windows storage, PowerShell and IT troubleshooting guides.
+  </div>
+
+</footer>
+
+</body>
+</html>
