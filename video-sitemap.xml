@@ -5,6 +5,7 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <!-- PowerShell Storage Analysis -->
+
   <url>
     <loc>https://unitechlk.com/powershell-storage-analysis/</loc>
 
@@ -13,7 +14,7 @@
 
       <video:title>PowerShell Storage Analysis | Find What Is Using Disk Space on Windows 11</video:title>
 
-      <video:description>Learn how to use PowerShell to analyze Windows 11 disk space, find large files and folders, investigate C drive storage usage, and analyze WinSxS storage.</video:description>
+      <video:description>Learn how to use PowerShell to analyze Windows 11 disk space, find large files and folders, investigate C drive storage usage and analyze WinSxS storage.</video:description>
 
       <video:player_loc>https://www.youtube.com/embed/9CETzmEbF5o</video:player_loc>
 
@@ -25,6 +26,7 @@
 
 
   <!-- Microsoft Defender PowerShell -->
+
   <url>
     <loc>https://unitechlk.com/microsoft-defender-powershell-malware-scan/</loc>
 
@@ -33,7 +35,7 @@
 
       <video:title>Microsoft Defender PowerShell Commands to Scan Windows for Malware</video:title>
 
-      <video:description>Learn Microsoft Defender PowerShell commands to update security intelligence, run Quick Scan, Full Scan and Offline Scan, check detected threats, review detection history and verify Defender protection status.</video:description>
+      <video:description>Learn Microsoft Defender PowerShell commands to update security intelligence, run Quick Scan, Full Scan and Offline Scan, check detected threats and verify Defender protection status.</video:description>
 
       <video:player_loc>https://www.youtube.com/embed/r_GsECUSIRM</video:player_loc>
 
@@ -45,6 +47,7 @@
 
 
   <!-- Office Error 30179-28 -->
+
   <url>
     <loc>https://unitechlk.com/office-error-30179-28/</loc>
 
@@ -65,6 +68,7 @@
 
 
   <!-- CapabilityAccessManager.db-wal -->
+
   <url>
     <loc>https://unitechlk.com/capabilityaccessmanager-db-wal-fix/</loc>
 
@@ -83,6 +87,7 @@
 
 
   <!-- WhatsApp Old iPhone -->
+
   <url>
     <loc>https://unitechlk.com/whatsapp-stop-working-old-iphone/</loc>
 
@@ -97,12 +102,15 @@
 
       <video:publication_date>2026-07-08T00:00:00+03:00</video:publication_date>
 
+      <video:duration>87</video:duration>
+
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
 
 
-  <!-- Canon G3416 P07 / 5B00 -->
+  <!-- Canon G3416 English -->
+
   <url>
     <loc>https://unitechlk.com/canon-g3416-p07-5b00-fix/</loc>
 
@@ -123,5 +131,303 @@
     </video:video>
   </url>
 
-  
+
+  <!-- Printer Driver Won't Delete -->
+
+  <url>
+    <loc>https://unitechlk.com/printer-driver-wont-delete-windows-11/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/1StePrpEJGA/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Printer Driver Won't Delete in Windows 11? Complete Fix</video:title>
+
+      <video:description>Remove stuck, old or unused printer drivers from Windows 11 using Print Server Properties, Print Spooler, PowerShell and Windows driver-store tools.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/1StePrpEJGA</video:player_loc>
+
+      <video:publication_date>2026-07-10T00:00:00+03:00</video:publication_date>
+
+      <video:duration>437</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- TreeSize -->
+
+  <url>
+    <loc>https://unitechlk.com/treesize-find-c-drive-space/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/bVa8zncUm5U/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>TreeSize Free Windows 11/10 Tutorial | Find What Is Taking Up C Drive Space Fast</video:title>
+
+      <video:description>Use TreeSize Free on Windows 11 and Windows 10 to analyze disk space, find large files and folders and identify what is filling the C drive.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/bVa8zncUm5U</video:player_loc>
+
+      <video:publication_date>2026-07-07T00:00:00+03:00</video:publication_date>
+
+      <video:duration>301</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- OneNote OCR -->
+
+  <url>
+    <loc>https://unitechlk.com/onenote-image-to-text-ocr/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/b9DLsq3I4jU/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>How to Copy Text from Image in OneNote | JPG to Text OCR Trick</video:title>
+
+      <video:description>Learn how to use Microsoft OneNote OCR to copy and extract text from JPG images, screenshots and scanned documents on Windows.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/b9DLsq3I4jU</video:player_loc>
+
+      <video:publication_date>2025-12-14T00:00:00+03:00</video:publication_date>
+
+      <video:duration>498</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Frozen Start Menu -->
+
+  <url>
+    <loc>https://unitechlk.com/frozen-start-menu-taskbar-fix/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/GTaMMDifd_A/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Fix Frozen Start Menu &amp; Taskbar on Windows Server 2019 DC | Windows 11, 10, 7 Fix</video:title>
+
+      <video:description>Troubleshoot a frozen Start Menu and unresponsive taskbar on Windows Server 2019, Windows 11 and Windows 10.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/GTaMMDifd_A</video:player_loc>
+
+      <video:publication_date>2025-12-11T00:00:00+03:00</video:publication_date>
+
+      <video:duration>383</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Canon G3416 Arabic -->
+
+  <url>
+    <loc>https://unitechlk.com/ar/canon-g3416-p07-5b00-fix/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/1nvd0YpHNy4/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>خطأ كانون G3416 P07 / 5B00 تم الإصلاح – محلول ممتص الحبر بحل سهل بالكامل</video:title>
+
+      <video:description>شرح باللغة العربية لمشكلة Canon PIXMA G3416 Error P07 ورمز الدعم 5B00 وامتلاء ممتص الحبر ونظام الحبر المهدور.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/1nvd0YpHNy4</video:player_loc>
+
+      <video:publication_date>2025-12-07T00:00:00+03:00</video:publication_date>
+
+      <video:duration>179</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Microsoft Word Translator -->
+
+  <url>
+    <loc>https://unitechlk.com/translate-word-document-ms-word/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/9mOXQizTy0U/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>How to Translate a Word Document Automatically &amp; Manually | MS Word Translator Windows 10/11</video:title>
+
+      <video:description>Learn how to translate Microsoft Word documents automatically or manually using Word translation tools on Windows 10 and Windows 11.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/9mOXQizTy0U</video:player_loc>
+
+      <video:publication_date>2024-12-03T00:00:00+03:00</video:publication_date>
+
+      <video:duration>553</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- HDD / SSD Health -->
+
+  <url>
+    <loc>https://unitechlk.com/hard-disk-health-hdd-ssd/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/5INTOOkL1j0/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>How to Check Hard Disk Health on Windows | HDD &amp; SSD Health Test Free Tool</video:title>
+
+      <video:description>Learn how to check hard disk health on Windows and inspect HDD and SSD condition to identify possible storage problems.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/5INTOOkL1j0</video:player_loc>
+
+      <video:publication_date>2024-11-07T00:00:00+03:00</video:publication_date>
+
+      <video:duration>177</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Computer Serial Number -->
+
+  <url>
+    <loc>https://unitechlk.com/find-computer-serial-number-cmd/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/TyJOauURlXI/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>HOW TO LOCATE YOUR COMPUTER'S SERIAL NUMBER USING CMD COMMAND PROMPT</video:title>
+
+      <video:description>Learn how to locate a computer serial number using Windows Command Prompt and retrieve the BIOS serial number without opening the computer.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/TyJOauURlXI</video:player_loc>
+
+      <video:publication_date>2024-11-04T00:00:00+03:00</video:publication_date>
+
+      <video:duration>108</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- CMD + Netstat Malware Investigation -->
+
+  <url>
+    <loc>https://unitechlk.com/cmd-netstat-malware-check/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/RedeIZ2zQao/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>How to Find &amp; Remove Malware on Windows using CMD + Netstat (2025 Guide)</video:title>
+
+      <video:description>Use Windows Command Prompt and netstat to inspect active network connections, listening ports and process IDs when investigating suspicious activity.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/RedeIZ2zQao</video:player_loc>
+
+      <video:publication_date>2024-12-01T00:00:00+03:00</video:publication_date>
+
+      <video:duration>62</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- JPG / Microsoft Photos -->
+
+  <url>
+    <loc>https://unitechlk.com/jpg-file-not-opening-windows/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/qNImoR2tA5k/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>JPG File Not Opening? Fix Windows 10 &amp; 11 Photos Error | JPG Error on Windows</video:title>
+
+      <video:description>Learn how to troubleshoot JPG and JPEG files that will not open in Microsoft Photos on Windows 10 and Windows 11.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/qNImoR2tA5k</video:player_loc>
+
+      <video:publication_date>2025-05-18T00:00:00+03:00</video:publication_date>
+
+      <video:duration>164</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- Hidden C Drive Storage -->
+
+  <url>
+    <loc>https://unitechlk.com/c-drive-full-hidden-files/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/H7q6HM5I-eA/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>C Drive Full But No Files? Fix Windows 10/11 Storage Full Automatically | Hidden Files Taking Space</video:title>
+
+      <video:description>Learn how to investigate a Windows C drive that appears full even when no large files are visible. Check hidden storage, temporary data and system files.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/H7q6HM5I-eA</video:player_loc>
+
+      <video:publication_date>2025-05-29T00:00:00+03:00</video:publication_date>
+
+      <video:duration>232</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- PDF Table to Excel -->
+
+  <url>
+    <loc>https://unitechlk.com/pdf-table-to-excel/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/ds6cHT1KTmI/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Convert PDF Table to Excel Fast | PDF to Excel Tutorial in 5 Minutes | Free &amp; Easy Method</video:title>
+
+      <video:description>Learn how to convert a PDF table into an editable Excel spreadsheet and extract tabular information from PDF documents.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/ds6cHT1KTmI</video:player_loc>
+
+      <video:publication_date>2025-01-14T00:00:00+03:00</video:publication_date>
+
+      <video:duration>368</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+
+  <!-- WhatsApp Username -->
+
+  <url>
+    <loc>https://unitechlk.com/whatsapp-username-update/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/aRIAUDTSSbA/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>WhatsApp New Update Receive your Name on WhatsApp | Receive User Name From Now</video:title>
+
+      <video:description>Learn about the WhatsApp username feature, how usernames can identify accounts and what users should know about feature availability and rollout.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/aRIAUDTSSbA</video:player_loc>
+
+      <video:publication_date>2026-07-04T00:00:00+03:00</video:publication_date>
+
+      <video:duration>98</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
 </urlset>
