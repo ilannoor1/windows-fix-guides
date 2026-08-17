@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ilannoor1.github.io/windows-fix-guides/sitemap.xml
+Sitemap: https://unitechlk.com/sitemap.xml
