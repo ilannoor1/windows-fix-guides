@@ -1,0 +1,62 @@
+name: Update UniTech LK News
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "17,47 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-unitechlk-news
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.NEWS_PAT || github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Run UniTech LK news updater
+        run: |
+          python scripts/update_news.py
+
+      - name: Check for generated changes
+        id: changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit new news
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "UniTech LK News Bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git add news/ sitemap.xml
+
+          git commit -m "Auto update UniTech LK technology news"
+
+          git push origin main
+
+      - name: No new news found
+        if: steps.changes.outputs.changed == 'false'
+        run: |
+          echo "No new official news items were found."
