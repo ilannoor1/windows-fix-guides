@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>How to Find Computer Serial Number Using CMD | Windows 11/10</title>
+
+  <meta
+    name="description"
+    content="Find your computer serial number using Command Prompt in Windows 11 or Windows 10. Check the BIOS serial number with CMD and PowerShell without opening the PC."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/find-computer-serial-number-cmd/"
+  >
+
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+
+  <meta
+    property="og:title"
+    content="How to Find Computer Serial Number Using CMD | Windows 11/10"
+  >
+
+  <meta
+    property="og:description"
+    content="Locate your PC or laptop serial number from Windows Command Prompt without opening the computer."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/find-computer-serial-number-cmd/"
+  >
+
+  <meta
+    property="og:image"
+    content="https://img.youtube.com/vi/TyJOauURlXI/hqdefault.jpg"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta
+    name="twitter:title"
+    content="Find Computer Serial Number Using CMD"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Check your Windows PC or laptop BIOS serial number using Command Prompt."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://img.youtube.com/vi/TyJOauURlXI/hqdefault.jpg"
+  >
+
+  <meta
+    property="article:published_time"
+    content="2024-11-04T00:00:00+03:00"
+  >
+
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "VideoObject",
+        "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#video",
+        "name": "HOW TO LOCATE YOUR COMPUTER'S SERIAL NUMBER USING CMD COMMAND PROMPT",
+        "description": "Learn how to locate a computer serial number using Windows Command Prompt and retrieve the BIOS serial number without opening the computer.",
+        "thumbnailUrl": [
+          "https://img.youtube.com/vi/TyJOauURlXI/hqdefault.jpg"
+        ],
+        "uploadDate": "2024-11-04T00:00:00+03:00",
+        "duration": "PT1M48S",
+        "contentUrl": "https://www.youtube.com/watch?v=TyJOauURlXI",
+        "embedUrl": "https://www.youtube.com/embed/TyJOauURlXI",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://unitechlk.com/#organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#webpage"
+        }
+      },
+
+      {
+        "@type": "TechArticle",
+        "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#article",
+        "headline": "How to Find Computer Serial Number Using CMD",
+        "description": "Windows guide for locating a PC or laptop BIOS serial number using Command Prompt.",
+        "datePublished": "2024-11-04T00:00:00+03:00",
+        "image": [
+          "https://img.youtube.com/vi/TyJOauURlXI/hqdefault.jpg"
+        ],
+        "author": {
+          "@type": "Organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://unitechlk.com/#organization",
+          "name": "UniTech LK",
+          "url": "https://unitechlk.com/"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#webpage"
+        },
+        "video": {
+          "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#video"
+        }
+      },
+
+      {
+        "@type": "WebPage",
+        "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#webpage",
+        "url": "https://unitechlk.com/find-computer-serial-number-cmd/",
+        "name": "Find Computer Serial Number Using CMD",
+        "description": "Find your Windows computer serial number using Command Prompt.",
+        "datePublished": "2024-11-04T00:00:00+03:00"
+      },
+
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/find-computer-serial-number-cmd/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I find my computer serial number using CMD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "On Windows systems where WMIC is available, open Command Prompt and run wmic bios get serialnumber. On newer Windows installations where WMIC is unavailable, PowerShell can query Win32_BIOS instead."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is WMIC not recognized on Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WMIC has been deprecated and may not be installed by default on newer Windows 11 versions. PowerShell CIM commands provide a modern alternative."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PowerShell find the BIOS serial number?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Get-CimInstance Win32_BIOS can retrieve BIOS information, including the serial number reported by the system firmware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my serial number show To Be Filled By O.E.M.?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some systems do not have a valid serial number programmed into firmware. In that case Windows may return a placeholder or incomplete value."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+
+<body>
+
+<header>
+  <div class="container">
+
+    <a href="/" aria-label="Back to UniTech LK troubleshooting guides">
+      ← UniTech LK Troubleshooting Guides
+    </a>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <div class="hero">
+
+    <span class="label">
+      Windows CMD &amp; PowerShell
+    </span>
+
+    <h1>
+      How to Find Your Computer Serial Number Using CMD
+    </h1>
+
+    <p class="intro">
+      Find the serial number reported by your desktop PC or laptop firmware
+      directly from Windows using Command Prompt or PowerShell without
+      opening the computer case.
+    </p>
+
+    <p class="updated-date">
+      Published: November 4, 2024
+    </p>
+
+  </div>
+
+
+  <!-- YouTube Video -->
+  <div class="video-wrapper">
+
+    <iframe
+      src="https://www.youtube.com/embed/TyJOauURlXI"
+      title="How to Locate Your Computer Serial Number Using CMD Command Prompt"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+
+  <section>
+
+    <h2>Find Computer Serial Number in Windows</h2>
+
+    <p>
+      Your computer manufacturer may store the system serial number in
+      firmware. Windows can query this information without requiring you
+      to physically open the computer.
+    </p>
+
+    <p>
+      This is particularly useful for checking laptops, desktop PCs,
+      business computers and remotely managed Windows machines.
+    </p>
+
+    <ul class="support-list">
+      <li>CMD Serial Number</li>
+      <li>BIOS Serial Number</li>
+      <li>PowerShell Serial Number</li>
+    </ul>
+
+  </section>
+
+
+  <section id="cmd">
+
+    <h2>1. Find the Serial Number Using CMD</h2>
+
+    <p>
+      On Windows systems where WMIC is available, open Command Prompt and run:
+    </p>
+
+    <div class="command">
+wmic bios get serialnumber
+    </div>
+
+    <p>
+      Windows queries the BIOS information and displays the serial number
+      reported by the computer firmware.
+    </p>
+
+  </section>
+
+
+  <section class="warning">
+
+    <h2>WMIC on Newer Windows 11 Versions</h2>
+
+    <p>
+      WMIC is an older Windows management command-line utility and has been
+      deprecated by Microsoft.
+    </p>
+
+    <p>
+      On newer Windows 11 installations, typing the WMIC command may return
+      an error because WMIC is no longer installed by default.
+    </p>
+
+    <p>
+      If that happens, use the PowerShell method below instead.
+    </p>
+
+  </section>
+
+
+  <section id="powershell">
+
+    <h2>2. Find the Serial Number with PowerShell</h2>
+
+    <p>
+      PowerShell provides a modern way to query the same Windows management
+      information.
+    </p>
+
+    <div class="command">
+(Get-CimInstance Win32_BIOS).SerialNumber
+    </div>
+
+    <p>
+      Or display additional BIOS information:
+    </p>
+
+    <div class="command">
+Get-CimInstance Win32_BIOS |
+Select-Object Manufacturer, SMBIOSBIOSVersion, SerialNumber
+    </div>
+
+  </section>
+
+
+  <section id="what-it-means">
+
+    <h2>What Serial Number Does Windows Show?</h2>
+
+    <p>
+      These commands normally return the serial number stored in the
+      computer's BIOS or UEFI firmware by the system manufacturer.
+    </p>
+
+    <p>
+      This is different from the Windows product key, Windows activation
+      ID or the serial number of an individual hard drive.
+    </p>
+
+  </section>
+
+
+  <section id="laptop">
+
+    <h2>Find Laptop Serial Number Without the Sticker</h2>
+
+    <p>
+      Laptop serial-number labels can become damaged or difficult to read.
+      Querying the firmware from Windows can provide another way to retrieve
+      the manufacturer's stored system serial number.
+    </p>
+
+    <p>
+      This method can be useful with systems from manufacturers such as
+      Dell, HP, Lenovo, ASUS, Acer and other Windows PC manufacturers,
+      provided the serial number has been correctly stored in firmware.
+    </p>
+
+  </section>
+
+
+  <section id="placeholder">
+
+    <h2>Serial Number Shows To Be Filled By O.E.M.</h2>
+
+    <p>
+      Some custom-built computers or replacement motherboards may not contain
+      a properly programmed system serial number.
+    </p>
+
+    <p>
+      In those cases Windows may display a placeholder value rather than a
+      usable serial number.
+    </p>
+
+  </section>
+
+
+  <section>
+
+    <h2>Computer Serial Number Search Topics</h2>
+
+    <p>
+      This guide covers related Windows questions such as:
+    </p>
+
+    <ul>
+      <li>How to find computer serial number</li>
+      <li>CMD serial number command</li>
+      <li>Windows 11 serial number command</li>
+      <li>Windows 10 serial number command</li>
+      <li>Find laptop serial number CMD</li>
+      <li>Check PC serial number</li>
+      <li>BIOS serial number Windows</li>
+      <li>WMIC BIOS get serialnumber</li>
+      <li>PowerShell computer serial number</li>
+      <li>Get-CimInstance Win32_BIOS</li>
+      <li>Find serial number without opening laptop</li>
+      <li>Windows system serial number</li>
+    </ul>
+
+  </section>
+
+
+  <section id="faq">
+
+    <h2>Computer Serial Number Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+
+      <h3>What CMD command shows my PC serial number?</h3>
+
+      <p>
+        On Windows installations where WMIC is available, use
+        <strong>wmic bios get serialnumber</strong>.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Why doesn't WMIC work on my Windows 11 PC?</h3>
+
+      <p>
+        WMIC has been deprecated and may not be installed by default on
+        newer Windows 11 systems. Use PowerShell and Get-CimInstance instead.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>What is the PowerShell command for the serial number?</h3>
+
+      <p>
+        Run
+        <strong>(Get-CimInstance Win32_BIOS).SerialNumber</strong>
+        to retrieve the firmware serial number.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Is this the same as my Windows product key?</h3>
+
+      <p>
+        No. The computer serial number identifies the hardware system,
+        while the Windows product key relates to Windows licensing.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Can the command return the wrong serial number?</h3>
+
+      <p>
+        Windows reports the information stored by the manufacturer in
+        firmware. If that information was never programmed correctly,
+        Windows cannot create the correct serial number itself.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>Related UniTech LK Windows Guides</h2>
+
+    <ul class="related-guides">
+
+      <li>
+        <a href="/powershell-storage-analysis/">
+          PowerShell Storage Analysis
+        </a>
+      </li>
+
+      <li>
+        <a href="/hard-disk-health-hdd-ssd/">
+          Check HDD &amp; SSD Health on Windows
+        </a>
+      </li>
+
+      <li>
+        <a href="/microsoft-defender-powershell-malware-scan/">
+          Microsoft Defender PowerShell Malware Scan
+        </a>
+      </li>
+
+      <li>
+        <a href="/">
+          All UniTech LK Windows Troubleshooting Guides
+        </a>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <section>
+
+    <h2>Watch the Computer Serial Number CMD Tutorial</h2>
+
+    <p>
+      Watch the complete 1 minute 48 second UniTech LK tutorial showing
+      how to locate your computer's serial number from Windows.
+    </p>
+
+    <a
+      class="button"
+      href="https://www.youtube.com/watch?v=TyJOauURlXI"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Watch on YouTube
+    </a>
+
+  </section>
+
+
+  <a class="back-home" href="/">
+    ← Back to UniTech LK Troubleshooting Guides
+  </a>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 UniTech LK — Windows, CMD, PowerShell and IT troubleshooting guides.
+  </div>
+
+</footer>
+
+</body>
+</html>
