@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>PowerShell Windows Troubleshooting Guides & Commands | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="PowerShell guides for Windows 11, Windows 10 and Windows Server. Learn storage analysis, Microsoft Defender commands, malware scans, disk troubleshooting and Windows administration."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/powershell/"
+  >
+
+  <!-- Shared CSS -->
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+
+  <meta
+    property="og:title"
+    content="PowerShell Windows Troubleshooting Guides | UniTech LK"
+  >
+
+  <meta
+    property="og:description"
+    content="Practical PowerShell commands and tutorials for Windows storage, Microsoft Defender, malware scanning and system troubleshooting."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/powershell/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK Troubleshooting Guides"
+  >
+
+  <!-- Twitter / X -->
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="PowerShell Windows Troubleshooting Guides | UniTech LK"
+  >
+
+  <meta
+    name="twitter:description"
+    content="PowerShell tutorials for Windows 11, Defender, storage analysis, security and system administration."
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://unitechlk.com/powershell/#webpage",
+        "url": "https://unitechlk.com/powershell/",
+        "name": "PowerShell Windows Troubleshooting Guides",
+        "description": "PowerShell tutorials for Windows troubleshooting, storage analysis, Microsoft Defender, malware scanning and system administration.",
+        "isPartOf": {
+          "@id": "https://unitechlk.com/#website"
+        },
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "PowerShell"
+          },
+          {
+            "@type": "Thing",
+            "name": "Windows PowerShell"
+          },
+          {
+            "@type": "Thing",
+            "name": "Windows 11"
+          },
+          {
+            "@type": "Thing",
+            "name": "Windows troubleshooting"
+          },
+          {
+            "@type": "Thing",
+            "name": "Microsoft Defender"
+          },
+          {
+            "@type": "Thing",
+            "name": "Windows administration"
+          }
+        ],
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "PowerShell Troubleshooting Guides",
+          "numberOfItems": 2,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "PowerShell Storage Analysis",
+              "url": "https://unitechlk.com/powershell-storage-analysis/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Microsoft Defender PowerShell Commands",
+              "url": "https://unitechlk.com/microsoft-defender-powershell-malware-scan/"
+            }
+          ]
+        }
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/powershell/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PowerShell",
+            "item": "https://unitechlk.com/powershell/"
+          }
+        ]
+      },
+
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/powershell/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is PowerShell used for in Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PowerShell is used for Windows administration, troubleshooting, automation, storage analysis, security checks, networking, services and system management."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PowerShell troubleshoot Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. PowerShell can help diagnose storage, networking, Microsoft Defender, services, processes, updates and many other Windows 11 problems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can PowerShell scan Windows for malware?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Microsoft Defender includes PowerShell commands that can update security intelligence, run Quick Scan, Full Scan and Offline Scan, and review detected threats."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+
+      <a
+        href="/"
+        aria-label="UniTech LK troubleshooting guides homepage"
+      >
+        ← UniTech LK Troubleshooting Guides
+      </a>
+
+    </div>
+  </header>
+
+
+  <main class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+
+      <span class="label">
+        PowerShell for Windows
+      </span>
+
+      <h1>
+        PowerShell Windows Troubleshooting Guides &amp; Commands
+      </h1>
+
+      <p class="intro">
+        Learn practical PowerShell commands for Windows 11, Windows 10
+        and Windows Server. Use PowerShell for storage analysis,
+        Microsoft Defender security, malware scans, disk troubleshooting
+        and Windows administration.
+      </p>
+
+    </div>
+
+
+    <!-- Main Guides -->
+    <section>
+
+      <h2>PowerShell Troubleshooting Guides</h2>
+
+      <p>
+        These UniTech LK tutorials show practical PowerShell commands
+        that can help diagnose and troubleshoot Windows problems.
+      </p>
+
+      <div class="guide-grid">
+
+
+        <!-- Storage Analysis -->
+        <article class="guide-card">
+
+          <a
+            class="guide-thumb-link"
+            href="/powershell-storage-analysis/"
+            aria-label="Open PowerShell Storage Analysis guide"
+          >
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/9CETzmEbF5o/hqdefault.jpg"
+              alt="PowerShell Storage Analysis Windows 11"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+
+          <h2>
+            <a href="/powershell-storage-analysis/">
+              PowerShell Storage Analysis
+            </a>
+          </h2>
+
+          <p>
+            Find what is using disk space on Windows 11. Use PowerShell
+            to identify the largest files and folders, inspect C drive
+            usage and analyze WinSxS storage.
+          </p>
+
+          <a
+            class="button"
+            href="/powershell-storage-analysis/"
+          >
+            Read the Guide
+          </a>
+
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=9CETzmEbF5o"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
+
+        </article>
+
+
+        <!-- Defender -->
+        <article class="guide-card">
+
+          <a
+            class="guide-thumb-link"
+            href="/microsoft-defender-powershell-malware-scan/"
+            aria-label="Open Microsoft Defender PowerShell guide"
+          >
+            <img
+              class="guide-thumb"
+              src="https://img.youtube.com/vi/r_GsECUSIRM/hqdefault.jpg"
+              alt="Microsoft Defender PowerShell malware scan commands"
+              width="480"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+
+          <h2>
+            <a href="/microsoft-defender-powershell-malware-scan/">
+              Microsoft Defender PowerShell Commands
+            </a>
+          </h2>
+
+          <p>
+            Update Microsoft Defender, run Quick Scan, Full Scan and
+            Offline Scan, check detected threats and verify Windows
+            protection status using PowerShell.
+          </p>
+
+          <a
+            class="button"
+            href="/microsoft-defender-powershell-malware-scan/"
+          >
+            Read the Guide
+          </a>
+
+          <a
+            class="button"
+            href="https://www.youtube.com/watch?v=r_GsECUSIRM"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- Broad PowerShell Search Context -->
+    <section>
+
+      <h2>What Can You Troubleshoot with PowerShell?</h2>
+
+      <p>
+        PowerShell is a powerful Windows administration and troubleshooting
+        tool. It can inspect system information, disk usage, files, folders,
+        processes, services, network connections and Windows security.
+      </p>
+
+      <h3>PowerShell Windows 11 Troubleshooting</h3>
+
+      <p>
+        PowerShell can help Windows 11 users diagnose system problems,
+        check disk space, find large files, inspect Windows services,
+        analyze network connectivity and verify Microsoft Defender status.
+      </p>
+
+      <h3>PowerShell Commands for Windows Administrators</h3>
+
+      <p>
+        Windows administrators can use PowerShell commands to automate
+        common troubleshooting tasks, inspect computers and manage
+        Windows configuration more efficiently.
+      </p>
+
+      <h3>PowerShell Security Commands</h3>
+
+      <p>
+        Microsoft Defender provides PowerShell commands for malware scans,
+        security intelligence updates, threat detection history and
+        protection-status checks.
+      </p>
+
+      <h3>PowerShell Storage Commands</h3>
+
+      <p>
+        PowerShell can analyze Windows disk space, identify large files,
+        calculate folder sizes and help investigate why the C drive
+        is running out of storage.
+      </p>
+
+    </section>
+
+
+    <!-- Search Intent Section -->
+    <section>
+
+      <h2>Popular PowerShell Topics</h2>
+
+      <ul class="related-guides">
+
+        <li>
+          <a href="/powershell-storage-analysis/">
+            PowerShell storage analysis on Windows 11
+          </a>
+        </li>
+
+        <li>
+          <a href="/powershell-storage-analysis/#largest-files">
+            Find the largest files with PowerShell
+          </a>
+        </li>
+
+        <li>
+          <a href="/powershell-storage-analysis/#largest-folders">
+            Find the largest folders with PowerShell
+          </a>
+        </li>
+
+        <li>
+          <a href="/powershell-storage-analysis/#check-drive-space">
+            Check C drive disk space with PowerShell
+          </a>
+        </li>
+
+        <li>
+          <a href="/powershell-storage-analysis/#winsxs">
+            Analyze WinSxS storage with PowerShell and DISM
+          </a>
+        </li>
+
+        <li>
+          <a href="/microsoft-defender-powershell-malware-scan/">
+            Microsoft Defender PowerShell commands
+          </a>
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- Future Topic Context -->
+    <section>
+
+      <h2>More PowerShell Tutorials Coming to UniTech LK</h2>
+
+      <p>
+        Future UniTech LK PowerShell troubleshooting guides will cover
+        Windows networking, DNS troubleshooting, RAM analysis,
+        services, Event Viewer, system health and Windows repair.
+      </p>
+
+      <p>
+        As new tutorials are published, they will be added to this
+        PowerShell resource hub.
+      </p>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section id="faq">
+
+      <h2>PowerShell Frequently Asked Questions</h2>
+
+
+      <div class="faq-item">
+
+        <h3>What is PowerShell used for?</h3>
+
+        <p>
+          PowerShell is a Windows command-line shell and scripting
+          environment used for administration, automation,
+          troubleshooting and system management.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>Can I use PowerShell on Windows 11?</h3>
+
+        <p>
+          Yes. Windows PowerShell is available on Windows 11, and
+          newer versions of PowerShell can also be installed separately.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>Can PowerShell find large files?</h3>
+
+        <p>
+          Yes. PowerShell can recursively search drives and sort files
+          by size, which makes it useful for Windows storage analysis.
+        </p>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <h3>Can PowerShell check Microsoft Defender?</h3>
+
+        <p>
+          Yes. Microsoft Defender exposes PowerShell commands for scans,
+          threat information, security intelligence updates and
+          protection-status checks.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Back Home -->
+    <a
+      class="back-home"
+      href="/"
+    >
+      ← Back to UniTech LK Troubleshooting Guides
+    </a>
+
+  </main>
+
+
+  <footer>
+
+    <div class="container">
+      © 2026 UniTech LK — Windows, PowerShell and IT troubleshooting guides.
+    </div>
+
+  </footer>
+
+</body>
+</html>
