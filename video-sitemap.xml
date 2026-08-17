@@ -101,4 +101,27 @@
     </video:video>
   </url>
 
+
+  <!-- Canon G3416 P07 / 5B00 -->
+  <url>
+    <loc>https://unitechlk.com/canon-g3416-p07-5b00-fix/</loc>
+
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/rRHnaJVtiqM/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>Canon G3416 Error P07 / 5B00 Fix | Ink Absorber Full</video:title>
+
+      <video:description>Fix Canon PIXMA G3416 Error P07 and Support Code 5B00. Learn about the ink absorber full warning, waste ink system, service mode and printer testing after servicing.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/rRHnaJVtiqM</video:player_loc>
+
+      <video:publication_date>2025-12-07T00:00:00+03:00</video:publication_date>
+
+      <video:duration>179</video:duration>
+
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+  
 </urlset>
