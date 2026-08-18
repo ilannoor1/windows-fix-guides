@@ -430,4 +430,28 @@
     </video:video>
   </url>
 
+    <!-- WMIC Removed from Windows 11 -->
+  <url>
+    <loc>https://unitechlk.com/wmic-removed-windows-11-powershell/</loc>
+
+    <video:video>
+
+      <video:thumbnail_loc>https://img.youtube.com/vi/7x6OyDcmaM8/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>WMIC Removed from Windows 11? Use These PowerShell Commands Instead</video:title>
+
+      <video:description>WMIC not recognized or missing in Windows 11? Learn how to replace common WMIC commands with modern PowerShell Get-CimInstance commands for serial number, computer manufacturer and model, CPU, RAM and disk information.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/7x6OyDcmaM8</video:player_loc>
+
+      <video:duration>229</video:duration>
+
+      <video:publication_date>2026-08-19T09:30:00+03:00</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+
+    </video:video>
+
+  </url>
+  
 </urlset>
