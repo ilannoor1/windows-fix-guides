@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>WMIC Removed from Windows 11? Use These PowerShell Commands Instead | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="WMIC not recognized or missing in Windows 11? Replace old WMIC commands with PowerShell Get-CimInstance commands for serial number, manufacturer, model, CPU, RAM and disk information."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/wmic-removed-windows-11-powershell/"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+
+  <meta
+    property="og:title"
+    content="WMIC Removed from Windows 11? Use These PowerShell Commands Instead"
+  >
+
+  <meta
+    property="og:description"
+    content="Replace old WMIC commands with modern PowerShell Get-CimInstance commands in Windows 11."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/wmic-removed-windows-11-powershell/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK"
+  >
+
+  <meta
+    property="og:image"
+    content="https://img.youtube.com/vi/7x6OyDcmaM8/maxresdefault.jpg"
+  >
+
+  <!-- Twitter / X -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="WMIC Removed from Windows 11? Use PowerShell Instead"
+  >
+
+  <meta
+    name="twitter:description"
+    content="WMIC not recognized? Use PowerShell Get-CimInstance commands instead."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://img.youtube.com/vi/7x6OyDcmaM8/maxresdefault.jpg"
+  >
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://unitechlk.com/#organization",
+        "name": "UniTech LK",
+        "url": "https://unitechlk.com/"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://unitechlk.com/#website",
+        "url": "https://unitechlk.com/",
+        "name": "UniTech LK",
+        "publisher": {
+          "@id": "https://unitechlk.com/#organization"
+        }
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#article",
+        "headline": "WMIC Removed from Windows 11? Use These PowerShell Commands Instead",
+        "description": "Replace old WMIC commands with PowerShell Get-CimInstance commands for BIOS serial number, manufacturer, model, CPU, RAM and disk information.",
+        "datePublished": "2026-08-19T09:30:00+03:00",
+        "dateModified": "2026-08-18T00:00:00+03:00",
+        "author": {
+          "@id": "https://unitechlk.com/#organization"
+        },
+        "publisher": {
+          "@id": "https://unitechlk.com/#organization"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#webpage"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#webpage",
+        "url": "https://unitechlk.com/wmic-removed-windows-11-powershell/",
+        "name": "WMIC Removed from Windows 11? Use These PowerShell Commands Instead",
+        "isPartOf": {
+          "@id": "https://unitechlk.com/#website"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#video",
+        "name": "WMIC Removed from Windows 11? Use These PowerShell Commands Instead",
+        "description": "Compare common WMIC commands with modern PowerShell Get-CimInstance replacements for serial number, manufacturer, model, CPU, RAM and disk information.",
+        "thumbnailUrl": [
+          "https://img.youtube.com/vi/7x6OyDcmaM8/maxresdefault.jpg"
+        ],
+        "uploadDate": "2026-08-19T09:30:00+03:00",
+        "duration": "PT3M49S",
+        "embedUrl": "https://www.youtube.com/embed/7x6OyDcmaM8",
+        "contentUrl": "https://www.youtube.com/watch?v=7x6OyDcmaM8"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "UniTech LK",
+            "item": "https://unitechlk.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PowerShell",
+            "item": "https://unitechlk.com/powershell/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "WMIC PowerShell Replacement",
+            "item": "https://unitechlk.com/wmic-removed-windows-11-powershell/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://unitechlk.com/wmic-removed-windows-11-powershell/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is WMIC not recognized in Windows 11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Microsoft has deprecated the WMIC command-line utility and is removing it from newer Windows installations. Windows Management Instrumentation itself still exists."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I use instead of WMIC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PowerShell Get-CimInstance commands are the modern replacement for many common WMIC queries."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was WMI removed from Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The deprecated component is the WMIC command-line utility. Windows Management Instrumentation and CIM-based management remain available."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find my PC serial number without WMIC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Run Get-CimInstance Win32_BIOS | Select-Object SerialNumber in PowerShell."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+
+<body>
+
+<header>
+  <div class="container">
+    <a href="/powershell/">
+      ← UniTech LK PowerShell Guides
+    </a>
+  </div>
+</header>
+
+
+<main class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <span class="label">
+      Windows 11 • WMIC • PowerShell
+    </span>
+
+    <h1>
+      WMIC Removed from Windows 11? Use These PowerShell Commands Instead
+    </h1>
+
+    <p class="intro">
+      WMIC not recognized or missing in Windows 11?
+      Microsoft is retiring the old WMIC command-line utility,
+      so many traditional WMIC commands should now be replaced
+      with modern PowerShell CIM commands.
+    </p>
+
+    <p>
+      This guide compares five common WMIC commands with their
+      PowerShell <strong>Get-CimInstance</strong> replacements.
+    </p>
+
+    <p>
+      Published: August 19, 2026
+    </p>
+
+  </div>
+
+
+  <!-- VIDEO -->
+  <section>
+
+    <h2>Video Tutorial</h2>
+
+    <div class="video-wrap">
+
+      <iframe
+        src="https://www.youtube.com/embed/7x6OyDcmaM8"
+        title="WMIC Removed from Windows 11? Use These PowerShell Commands Instead"
+        width="560"
+        height="315"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+
+    </div>
+
+    <p>
+      Video length: approximately <strong>3 minutes 49 seconds</strong>.
+    </p>
+
+  </section>
+
+
+  <!-- IMPORTANT -->
+  <section class="warning">
+
+    <h2>WMIC Is Not the Same as WMI</h2>
+
+    <p>
+      The deprecated component is the old
+      <strong>WMIC command-line utility</strong>.
+    </p>
+
+    <p>
+      Windows Management Instrumentation itself has not simply
+      disappeared. Modern Windows administration can use
+      PowerShell and CIM cmdlets such as
+      <strong>Get-CimInstance</strong>.
+    </p>
+
+    <p>
+      If an older script depends on WMIC, begin migrating the
+      command to PowerShell rather than depending on WMIC
+      remaining available.
+    </p>
+
+  </section>
+
+
+  <!-- COMMAND 1 -->
+  <section>
+
+    <h2>1. BIOS Serial Number</h2>
+
+    <h3>Old WMIC Command</h3>
+
+    <div class="command">
+wmic bios get serialnumber
+    </div>
+
+    <h3>PowerShell Replacement</h3>
+
+    <div class="command">
+Get-CimInstance Win32_BIOS | Select-Object SerialNumber
+    </div>
+
+    <p>
+      This reads the system serial number exposed through the BIOS
+      information available to Windows.
+    </p>
+
+  </section>
+
+
+  <!-- COMMAND 2 -->
+  <section>
+
+    <h2>2. PC Manufacturer &amp; Model</h2>
+
+    <h3>Old WMIC Command</h3>
+
+    <div class="command">
+wmic computersystem get manufacturer,model
+    </div>
+
+    <h3>PowerShell Replacement</h3>
+
+    <div class="command">
+Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer,Model
+    </div>
+
+    <p>
+      Use this when you need the computer manufacturer and model
+      for inventory, support or troubleshooting.
+    </p>
+
+  </section>
+
+
+  <!-- COMMAND 3 -->
+  <section>
+
+    <h2>3. CPU Information</h2>
+
+    <h3>Old WMIC Command</h3>
+
+    <div class="command">
+wmic cpu get name
+    </div>
+
+    <h3>PowerShell Replacement</h3>
+
+    <div class="command">
+Get-CimInstance Win32_Processor | Select-Object Name
+    </div>
+
+    <p>
+      This displays the processor model reported to Windows.
+    </p>
+
+  </section>
+
+
+  <!-- COMMAND 4 -->
+  <section>
+
+    <h2>4. RAM Capacity</h2>
+
+    <h3>Old WMIC Command</h3>
+
+    <div class="command">
+wmic memorychip get capacity
+    </div>
+
+    <h3>PowerShell Replacement</h3>
+
+    <div class="command">
+Get-CimInstance Win32_PhysicalMemory | Select-Object Capacity
+    </div>
+
+    <p>
+      The result is normally returned in bytes for each physical
+      memory module.
+    </p>
+
+    <p>
+      For a more readable GB view, you can use:
+    </p>
+
+    <div class="command">
+Get-CimInstance Win32_PhysicalMemory |
+Select-Object DeviceLocator,@{Name="CapacityGB";Expression={[math]::Round($_.Capacity / 1GB,2)}}
+    </div>
+
+  </section>
+
+
+  <!-- COMMAND 5 -->
+  <section>
+
+    <h2>5. Disk Model &amp; Size</h2>
+
+    <h3>Old WMIC Command</h3>
+
+    <div class="command">
+wmic diskdrive get model,size
+    </div>
+
+    <h3>PowerShell Replacement</h3>
+
+    <div class="command">
+Get-CimInstance Win32_DiskDrive | Select-Object Model,Size
+    </div>
+
+    <p>
+      This displays the disk model and raw size reported through
+      Windows management information.
+    </p>
+
+    <p>
+      For a readable size in GB:
+    </p>
+
+    <div class="command">
+Get-CimInstance Win32_DiskDrive |
+Select-Object Model,@{Name="SizeGB";Expression={[math]::Round($_.Size / 1GB,2)}}
+    </div>
+
+  </section>
+
+
+  <!-- TABLE -->
+  <section>
+
+    <h2>WMIC to PowerShell Replacement Table</h2>
+
+    <div style="overflow-x:auto;">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Old WMIC</th>
+            <th>PowerShell Replacement</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>BIOS Serial Number</td>
+            <td><code>wmic bios get serialnumber</code></td>
+            <td><code>Get-CimInstance Win32_BIOS | Select-Object SerialNumber</code></td>
+          </tr>
+
+          <tr>
+            <td>Manufacturer &amp; Model</td>
+            <td><code>wmic computersystem get manufacturer,model</code></td>
+            <td><code>Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer,Model</code></td>
+          </tr>
+
+          <tr>
+            <td>CPU Name</td>
+            <td><code>wmic cpu get name</code></td>
+            <td><code>Get-CimInstance Win32_Processor | Select-Object Name</code></td>
+          </tr>
+
+          <tr>
+            <td>RAM Capacity</td>
+            <td><code>wmic memorychip get capacity</code></td>
+            <td><code>Get-CimInstance Win32_PhysicalMemory | Select-Object Capacity</code></td>
+          </tr>
+
+          <tr>
+            <td>Disk Model &amp; Size</td>
+            <td><code>wmic diskdrive get model,size</code></td>
+            <td><code>Get-CimInstance Win32_DiskDrive | Select-Object Model,Size</code></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY CIM -->
+  <section>
+
+    <h2>Why Use Get-CimInstance?</h2>
+
+    <p>
+      <strong>Get-CimInstance</strong> returns PowerShell objects
+      rather than plain command-line text.
+    </p>
+
+    <p>
+      That makes the results easier to filter, sort, format,
+      export and use in scripts.
+    </p>
+
+    <p>
+      For example:
+    </p>
+
+    <div class="command">
+Get-CimInstance Win32_ComputerSystem |
+Select-Object Manufacturer,Model |
+Format-Table -AutoSize
+    </div>
+
+  </section>
+
+
+  <!-- MIGRATION -->
+  <section>
+
+    <h2>Migrating Old WMIC Scripts</h2>
+
+    <p>
+      If you have old batch files or documentation containing WMIC,
+      do not simply wait for them to fail on newer Windows systems.
+    </p>
+
+    <p>
+      Identify what each WMIC command is querying, find the equivalent
+      CIM class, and replace the old WMIC call with an appropriate
+      PowerShell command.
+    </p>
+
+    <p>
+      A common migration pattern is:
+    </p>
+
+    <div class="command">
+Get-CimInstance ClassName | Select-Object PropertyName
+    </div>
+
+  </section>
+
+
+  <!-- SEARCH TOPICS -->
+  <section>
+
+    <h2>WMIC &amp; PowerShell Topics</h2>
+
+    <ul>
+      <li>WMIC removed Windows 11</li>
+      <li>WMIC not recognized</li>
+      <li>WMIC missing Windows 11</li>
+      <li>WMIC PowerShell replacement</li>
+      <li>WMIC alternative</li>
+      <li>Get-CimInstance Windows 11</li>
+      <li>PowerShell WMIC replacement</li>
+      <li>Windows 11 PowerShell commands</li>
+      <li>WMIC serial number replacement</li>
+      <li>WMIC computer model replacement</li>
+      <li>WMIC CPU replacement</li>
+      <li>WMIC memorychip replacement</li>
+      <li>WMIC diskdrive replacement</li>
+      <li>Get-CimInstance Win32_BIOS</li>
+      <li>Get-CimInstance Win32_ComputerSystem</li>
+      <li>Get-CimInstance Win32_Processor</li>
+      <li>Get-CimInstance Win32_PhysicalMemory</li>
+      <li>Get-CimInstance Win32_DiskDrive</li>
+      <li>PowerShell hardware information</li>
+      <li>Windows administration commands</li>
+    </ul>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section id="faq">
+
+    <h2>Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+
+      <h3>Why does Windows say WMIC is not recognized?</h3>
+
+      <p>
+        The WMIC command-line utility has been deprecated and may no
+        longer be installed or enabled on newer Windows systems.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>What replaces WMIC in Windows 11?</h3>
+
+      <p>
+        PowerShell CIM commands such as Get-CimInstance provide modern
+        alternatives for many common WMIC queries.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Was Windows Management Instrumentation removed?</h3>
+
+      <p>
+        No. WMIC.exe and Windows Management Instrumentation are not
+        the same thing. The WMIC command-line utility is the deprecated
+        component.
+      </p>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>How can I find the serial number without WMIC?</h3>
+
+      <div class="command">
+Get-CimInstance Win32_BIOS | Select-Object SerialNumber
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <h3>Does Get-CimInstance require Administrator?</h3>
+
+      <p>
+        Many local hardware-information queries can run without
+        elevation, although access requirements vary depending on
+        the class, machine and environment.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- RELATED -->
+  <section>
+
+    <h2>Related UniTech LK Guides</h2>
+
+    <ul class="related-guides">
+
+      <li>
+        <a href="/powershell/">
+          PowerShell Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/powershell-commands/">
+          100+ PowerShell Commands A-Z
+        </a>
+      </li>
+
+      <li>
+        <a href="/find-computer-serial-number-cmd/">
+          Find Computer Serial Number
+        </a>
+      </li>
+
+      <li>
+        <a href="/powershell-storage-analysis/">
+          PowerShell Storage Analysis
+        </a>
+      </li>
+
+      <li>
+        <a href="/windows/">
+          Windows Troubleshooting Guides
+        </a>
+      </li>
+
+      <li>
+        <a href="/cmd/">
+          Windows CMD Guides
+        </a>
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <a
+    class="back-home"
+    href="/powershell/"
+  >
+    ← Back to PowerShell Troubleshooting Guides
+  </a>
+
+</main>
+
+
+<footer>
+  <div class="container">
+    © 2026 UniTech LK — Windows, WMIC, PowerShell and IT troubleshooting guides.
+  </div>
+</footer>
+
+</body>
+</html>
