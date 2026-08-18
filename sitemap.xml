@@ -246,5 +246,13 @@
   <changefreq>weekly</changefreq>
   <priority>0.9</priority>
 </url>
+
+    <!-- WMIC Removed / PowerShell Replacement -->
+  <url>
+    <loc>https://unitechlk.com/wmic-removed-windows-11-powershell/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   
 </urlset>
