@@ -10,6 +10,7 @@ on:
       - "data/videos/**"
       - "scripts/validate_video_metadata.py"
       - "scripts/generate_video_guide.py"
+      - "scripts/render_video_preview.py"
       - ".github/workflows/validate-video-metadata.yml"
 
 permissions:
@@ -17,7 +18,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate and plan UniTech LK video guide
+    name: Validate, plan and preview UniTech LK video guide
     runs-on: ubuntu-latest
 
     steps:
@@ -37,3 +38,14 @@ jobs:
 
       - name: Dry-run video guide planner
         run: python scripts/generate_video_guide.py
+
+      - name: Generate HTML preview
+        run: python scripts/render_video_preview.py
+
+      - name: Upload HTML preview artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: unitechlk-video-preview-${{ github.run_id }}
+          path: preview-output/
+          if-no-files-found: error
+          retention-days: 7
