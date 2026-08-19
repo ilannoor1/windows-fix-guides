@@ -12,6 +12,7 @@ on:
       - "scripts/generate_video_guide.py"
       - "scripts/render_video_preview.py"
       - "scripts/validate_video_preview.py"
+      - "scripts/plan_production_changes.py"
       - ".github/workflows/validate-video-metadata.yml"
 
 permissions:
@@ -19,7 +20,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate, plan and preview UniTech LK video guide
+    name: Validate, preview and plan UniTech LK video guide
     runs-on: ubuntu-latest
 
     steps:
@@ -45,6 +46,9 @@ jobs:
 
       - name: Validate HTML preview safety
         run: python scripts/validate_video_preview.py
+
+      - name: Simulate production changes
+        run: python scripts/plan_production_changes.py
 
       - name: Upload HTML preview artifact
         uses: actions/upload-artifact@v7
