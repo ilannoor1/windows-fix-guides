@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   test:
-    name: Simulate brand-new UniTech LK video
+    name: Test production candidate builder
     runs-on: ubuntu-latest
 
     steps:
@@ -20,15 +20,16 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Create temporary test metadata
+      - name: Create temporary production-ready metadata
         run: |
           cat > data/videos/pipeline-test-video.json <<'EOF'
           {
             "enabled": true,
+            "publish_ready": true,
             "video_id": "TEST1234567",
             "title": "UniTech LK Automation Pipeline Test Video",
             "slug": "unitechlk-pipeline-test-video",
-            "description": "Temporary metadata used only inside GitHub Actions to test the UniTech LK video publishing safety pipeline.",
+            "description": "Temporary metadata used only inside GitHub Actions to test the UniTech LK protected production candidate pipeline.",
             "publication_date": "2026-08-19T12:00:00+03:00",
             "duration_seconds": 180,
             "category": "powershell",
@@ -63,10 +64,26 @@ jobs:
       - name: Simulate production changes
         run: python scripts/plan_production_changes.py
 
-      - name: Upload test preview artifact
+      - name: Build protected production candidate
+        run: python scripts/build_production_candidate.py
+
+      - name: Show candidate files
+        run: |
+          echo "Production candidate files:"
+          find candidate-output -type f -print
+
+      - name: Upload HTML preview artifact
         uses: actions/upload-artifact@v7
         with:
-          name: unitechlk-new-video-test-${{ github.run_id }}
+          name: unitechlk-preview-test-${{ github.run_id }}
           path: preview-output/
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Upload production candidate artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: unitechlk-production-candidate-test-${{ github.run_id }}
+          path: candidate-output/
           if-no-files-found: error
           retention-days: 3
