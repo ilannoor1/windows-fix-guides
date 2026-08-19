@@ -1,0 +1,202 @@
+name: Build Real Video Candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      metadata_file:
+        description: "Metadata JSON filename, for example powershell-network-troubleshooting.json"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    name: Build reviewed UniTech LK production candidate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Verify selected metadata
+        env:
+          SELECTED_METADATA: ${{ inputs.metadata_file }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import sys
+          from pathlib import Path
+
+          name = os.environ["SELECTED_METADATA"].strip()
+
+          if not re.fullmatch(
+              r"[a-z0-9][a-z0-9-]*\.json",
+              name
+          ):
+              print(
+                  "ERROR: Metadata filename must contain only "
+                  "lowercase letters, numbers and hyphens."
+              )
+              sys.exit(1)
+
+          path = Path("data/videos") / name
+
+          if not path.is_file():
+              print(
+                  f"ERROR: Metadata file does not exist: {path}"
+              )
+              sys.exit(1)
+
+          try:
+              data = json.loads(
+                  path.read_text(encoding="utf-8")
+              )
+          except Exception as exc:
+              print(
+                  f"ERROR: Cannot read metadata: {exc}"
+              )
+              sys.exit(1)
+
+          if data.get("enabled") is not True:
+              print(
+                  "ERROR: Selected metadata has enabled=false."
+              )
+              sys.exit(1)
+
+          if data.get("publish_ready") is not True:
+              print(
+                  "ERROR: Selected metadata has "
+                  "publish_ready=false."
+              )
+              sys.exit(1)
+
+          print("Selected metadata:")
+          print(path)
+
+          print()
+          print("Title:")
+          print(data.get("title", ""))
+
+          print()
+          print("Slug:")
+          print(data.get("slug", ""))
+
+          print()
+          print(
+              "PASS: Metadata is explicitly enabled "
+              "and publish_ready."
+          )
+          PY
+
+      - name: Isolate selected metadata inside runner
+        env:
+          SELECTED_METADATA: ${{ inputs.metadata_file }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          import sys
+          from pathlib import Path
+
+          name = os.environ["SELECTED_METADATA"].strip()
+
+          source_dir = Path("data/videos")
+          selected = source_dir / name
+
+          if not selected.is_file():
+              print("ERROR: Selected metadata disappeared.")
+              sys.exit(1)
+
+          backup_dir = Path(".candidate-metadata-backup")
+
+          if backup_dir.exists():
+              shutil.rmtree(backup_dir)
+
+          backup_dir.mkdir()
+
+          moved = 0
+
+          for path in source_dir.glob("*.json"):
+              if path.name == name:
+                  continue
+
+              shutil.move(
+                  str(path),
+                  str(backup_dir / path.name)
+              )
+
+              moved += 1
+
+          print(
+              f"Selected metadata isolated successfully."
+          )
+
+          print(
+              f"Temporarily moved {moved} other metadata file(s)."
+          )
+
+          print(
+              "These runner-only changes are never committed."
+          )
+          PY
+
+      - name: Validate selected video metadata
+        run: python scripts/validate_video_metadata.py
+
+      - name: Dry-run selected video guide
+        run: python scripts/generate_video_guide.py
+
+      - name: Generate selected HTML preview
+        run: python scripts/render_video_preview.py
+
+      - name: Validate HTML preview safety
+        run: python scripts/validate_video_preview.py
+
+      - name: Simulate production changes
+        run: python scripts/plan_production_changes.py
+
+      - name: Build protected production candidate
+        run: python scripts/build_production_candidate.py
+
+      - name: Show candidate files
+        run: |
+          echo "======================================"
+          echo "PRODUCTION CANDIDATE FILES"
+          echo "======================================"
+          find candidate-output -type f -print
+
+      - name: Verify repository was not modified
+        run: |
+          git status --short
+
+          if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+            echo "ERROR: Tracked repository files changed."
+            exit 1
+          fi
+
+          echo "PASS: No tracked production files were modified."
+
+      - name: Upload review preview
+        uses: actions/upload-artifact@v7
+        with:
+          name: unitechlk-preview-${{ github.run_id }}
+          path: preview-output/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload production candidate
+        uses: actions/upload-artifact@v7
+        with:
+          name: unitechlk-production-candidate-${{ github.run_id }}
+          path: candidate-output/
+          if-no-files-found: error
+          retention-days: 7
