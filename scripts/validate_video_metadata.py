@@ -45,6 +45,7 @@ def validate_file(path):
 
     required_fields = [
         "enabled",
+        "publish_ready",
         "video_id",
         "title",
         "slug",
@@ -67,6 +68,16 @@ def validate_file(path):
 
     if not isinstance(data["enabled"], bool):
         return fail(f"{path.name}: 'enabled' must be true or false.")
+    if not isinstance(data["publish_ready"], bool):
+    return fail(
+        f"{path.name}: 'publish_ready' must be true or false."
+    )
+
+if data["publish_ready"] is True and data["enabled"] is not True:
+    return fail(
+        f"{path.name}: publish_ready cannot be true "
+        "when enabled is false."
+    )
 
     # Disabled files may be templates/drafts.
     # They must have the correct structure but are not publishable.
