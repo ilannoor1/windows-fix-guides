@@ -11,6 +11,7 @@ on:
       - "scripts/validate_video_metadata.py"
       - "scripts/generate_video_guide.py"
       - "scripts/render_video_preview.py"
+      - "scripts/validate_video_preview.py"
       - ".github/workflows/validate-video-metadata.yml"
 
 permissions:
@@ -41,6 +42,9 @@ jobs:
 
       - name: Generate HTML preview
         run: python scripts/render_video_preview.py
+
+      - name: Validate HTML preview safety
+        run: python scripts/validate_video_preview.py
 
       - name: Upload HTML preview artifact
         uses: actions/upload-artifact@v7
