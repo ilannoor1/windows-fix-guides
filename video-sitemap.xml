@@ -430,7 +430,9 @@
     </video:video>
   </url>
 
-    <!-- WMIC Removed from Windows 11 -->
+
+  <!-- WMIC Removed from Windows 11 -->
+
   <url>
     <loc>https://unitechlk.com/wmic-removed-windows-11-powershell/</loc>
 
@@ -451,7 +453,31 @@
       <video:family_friendly>yes</video:family_friendly>
 
     </video:video>
-
   </url>
-  
+
+
+  <!-- DISM Error 0x800F0915 -->
+
+  <url>
+    <loc>https://unitechlk.com/dism-error-0x800f0915-windows-11/</loc>
+
+    <video:video>
+
+      <video:thumbnail_loc>https://img.youtube.com/vi/HiVSQDLJZZ0/maxresdefault.jpg</video:thumbnail_loc>
+
+      <video:title>DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found</video:title>
+
+      <video:description>Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. Learn SFC and DISM checks, Windows Update reset, Windows ISO install.wim repair source and CBS log troubleshooting.</video:description>
+
+      <video:player_loc>https://www.youtube.com/embed/HiVSQDLJZZ0</video:player_loc>
+
+      <video:duration>701</video:duration>
+
+      <video:publication_date>2026-07-18</video:publication_date>
+
+      <video:family_friendly>yes</video:family_friendly>
+
+    </video:video>
+  </url>
+
 </urlset>
