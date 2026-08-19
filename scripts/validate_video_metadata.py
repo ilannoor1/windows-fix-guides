@@ -127,7 +127,6 @@ def validate_file(path):
 
     # ---------------------------------------------------------
     # ENABLED FILES
-    # Everything below is mandatory for enabled entries.
     # ---------------------------------------------------------
 
     video_id = data["video_id"]
@@ -187,6 +186,10 @@ def validate_file(path):
             "20 characters."
         )
 
+    # ---------------------------------------------------------
+    # PUBLICATION DATE
+    # ---------------------------------------------------------
+
     publication_date = data["publication_date"]
 
     if not isinstance(publication_date, str):
@@ -195,33 +198,38 @@ def validate_file(path):
         )
 
     try:
-    parsed_date = datetime.fromisoformat(
-        publication_date.replace(
-            "Z",
-            "+00:00"
+        parsed_date = datetime.fromisoformat(
+            publication_date.replace(
+                "Z",
+                "+00:00"
+            )
         )
-    )
 
-except ValueError:
-    return fail(
-        f"{path.name}: publication_date must be "
-        "a valid ISO 8601 date or datetime."
-    )
+    except ValueError:
+        return fail(
+            f"{path.name}: publication_date must be "
+            "a valid ISO 8601 date or datetime."
+        )
 
-# Date-only values are allowed when the exact publish time is unknown.
-# Examples:
-#   2026-07-18
-#   2026-07-18T09:30:00+03:00
-#
-# If a clock time is supplied, a timezone is required.
-if (
-    "T" in publication_date
-    and parsed_date.tzinfo is None
-):
-    return fail(
-        f"{path.name}: publication_date with a time "
-        "must include a timezone."
-    )
+    # Date-only is allowed when exact publish time is unknown.
+    # Examples:
+    #   2026-07-18
+    #   2026-07-18T09:30:00+03:00
+    #
+    # If a clock time is supplied, timezone is mandatory.
+    if (
+        "T" in publication_date
+        and parsed_date.tzinfo is None
+    ):
+        return fail(
+            f"{path.name}: publication_date with a time "
+            "must include a timezone."
+        )
+
+    # ---------------------------------------------------------
+    # DURATION
+    # ---------------------------------------------------------
+
     duration = data["duration_seconds"]
 
     if (
@@ -234,6 +242,10 @@ if (
             "a positive integer."
         )
 
+    # ---------------------------------------------------------
+    # CATEGORY
+    # ---------------------------------------------------------
+
     category = data["category"]
 
     if (
@@ -243,6 +255,10 @@ if (
         return fail(
             f"{path.name}: 'category' cannot be empty."
         )
+
+    # ---------------------------------------------------------
+    # URLS
+    # ---------------------------------------------------------
 
     thumbnail_url = data["thumbnail_url"]
 
@@ -294,6 +310,10 @@ if (
             "the declared video_id."
         )
 
+    # ---------------------------------------------------------
+    # RELATED GUIDES
+    # ---------------------------------------------------------
+
     related_guides = data["related_guides"]
 
     if not isinstance(related_guides, list):
@@ -326,6 +346,10 @@ if (
                 f"{path.name}: unsafe related guide path: "
                 f"{guide}"
             )
+
+    # ---------------------------------------------------------
+    # COMMANDS
+    # ---------------------------------------------------------
 
     commands = data["commands"]
 
