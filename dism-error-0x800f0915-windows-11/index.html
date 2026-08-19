@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!--
+    PRODUCTION CANDIDATE
+    Generated for human review.
+    Not yet committed to the live website.
+  -->
+
+  <title>DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found | UniTech LK</title>
+
+  <meta
+    name="description"
+    content="Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired."
+  >
+
+  <meta name="author" content="UniTech LK">
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="theme-color" content="#061225">
+
+  <link
+    rel="canonical"
+    href="https://unitechlk.com/dism-error-0x800f0915-windows-11/"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/assets/style.css"
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <meta
+    property="og:title"
+    content="DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found"
+  >
+
+  <meta
+    property="og:description"
+    content="Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired."
+  >
+
+  <meta
+    property="og:url"
+    content="https://unitechlk.com/dism-error-0x800f0915-windows-11/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="UniTech LK"
+  >
+
+  <meta
+    property="og:image"
+    content="https://img.youtube.com/vi/HiVSQDLJZZ0/maxresdefault.jpg"
+  >
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://img.youtube.com/vi/HiVSQDLJZZ0/maxresdefault.jpg"
+  >
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://unitechlk.com/#organization",
+      "name": "UniTech LK",
+      "url": "https://unitechlk.com/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://unitechlk.com/#website",
+      "url": "https://unitechlk.com/",
+      "name": "UniTech LK Troubleshooting Guides",
+      "publisher": {
+        "@id": "https://unitechlk.com/#organization"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://unitechlk.com/dism-error-0x800f0915-windows-11/#article",
+      "headline": "DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found",
+      "description": "Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired.",
+      "datePublished": "2026-07-18",
+      "author": {
+        "@id": "https://unitechlk.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://unitechlk.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://unitechlk.com/dism-error-0x800f0915-windows-11/#webpage"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://unitechlk.com/dism-error-0x800f0915-windows-11/#webpage",
+      "url": "https://unitechlk.com/dism-error-0x800f0915-windows-11/",
+      "name": "DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found",
+      "isPartOf": {
+        "@id": "https://unitechlk.com/#website"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://unitechlk.com/dism-error-0x800f0915-windows-11/#video",
+      "name": "DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found",
+      "description": "Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired.",
+      "thumbnailUrl": [
+        "https://img.youtube.com/vi/HiVSQDLJZZ0/maxresdefault.jpg"
+      ],
+      "uploadDate": "2026-07-18",
+      "duration": "PT11M41S",
+      "embedUrl": "https://www.youtube.com/embed/HiVSQDLJZZ0",
+      "contentUrl": "https://www.youtube.com/watch?v=HiVSQDLJZZ0"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://unitechlk.com/dism-error-0x800f0915-windows-11/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "UniTech LK",
+          "item": "https://unitechlk.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Windows",
+          "item": "https://unitechlk.com/windows/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found",
+          "item": "https://unitechlk.com/dism-error-0x800f0915-windows-11/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+</head>
+
+
+<body>
+
+<header>
+
+  <div class="container">
+
+    <a href="/windows/">
+      ← UniTech LK Windows Guides
+    </a>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+  <div class="hero">
+
+    <span class="label">
+      Windows • UniTech LK
+    </span>
+
+    <h1>
+      DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found
+    </h1>
+
+    <p class="intro">
+      Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired.
+    </p>
+
+  </div>
+
+
+  <section>
+
+    <h2>Video Tutorial</h2>
+
+    <div class="video-wrap">
+
+      <iframe
+        src="https://www.youtube.com/embed/HiVSQDLJZZ0"
+        title="DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found"
+        width="560"
+        height="315"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+
+    </div>
+
+  </section>
+
+
+  <section>
+
+    <h2>About This Tutorial</h2>
+
+    <p>
+      Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired.
+    </p>
+
+  </section>
+
+
+<section>
+
+  <h2>Step-by-Step Commands Used in This Tutorial</h2>
+
+  <div class="command-step">
+
+    <h3>
+      1. Check the installed Windows version and build
+    </h3>
+
+    <div class="command">
+winver
+    </div>
+
+    <p>
+      Confirm the installed Windows 11 edition and build before choosing a repair source.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      2. Run System File Checker
+    </h3>
+
+    <div class="command">
+sfc /scannow
+    </div>
+
+    <p>
+      Check and repair protected Windows system files before moving to deeper DISM troubleshooting.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      3. Check the Windows component store
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /CheckHealth
+    </div>
+
+    <p>
+      This performs a quick check to determine whether Windows has already marked the component store as corrupted.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      4. Scan the Windows component store
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /ScanHealth
+    </div>
+
+    <p>
+      This performs a deeper scan of the Windows component store for corruption.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      5. Attempt the normal DISM repair
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /RestoreHealth
+    </div>
+
+    <p>
+      In the demonstrated case this failed with error 0x800F0915 because the required repair content could not be found.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      6. Reset Winsock
+    </h3>
+
+    <div class="command">
+netsh winsock reset
+    </div>
+
+    <p>
+      Reset the Windows Winsock catalog while troubleshooting connectivity or Windows Update repair-source access.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      7. Reset the TCP/IP stack
+    </h3>
+
+    <div class="command">
+netsh int ip reset
+    </div>
+
+    <p>
+      Reset TCP/IP networking as part of the network troubleshooting process.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      8. Release the current IP address
+    </h3>
+
+    <div class="command">
+ipconfig /release
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      9. Renew the IP address
+    </h3>
+
+    <div class="command">
+ipconfig /renew
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      10. Flush the DNS cache
+    </h3>
+
+    <div class="command">
+ipconfig /flushdns
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      11. Stop the Windows Update service
+    </h3>
+
+    <div class="command">
+net stop wuauserv
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      12. Stop the Background Intelligent Transfer Service
+    </h3>
+
+    <div class="command">
+net stop bits
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      13. Stop Cryptographic Services
+    </h3>
+
+    <div class="command">
+net stop cryptsvc
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      14. Rename the SoftwareDistribution folder
+    </h3>
+
+    <div class="command">
+ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+    </div>
+
+    <p>
+      Renaming this folder forces Windows Update to rebuild its working data instead of manually deleting protected Windows files.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      15. Rename the Catroot2 folder
+    </h3>
+
+    <div class="command">
+ren C:\Windows\System32\catroot2 catroot2.old
+    </div>
+
+    <p>
+      This allows Windows to rebuild the update-related Catroot2 data.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      16. Start Cryptographic Services
+    </h3>
+
+    <div class="command">
+net start cryptsvc
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      17. Start the Background Intelligent Transfer Service
+    </h3>
+
+    <div class="command">
+net start bits
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      18. Start the Windows Update service
+    </h3>
+
+    <div class="command">
+net start wuauserv
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      19. Check the Windows ISO image indexes
+    </h3>
+
+    <div class="command">
+DISM /Get-WimInfo /WimFile:E:\sources\install.wim
+    </div>
+
+    <p>
+      E: is only an example ISO drive letter. Your drive letter may be different. Identify the image index that matches the Windows edition installed on your computer.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      20. Repair Windows using the install.wim source
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\sources\install.wim:6 /LimitAccess
+    </div>
+
+    <p>
+      The E: drive and image index 6 are examples from the demonstrated computer. Always use the ISO drive letter and WIM index that match your own Windows installation.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      21. Clean the Windows component store
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /StartComponentCleanup
+    </div>
+
+    <p>
+      Use the normal component-store cleanup before considering more aggressive cleanup options.
+    </p>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      22. Advanced component-store cleanup
+    </h3>
+
+    <div class="command">
+DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+    </div>
+
+    <p>
+      This advanced option was demonstrated as part of the troubleshooting process.
+    </p>
+
+    <div class="warning">
+
+      <strong>
+        ⚠ Important
+      </strong>
+
+      <p>
+        ResetBase is an advanced and permanent cleanup option. After using it, currently installed Windows updates generally cannot be uninstalled. Do not use it as the first repair step.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="command-step">
+
+    <h3>
+      23. Review the CBS log for the actual damaged component
+    </h3>
+
+    <div class="command">
+C:\Windows\Logs\CBS\CBS.log
+    </div>
+
+    <p>
+      In this particular troubleshooting case, the CBS log pointed to a damaged optional Arabic language resource. Your computer may have a different damaged package. Review your own CBS log before removing a language pack, Windows capability or Windows component.
+    </p>
+
+    <div class="warning">
+
+      <strong>
+        ⚠ Important
+      </strong>
+
+      <p>
+        Do not remove language packs, capabilities or Windows components only because they appeared in this example. The damaged package can be different on every computer.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <h2>Related UniTech LK Guides</h2>
+
+  <ul class="related-guides">
+
+    <li>
+      <a href="/windows/">
+        Windows
+      </a>
+    </li>
+
+    <li>
+      <a href="/cmd/">
+        Cmd
+      </a>
+    </li>
+
+    <li>
+      <a href="/powershell/">
+        Powershell
+      </a>
+    </li>
+
+  </ul>
+
+</section>
+
+
+  <a
+    class="back-home"
+    href="/windows/"
+  >
+    ← Back to Windows Guides
+  </a>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 UniTech LK — Windows and IT troubleshooting guides.
+  </div>
+
+</footer>
+
+</body>
+</html>
