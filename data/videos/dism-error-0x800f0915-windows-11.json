@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "publish_ready": false,
+  "video_id": "HiVSQDLJZZ0",
+  "title": "DISM Error 0x800F0915 Fix on Windows 11 | Repair Content Could Not Be Found",
+  "slug": "dism-error-0x800f0915-windows-11",
+  "description": "Fix DISM Error 0x800F0915 on Windows 11 when RestoreHealth reports that the repair content could not be found. This UniTech LK tutorial demonstrates SFC and DISM health checks, Windows Update and network resets, Windows ISO and install.wim repair sources, CBS log analysis, component-store cleanup and verification that Windows corruption has been repaired.",
+  "publication_date": "2026-07-18",
+  "duration_seconds": 701,
+  "category": "windows",
+  "thumbnail_url": "https://img.youtube.com/vi/HiVSQDLJZZ0/maxresdefault.jpg",
+  "youtube_url": "https://www.youtube.com/watch?v=HiVSQDLJZZ0",
+  "related_guides": [
+    "/windows/",
+    "/cmd/",
+    "/powershell/"
+  ],
+  "commands": [
+    "winver",
+    "sfc /scannow",
+    "DISM /Online /Cleanup-Image /CheckHealth",
+    "DISM /Online /Cleanup-Image /ScanHealth",
+    "DISM /Online /Cleanup-Image /RestoreHealth",
+    "netsh winsock reset",
+    "netsh int ip reset",
+    "ipconfig /release",
+    "ipconfig /renew",
+    "ipconfig /flushdns",
+    "net stop wuauserv",
+    "net stop bits",
+    "net stop cryptsvc",
+    "ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old",
+    "ren C:\\Windows\\System32\\catroot2 catroot2.old",
+    "net start cryptsvc",
+    "net start bits",
+    "net start wuauserv",
+    "DISM /Get-WimInfo /WimFile:E:\\sources\\install.wim",
+    "DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\\sources\\install.wim:6 /LimitAccess",
+    "DISM /Online /Cleanup-Image /StartComponentCleanup",
+    "DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase"
+  ]
+}
