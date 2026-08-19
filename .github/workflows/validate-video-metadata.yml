@@ -9,6 +9,7 @@ on:
     paths:
       - "data/videos/**"
       - "scripts/validate_video_metadata.py"
+      - "scripts/generate_video_guide.py"
       - ".github/workflows/validate-video-metadata.yml"
 
 permissions:
@@ -16,7 +17,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate UniTech LK video metadata
+    name: Validate and plan UniTech LK video guide
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +34,6 @@ jobs:
 
       - name: Validate video metadata
         run: python scripts/validate_video_metadata.py
+
+      - name: Dry-run video guide planner
+        run: python scripts/generate_video_guide.py
