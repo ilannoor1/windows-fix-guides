@@ -1,0 +1,17 @@
+{
+  "enabled": false,
+  "video_id": "VIDEO_ID_HERE",
+  "title": "VIDEO TITLE HERE",
+  "slug": "video-page-slug",
+  "description": "Short original UniTech LK description of the video.",
+  "publication_date": "2026-08-19T09:30:00+03:00",
+  "duration_seconds": 229,
+  "category": "powershell",
+  "thumbnail_url": "https://img.youtube.com/vi/VIDEO_ID_HERE/maxresdefault.jpg",
+  "youtube_url": "https://www.youtube.com/watch?v=VIDEO_ID_HERE",
+  "related_guides": [
+    "/powershell/",
+    "/powershell-commands/"
+  ],
+  "commands": []
+}
