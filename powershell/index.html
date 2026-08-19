@@ -134,7 +134,7 @@
         "mainEntity": {
           "@type": "ItemList",
           "name": "PowerShell Guides",
-          "numberOfItems": 3,
+          "numberOfItems": 4,
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -153,6 +153,12 @@
               "position": 3,
               "name": "Microsoft Defender PowerShell Malware Scan",
               "url": "https://unitechlk.com/microsoft-defender-powershell-malware-scan/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "WMIC Removed from Windows 11? Use PowerShell Instead",
+              "url": "https://unitechlk.com/wmic-removed-windows-11-powershell/"
             }
           ]
         }
@@ -306,17 +312,53 @@
 
     <div class="guide-grid">
 
-  <!-- NEW WMIC GUIDE -->
-  <article class="guide-card">
-    ...
-  </article>
+      <!-- WMIC TO POWERSHELL -->
+      <article class="guide-card">
 
-  <!-- Existing guide -->
-  <article class="guide-card">
-    ...
-  </article>
+        <a
+          class="guide-thumb-link"
+          href="/wmic-removed-windows-11-powershell/"
+        >
+          <img
+            class="guide-thumb"
+            src="https://img.youtube.com/vi/7x6OyDcmaM8/hqdefault.jpg"
+            alt="WMIC removed from Windows 11 PowerShell replacement commands"
+            width="480"
+            height="360"
+            loading="lazy"
+            decoding="async"
+          >
+        </a>
 
-</div>
+        <h2>
+          <a href="/wmic-removed-windows-11-powershell/">
+            WMIC Removed from Windows 11? Use PowerShell Instead
+          </a>
+        </h2>
+
+        <p>
+          WMIC is deprecated and may be missing on newer Windows 11 systems.
+          Learn the PowerShell Get-CimInstance commands that replace common
+          WMIC queries for serial number, computer model, CPU, RAM and disks.
+        </p>
+
+        <a
+          class="button"
+          href="/wmic-removed-windows-11-powershell/"
+        >
+          Read the Guide
+        </a>
+
+        <a
+          class="button"
+          href="https://www.youtube.com/watch?v=7x6OyDcmaM8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch on YouTube
+        </a>
+
+      </article>
 
 
       <!-- COMMAND LIBRARY -->
@@ -885,6 +927,9 @@ Get-Content C:\Temp\log.txt
       <li>PowerShell system information</li>
       <li>PowerShell serial number command</li>
       <li>PowerShell Windows administration</li>
+      <li>WMIC PowerShell replacement</li>
+      <li>WMIC removed Windows 11</li>
+      <li>Get-CimInstance commands</li>
     </ul>
 
   </section>
@@ -1005,6 +1050,12 @@ Get-Help Test-NetConnection -Examples
       <li>
         <a href="/powershell-commands/">
           100+ PowerShell Commands A-Z
+        </a>
+      </li>
+
+      <li>
+        <a href="/wmic-removed-windows-11-powershell/">
+          WMIC Removed from Windows 11 — PowerShell Replacements
         </a>
       </li>
 
