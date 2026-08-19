@@ -15,108 +15,114 @@
     "/cmd/",
     "/powershell/"
   ],
-"commands": [
-  {
-    "purpose": "Check the installed Windows version and build",
-    "command": "winver",
-    "note": "Confirm the installed Windows 11 edition and build before choosing a repair source."
-  },
-  {
-    "purpose": "Run System File Checker",
-    "command": "sfc /scannow",
-    "note": "Check and repair protected Windows system files before moving to deeper DISM troubleshooting."
-  },
-  {
-    "purpose": "Check the Windows component store",
-    "command": "DISM /Online /Cleanup-Image /CheckHealth",
-    "note": "This performs a quick check to determine whether Windows has already marked the component store as corrupted."
-  },
-  {
-    "purpose": "Scan the Windows component store",
-    "command": "DISM /Online /Cleanup-Image /ScanHealth",
-    "note": "This performs a deeper scan of the Windows component store for corruption."
-  },
-  {
-    "purpose": "Attempt the normal DISM repair",
-    "command": "DISM /Online /Cleanup-Image /RestoreHealth",
-    "note": "In the demonstrated case this failed with error 0x800F0915 because the required repair content could not be found."
-  },
-  {
-    "purpose": "Reset Winsock",
-    "command": "netsh winsock reset",
-    "note": "Reset the Windows Winsock catalog while troubleshooting connectivity or Windows Update repair-source access."
-  },
-  {
-    "purpose": "Reset the TCP/IP stack",
-    "command": "netsh int ip reset",
-    "note": "Reset TCP/IP networking as part of the network troubleshooting process."
-  },
-  {
-    "purpose": "Release the current IP address",
-    "command": "ipconfig /release"
-  },
-  {
-    "purpose": "Renew the IP address",
-    "command": "ipconfig /renew"
-  },
-  {
-    "purpose": "Flush the DNS cache",
-    "command": "ipconfig /flushdns"
-  },
-  {
-    "purpose": "Stop the Windows Update service",
-    "command": "net stop wuauserv"
-  },
-  {
-    "purpose": "Stop the Background Intelligent Transfer Service",
-    "command": "net stop bits"
-  },
-  {
-    "purpose": "Stop Cryptographic Services",
-    "command": "net stop cryptsvc"
-  },
-  {
-    "purpose": "Rename the SoftwareDistribution folder",
-    "command": "ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old",
-    "note": "Renaming this folder forces Windows Update to rebuild its working data instead of manually deleting protected Windows files."
-  },
-  {
-    "purpose": "Rename the Catroot2 folder",
-    "command": "ren C:\\Windows\\System32\\catroot2 catroot2.old",
-    "note": "This allows Windows to rebuild the update-related Catroot2 data."
-  },
-  {
-    "purpose": "Start Cryptographic Services",
-    "command": "net start cryptsvc"
-  },
-  {
-    "purpose": "Start the Background Intelligent Transfer Service",
-    "command": "net start bits"
-  },
-  {
-    "purpose": "Start the Windows Update service",
-    "command": "net start wuauserv"
-  },
-  {
-    "purpose": "Check the Windows ISO image indexes",
-    "command": "DISM /Get-WimInfo /WimFile:E:\\sources\\install.wim",
-    "note": "E: is only an example ISO drive letter. Your drive letter may be different. Identify the image index that matches the Windows edition installed on your computer."
-  },
-  {
-    "purpose": "Repair Windows using the install.wim source",
-    "command": "DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\\sources\\install.wim:6 /LimitAccess",
-    "note": "The E: drive and image index 6 are examples from the demonstrated computer. Always use the ISO drive letter and WIM index that match your own Windows installation."
-  },
-  {
-    "purpose": "Clean the Windows component store",
-    "command": "DISM /Online /Cleanup-Image /StartComponentCleanup",
-    "note": "Use the normal component-store cleanup before considering more aggressive cleanup options."
-  },
-  {
-    "purpose": "Advanced component-store cleanup",
-    "command": "DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase",
-    "note": "This advanced option was demonstrated as part of the troubleshooting process.",
-    "warning": "ResetBase is an advanced and permanent cleanup option. After using it, currently installed Windows updates generally cannot be uninstalled. Do not use it as the first repair step."
-  }
-]
+  "commands": [
+    {
+      "purpose": "Check the installed Windows version and build",
+      "command": "winver",
+      "note": "Confirm the installed Windows 11 edition and build before choosing a repair source."
+    },
+    {
+      "purpose": "Run System File Checker",
+      "command": "sfc /scannow",
+      "note": "Check and repair protected Windows system files before moving to deeper DISM troubleshooting."
+    },
+    {
+      "purpose": "Check the Windows component store",
+      "command": "DISM /Online /Cleanup-Image /CheckHealth",
+      "note": "This performs a quick check to determine whether Windows has already marked the component store as corrupted."
+    },
+    {
+      "purpose": "Scan the Windows component store",
+      "command": "DISM /Online /Cleanup-Image /ScanHealth",
+      "note": "This performs a deeper scan of the Windows component store for corruption."
+    },
+    {
+      "purpose": "Attempt the normal DISM repair",
+      "command": "DISM /Online /Cleanup-Image /RestoreHealth",
+      "note": "In the demonstrated case this failed with error 0x800F0915 because the required repair content could not be found."
+    },
+    {
+      "purpose": "Reset Winsock",
+      "command": "netsh winsock reset",
+      "note": "Reset the Windows Winsock catalog while troubleshooting connectivity or Windows Update repair-source access."
+    },
+    {
+      "purpose": "Reset the TCP/IP stack",
+      "command": "netsh int ip reset",
+      "note": "Reset TCP/IP networking as part of the network troubleshooting process."
+    },
+    {
+      "purpose": "Release the current IP address",
+      "command": "ipconfig /release"
+    },
+    {
+      "purpose": "Renew the IP address",
+      "command": "ipconfig /renew"
+    },
+    {
+      "purpose": "Flush the DNS cache",
+      "command": "ipconfig /flushdns"
+    },
+    {
+      "purpose": "Stop the Windows Update service",
+      "command": "net stop wuauserv"
+    },
+    {
+      "purpose": "Stop the Background Intelligent Transfer Service",
+      "command": "net stop bits"
+    },
+    {
+      "purpose": "Stop Cryptographic Services",
+      "command": "net stop cryptsvc"
+    },
+    {
+      "purpose": "Rename the SoftwareDistribution folder",
+      "command": "ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old",
+      "note": "Renaming this folder forces Windows Update to rebuild its working data instead of manually deleting protected Windows files."
+    },
+    {
+      "purpose": "Rename the Catroot2 folder",
+      "command": "ren C:\\Windows\\System32\\catroot2 catroot2.old",
+      "note": "This allows Windows to rebuild the update-related Catroot2 data."
+    },
+    {
+      "purpose": "Start Cryptographic Services",
+      "command": "net start cryptsvc"
+    },
+    {
+      "purpose": "Start the Background Intelligent Transfer Service",
+      "command": "net start bits"
+    },
+    {
+      "purpose": "Start the Windows Update service",
+      "command": "net start wuauserv"
+    },
+    {
+      "purpose": "Check the Windows ISO image indexes",
+      "command": "DISM /Get-WimInfo /WimFile:E:\\sources\\install.wim",
+      "note": "E: is only an example ISO drive letter. Your drive letter may be different. Identify the image index that matches the Windows edition installed on your computer."
+    },
+    {
+      "purpose": "Repair Windows using the install.wim source",
+      "command": "DISM /Online /Cleanup-Image /RestoreHealth /Source:WIM:E:\\sources\\install.wim:6 /LimitAccess",
+      "note": "The E: drive and image index 6 are examples from the demonstrated computer. Always use the ISO drive letter and WIM index that match your own Windows installation."
+    },
+    {
+      "purpose": "Clean the Windows component store",
+      "command": "DISM /Online /Cleanup-Image /StartComponentCleanup",
+      "note": "Use the normal component-store cleanup before considering more aggressive cleanup options."
+    },
+    {
+      "purpose": "Advanced component-store cleanup",
+      "command": "DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase",
+      "note": "This advanced option was demonstrated as part of the troubleshooting process.",
+      "warning": "ResetBase is an advanced and permanent cleanup option. After using it, currently installed Windows updates generally cannot be uninstalled. Do not use it as the first repair step."
+    },
+    {
+      "purpose": "Review the CBS log for the actual damaged component",
+      "command": "C:\\Windows\\Logs\\CBS\\CBS.log",
+      "note": "In this particular troubleshooting case, the CBS log pointed to a damaged optional Arabic language resource. Your computer may have a different damaged package. Review your own CBS log before removing a language pack, Windows capability or Windows component.",
+      "warning": "Do not remove language packs, capabilities or Windows components only because they appeared in this example. The damaged package can be different on every computer."
+    }
+  ]
 }
