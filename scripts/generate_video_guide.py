@@ -8,6 +8,9 @@ VIDEOS_DIR = ROOT / "data" / "videos"
 
 SITE_URL = "https://unitechlk.com"
 
+SITEMAP = ROOT / "sitemap.xml"
+VIDEO_SITEMAP = ROOT / "video-sitemap.xml"
+
 CATEGORY_HUBS = {
     "powershell": "/powershell/",
     "windows": "/windows/",
@@ -52,6 +55,13 @@ def load_metadata(path):
         return json.load(handle)
 
 
+def read_text_if_exists(path):
+    if not path.exists():
+        return ""
+
+    return path.read_text(encoding="utf-8")
+
+
 def inspect_related_guides(data):
     problems = []
 
@@ -66,6 +76,53 @@ def inspect_related_guides(data):
     return problems
 
 
+def inspect_existing_production(slug, video_id):
+    canonical = f"{SITE_URL}/{slug}/"
+    output_file = ROOT / slug / "index.html"
+
+    sitemap_text = read_text_if_exists(SITEMAP)
+    video_sitemap_text = read_text_if_exists(VIDEO_SITEMAP)
+
+    return {
+        "page_exists": output_file.exists(),
+        "in_sitemap": canonical in sitemap_text,
+        "video_in_video_sitemap": video_id in video_sitemap_text,
+        "canonical": canonical,
+        "output_file": output_file,
+    }
+
+
+def show_existing_status(existing):
+    print()
+    print("PRODUCTION CHECK")
+    print("----------------")
+
+    print(
+        f"Page exists:         "
+        f"{'YES' if existing['page_exists'] else 'NO'}"
+    )
+
+    print(
+        f"In sitemap.xml:      "
+        f"{'YES' if existing['in_sitemap'] else 'NO'}"
+    )
+
+    print(
+        f"In video sitemap:    "
+        f"{'YES' if existing['video_in_video_sitemap'] else 'NO'}"
+    )
+
+
+def has_existing_production(existing):
+    return any(
+        [
+            existing["page_exists"],
+            existing["in_sitemap"],
+            existing["video_in_video_sitemap"],
+        ]
+    )
+
+
 def plan_video(path):
     print()
     print("=" * 70)
@@ -78,47 +135,119 @@ def plan_video(path):
         print(f"BLOCKED: Unable to read metadata: {exc}")
         return False
 
-    if data.get("enabled") is not True:
+    enabled = data.get("enabled") is True
+    video_id = data.get("video_id", "")
+    slug = data.get("slug", "")
+
+    existing = inspect_existing_production(slug, video_id)
+
+    print(f"Enabled:        {'YES' if enabled else 'NO'}")
+    print(f"Video ID:       {video_id}")
+    print(f"Slug:           {slug}")
+    print(f"Canonical URL:  {existing['canonical']}")
+
+    show_existing_status(existing)
+
+    existing_production = has_existing_production(existing)
+
+    # ---------------------------------------------------------
+    # DISABLED METADATA
+    # ---------------------------------------------------------
+
+    if not enabled:
+        print()
         print("STATUS: DISABLED")
-        print("ACTION: SKIP")
-        print("No page will be generated.")
+
+        if existing_production:
+            print("CLASSIFICATION: EXISTING PRODUCTION CONTENT")
+            print("PROTECTION: LOCKED")
+            print()
+            print("ACTION: SKIP")
+            print(
+                "This metadata describes content already present "
+                "in production."
+            )
+            print("No overwrite or duplicate generation is allowed.")
+        else:
+            print("CLASSIFICATION: NEW / UNPUBLISHED METADATA")
+            print()
+            print("ACTION: SKIP")
+            print(
+                "Metadata is disabled, so no future publishing "
+                "action is permitted."
+            )
+
+        print()
+        print("NO FILES WERE CHANGED.")
         return True
 
-    video_id = data["video_id"]
-    title = data["title"]
-    slug = data["slug"]
-    category = data["category"]
-    duration_seconds = data["duration_seconds"]
+    # ---------------------------------------------------------
+    # ENABLED METADATA
+    # ---------------------------------------------------------
 
+    print()
+    print("STATUS: ENABLED")
+
+    category = data.get("category", "")
     hub = CATEGORY_HUBS.get(category)
 
     if hub is None:
+        print()
         print(f"BLOCKED: Unknown category '{category}'")
         print("Allowed categories:")
+
         for allowed in sorted(CATEGORY_HUBS):
             print(f"  - {allowed}")
+
+        print()
+        print("NO FILES WERE CHANGED.")
         return False
 
-    output_dir = ROOT / slug
-    output_file = output_dir / "index.html"
-
-    canonical = f"{SITE_URL}/{slug}/"
-    embed_url = f"https://www.youtube.com/embed/{video_id}"
+    title = data["title"]
+    duration_seconds = data["duration_seconds"]
     duration_iso = seconds_to_iso8601(duration_seconds)
 
-    print("STATUS: ENABLED")
     print()
     print("DRY-RUN PLAN")
     print("------------")
     print(f"Title:          {title}")
-    print(f"Video ID:       {video_id}")
-    print(f"Slug:           {slug}")
     print(f"Category:       {category}")
     print(f"Category hub:   {hub}")
-    print(f"Canonical URL:  {canonical}")
-    print(f"Output file:    {output_file.relative_to(ROOT)}")
-    print(f"Embed URL:      {embed_url}")
+    print(
+        f"Output file:    "
+        f"{existing['output_file'].relative_to(ROOT)}"
+    )
+    print(
+        f"Embed URL:      "
+        f"https://www.youtube.com/embed/{video_id}"
+    )
     print(f"Duration:       {duration_iso}")
+
+    # Existing production content must never be overwritten
+    # by the automatic new-guide generator.
+
+    if existing_production:
+        print()
+        print("SAFETY CHECK: BLOCKED")
+        print("---------------------")
+        print(
+            "Existing production content was detected for this "
+            "video or slug."
+        )
+
+        if existing["page_exists"]:
+            print("- Existing index.html detected.")
+
+        if existing["in_sitemap"]:
+            print("- Canonical URL already exists in sitemap.xml.")
+
+        if existing["video_in_video_sitemap"]:
+            print("- Video ID already exists in video-sitemap.xml.")
+
+        print()
+        print("AUTOMATIC OVERWRITE IS FORBIDDEN.")
+        print("NO FILES WERE CHANGED.")
+        return False
 
     problems = []
 
@@ -131,11 +260,6 @@ def plan_video(path):
 
     problems.extend(inspect_related_guides(data))
 
-    if output_file.exists():
-        problems.append(
-            "Target page already exists. Automatic overwrite is blocked."
-        )
-
     if problems:
         print()
         print("SAFETY CHECK: BLOCKED")
@@ -145,15 +269,17 @@ def plan_video(path):
             print(f"- {problem}")
 
         print()
-        print("No files were changed.")
+        print("NO FILES WERE CHANGED.")
         return False
 
     print()
     print("SAFETY CHECK: PASS")
     print("------------------")
-    print("The metadata is eligible for a future guide generation step.")
+    print("CLASSIFICATION: NEW VIDEO GUIDE")
+    print("STATUS: ELIGIBLE FOR FUTURE GENERATION")
     print()
-    print("Future generator would:")
+
+    print("A future publisher would:")
     print(f"1. Create: {slug}/index.html")
     print(f"2. Add page to category hub: {hub}")
     print("3. Add canonical URL to sitemap.xml")
