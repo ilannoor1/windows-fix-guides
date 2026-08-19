@@ -1,5 +1,6 @@
 {
   "enabled": false,
+  "publish_ready": false,
   "video_id": "VIDEO_ID_HERE",
   "title": "VIDEO TITLE HERE",
   "slug": "video-page-slug",
