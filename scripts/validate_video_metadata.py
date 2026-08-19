@@ -195,25 +195,33 @@ def validate_file(path):
         )
 
     try:
-        parsed_date = datetime.fromisoformat(
-            publication_date.replace(
-                "Z",
-                "+00:00"
-            )
+    parsed_date = datetime.fromisoformat(
+        publication_date.replace(
+            "Z",
+            "+00:00"
         )
+    )
 
-    except ValueError:
-        return fail(
-            f"{path.name}: publication_date must be "
-            "valid ISO 8601."
-        )
+except ValueError:
+    return fail(
+        f"{path.name}: publication_date must be "
+        "a valid ISO 8601 date or datetime."
+    )
 
-    if parsed_date.tzinfo is None:
-        return fail(
-            f"{path.name}: publication_date must "
-            "include a timezone."
-        )
-
+# Date-only values are allowed when the exact publish time is unknown.
+# Examples:
+#   2026-07-18
+#   2026-07-18T09:30:00+03:00
+#
+# If a clock time is supplied, a timezone is required.
+if (
+    "T" in publication_date
+    and parsed_date.tzinfo is None
+):
+    return fail(
+        f"{path.name}: publication_date with a time "
+        "must include a timezone."
+    )
     duration = data["duration_seconds"]
 
     if (
