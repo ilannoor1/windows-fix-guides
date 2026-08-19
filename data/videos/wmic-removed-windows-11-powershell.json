@@ -1,0 +1,43 @@
+{
+  "enabled": false,
+  "video_id": "7x6OyDcmaM8",
+  "title": "WMIC Removed from Windows 11? Use These PowerShell Commands Instead",
+  "slug": "wmic-removed-windows-11-powershell",
+  "description": "WMIC is being retired from modern Windows versions. This UniTech LK guide shows PowerShell CIM commands that replace common WMIC commands for checking BIOS serial numbers, computer manufacturer and model, CPU, RAM and disk information.",
+  "publication_date": "2026-08-19T09:30:00+03:00",
+  "duration_seconds": 229,
+  "category": "powershell",
+  "thumbnail_url": "https://img.youtube.com/vi/7x6OyDcmaM8/maxresdefault.jpg",
+  "youtube_url": "https://www.youtube.com/watch?v=7x6OyDcmaM8",
+  "related_guides": [
+    "/powershell/",
+    "/powershell-commands/"
+  ],
+  "commands": [
+    {
+      "purpose": "BIOS serial number",
+      "wmic": "wmic bios get serialnumber",
+      "powershell": "Get-CimInstance Win32_BIOS | Select-Object SerialNumber"
+    },
+    {
+      "purpose": "Computer manufacturer and model",
+      "wmic": "wmic computersystem get manufacturer,model",
+      "powershell": "Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer,Model"
+    },
+    {
+      "purpose": "CPU name",
+      "wmic": "wmic cpu get name",
+      "powershell": "Get-CimInstance Win32_Processor | Select-Object Name"
+    },
+    {
+      "purpose": "Installed RAM",
+      "wmic": "wmic memorychip get capacity",
+      "powershell": "Get-CimInstance Win32_PhysicalMemory | Select-Object Capacity"
+    },
+    {
+      "purpose": "Disk model and size",
+      "wmic": "wmic diskdrive get model,size",
+      "powershell": "Get-CimInstance Win32_DiskDrive | Select-Object Model,Size"
+    }
+  ]
+}
