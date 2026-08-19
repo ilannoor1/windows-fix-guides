@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       metadata_file:
-        description: "Metadata JSON filename, for example powershell-network-troubleshooting.json"
+        description: "Metadata JSON filename, for example dism-error-0x800f0915-windows-11.json"
         required: true
         type: string
 
@@ -113,13 +113,19 @@ jobs:
           selected = source_dir / name
 
           if not selected.is_file():
-              print("ERROR: Selected metadata disappeared.")
+              print(
+                  "ERROR: Selected metadata disappeared."
+              )
               sys.exit(1)
 
-          backup_dir = Path(".candidate-metadata-backup")
+          backup_dir = Path(
+              ".candidate-metadata-backup"
+          )
 
           if backup_dir.exists():
-              shutil.rmtree(backup_dir)
+              shutil.rmtree(
+                  backup_dir
+              )
 
           backup_dir.mkdir()
 
@@ -131,59 +137,149 @@ jobs:
 
               shutil.move(
                   str(path),
-                  str(backup_dir / path.name)
+                  str(
+                      backup_dir /
+                      path.name
+                  )
               )
 
               moved += 1
 
           print(
-              f"Selected metadata isolated successfully."
+              "Selected metadata isolated successfully."
           )
 
           print(
-              f"Temporarily moved {moved} other metadata file(s)."
+              f"Temporarily moved {moved} "
+              "other metadata file(s)."
           )
 
           print(
-              "These runner-only changes are never committed."
+              "These runner-only changes "
+              "are never committed."
           )
           PY
 
       - name: Validate selected video metadata
-        run: python scripts/validate_video_metadata.py
+        run: |
+          python scripts/validate_video_metadata.py
 
       - name: Dry-run selected video guide
-        run: python scripts/generate_video_guide.py
+        run: |
+          python scripts/generate_video_guide.py
 
       - name: Generate selected HTML preview
-        run: python scripts/render_video_preview.py
+        run: |
+          python scripts/render_video_preview.py
 
       - name: Validate HTML preview safety
-        run: python scripts/validate_video_preview.py
+        run: |
+          python scripts/validate_video_preview.py
 
       - name: Simulate production changes
-        run: python scripts/plan_production_changes.py
+        run: |
+          python scripts/plan_production_changes.py
 
       - name: Build protected production candidate
-        run: python scripts/build_production_candidate.py
+        run: |
+          python scripts/build_production_candidate.py
 
       - name: Show candidate files
         run: |
           echo "======================================"
           echo "PRODUCTION CANDIDATE FILES"
           echo "======================================"
-          find candidate-output -type f -print
 
-      - name: Verify repository was not modified
-        run: |
-          git status --short
-
-          if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
-            echo "ERROR: Tracked repository files changed."
+          if [ ! -d "candidate-output" ]; then
+            echo "ERROR: candidate-output directory does not exist."
             exit 1
           fi
 
-          echo "PASS: No tracked production files were modified."
+          find candidate-output -type f -print
+
+      - name: Restore isolated metadata
+        run: |
+          python - <<'PY'
+          import shutil
+          import sys
+          from pathlib import Path
+
+          backup_dir = Path(
+              ".candidate-metadata-backup"
+          )
+
+          videos_dir = Path(
+              "data/videos"
+          )
+
+          if not backup_dir.exists():
+              print(
+                  "No isolated metadata backup found."
+              )
+              sys.exit(0)
+
+          restored = 0
+
+          for source in backup_dir.glob("*.json"):
+
+              destination = (
+                  videos_dir /
+                  source.name
+              )
+
+              if destination.exists():
+                  print(
+                      f"ERROR: Cannot restore "
+                      f"{source.name}; destination "
+                      "already exists."
+                  )
+                  sys.exit(1)
+
+              shutil.move(
+                  str(source),
+                  str(destination)
+              )
+
+              restored += 1
+
+          shutil.rmtree(
+              backup_dir
+          )
+
+          print(
+              f"Restored {restored} temporarily "
+              "isolated metadata file(s)."
+          )
+
+          print(
+              "Repository metadata layout restored."
+          )
+          PY
+
+      - name: Verify repository was not modified
+        run: |
+          echo "======================================"
+          echo "REPOSITORY INTEGRITY CHECK"
+          echo "======================================"
+
+          echo
+          echo "Repository status:"
+          git status --short
+
+          echo
+          echo "Checking tracked repository files..."
+
+          if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+            echo
+            echo "ERROR: Tracked repository files changed."
+            echo
+            git status --porcelain --untracked-files=no
+            exit 1
+          fi
+
+          echo
+          echo "PASS: No tracked repository files were modified."
+          echo "Preview and candidate folders are runner-only artifacts."
 
       - name: Upload review preview
         uses: actions/upload-artifact@v7
