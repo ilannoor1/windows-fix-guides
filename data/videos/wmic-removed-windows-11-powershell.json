@@ -1,5 +1,6 @@
 {
   "enabled": false,
+  "publish_ready": false,
   "video_id": "7x6OyDcmaM8",
   "title": "WMIC Removed from Windows 11? Use These PowerShell Commands Instead",
   "slug": "wmic-removed-windows-11-powershell",
