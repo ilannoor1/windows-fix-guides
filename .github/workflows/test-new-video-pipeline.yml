@@ -1,0 +1,72 @@
+name: Test New Video Pipeline
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Simulate brand-new UniTech LK video
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Create temporary test metadata
+        run: |
+          cat > data/videos/pipeline-test-video.json <<'EOF'
+          {
+            "enabled": true,
+            "video_id": "TEST1234567",
+            "title": "UniTech LK Automation Pipeline Test Video",
+            "slug": "unitechlk-pipeline-test-video",
+            "description": "Temporary metadata used only inside GitHub Actions to test the UniTech LK video publishing safety pipeline.",
+            "publication_date": "2026-08-19T12:00:00+03:00",
+            "duration_seconds": 180,
+            "category": "powershell",
+            "thumbnail_url": "https://img.youtube.com/vi/TEST1234567/maxresdefault.jpg",
+            "youtube_url": "https://www.youtube.com/watch?v=TEST1234567",
+            "related_guides": [
+              "/powershell/",
+              "/powershell-commands/"
+            ],
+            "commands": [
+              {
+                "purpose": "Pipeline test",
+                "wmic": "wmic example",
+                "powershell": "Get-CimInstance Win32_OperatingSystem"
+              }
+            ]
+          }
+          EOF
+
+      - name: Validate video metadata
+        run: python scripts/validate_video_metadata.py
+
+      - name: Dry-run video guide planner
+        run: python scripts/generate_video_guide.py
+
+      - name: Generate HTML preview
+        run: python scripts/render_video_preview.py
+
+      - name: Validate HTML preview safety
+        run: python scripts/validate_video_preview.py
+
+      - name: Simulate production changes
+        run: python scripts/plan_production_changes.py
+
+      - name: Upload test preview artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: unitechlk-new-video-test-${{ github.run_id }}
+          path: preview-output/
+          if-no-files-found: error
+          retention-days: 3
