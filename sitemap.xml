@@ -1,268 +1,219 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Homepage -->
   <url>
     <loc>https://unitechlk.com/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Topic Hubs -->
   <url>
     <loc>https://unitechlk.com/powershell/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
     <loc>https://unitechlk.com/printers/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- PowerShell Storage Analysis -->
   <url>
     <loc>https://unitechlk.com/powershell-storage-analysis/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Microsoft Defender PowerShell -->
   <url>
     <loc>https://unitechlk.com/microsoft-defender-powershell-malware-scan/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- CapabilityAccessManager.db-wal -->
   <url>
     <loc>https://unitechlk.com/capabilityaccessmanager-db-wal-fix/</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Office Error 30179-28 -->
   <url>
     <loc>https://unitechlk.com/office-error-30179-28/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Logitech Zone Vibe 100 -->
   <url>
     <loc>https://unitechlk.com/logitech-zone-vibe-100-reset/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- WhatsApp Old iPhone -->
   <url>
     <loc>https://unitechlk.com/whatsapp-stop-working-old-iphone/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Windows Server RDP -->
   <url>
     <loc>https://unitechlk.com/windows-server-2019-rdp-fix/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Canon G3416 English -->
   <url>
     <loc>https://unitechlk.com/canon-g3416-p07-5b00-fix/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Printer Driver Windows 11 -->
   <url>
     <loc>https://unitechlk.com/printer-driver-wont-delete-windows-11/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- TreeSize -->
   <url>
     <loc>https://unitechlk.com/treesize-find-c-drive-space/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- OneNote OCR -->
   <url>
     <loc>https://unitechlk.com/onenote-image-to-text-ocr/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Frozen Start Menu / Taskbar -->
   <url>
     <loc>https://unitechlk.com/frozen-start-menu-taskbar-fix/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Canon Arabic -->
   <url>
     <loc>https://unitechlk.com/ar/canon-g3416-p07-5b00-fix/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Microsoft Word Translator -->
   <url>
     <loc>https://unitechlk.com/translate-word-document-ms-word/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- HDD / SSD Health -->
   <url>
     <loc>https://unitechlk.com/hard-disk-health-hdd-ssd/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Computer Serial Number CMD -->
   <url>
     <loc>https://unitechlk.com/find-computer-serial-number-cmd/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- CMD + Netstat -->
   <url>
     <loc>https://unitechlk.com/cmd-netstat-malware-check/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- JPG / Microsoft Photos -->
   <url>
     <loc>https://unitechlk.com/jpg-file-not-opening-windows/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Hidden C Drive Storage -->
   <url>
     <loc>https://unitechlk.com/c-drive-full-hidden-files/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- PDF to Excel -->
   <url>
     <loc>https://unitechlk.com/pdf-table-to-excel/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- WhatsApp Username -->
   <url>
     <loc>https://unitechlk.com/whatsapp-username-update/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Windows Hub -->
   <url>
     <loc>https://unitechlk.com/windows/</loc>
     <lastmod>2026-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Windows Storage Hub -->
   <url>
     <loc>https://unitechlk.com/windows-storage/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Windows Security Hub -->
   <url>
     <loc>https://unitechlk.com/windows-security/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Microsoft Office Hub -->
   <url>
     <loc>https://unitechlk.com/microsoft-office/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- PowerShell Command Library -->
   <url>
     <loc>https://unitechlk.com/powershell-commands/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- CMD Hub -->
   <url>
     <loc>https://unitechlk.com/cmd/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Mobile Hub -->
   <url>
     <loc>https://unitechlk.com/mobile/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- WMIC Removed / PowerShell Replacement -->
   <url>
     <loc>https://unitechlk.com/wmic-removed-windows-11-powershell/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- DISM Error 0x800F0915 -->
   <url>
     <loc>https://unitechlk.com/dism-error-0x800f0915-windows-11/</loc>
     <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
+  <url>
+    <loc>https://unitechlk.com/news/windows/windows-365-turns-five-cloud-pcs-recognized-for-enabling-flexible-trusted-workspaces-at-sc/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unitechlk.com/news/windows/improving-file-explorer-context-menu-faster-simpler-and-more-customizable/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unitechlk.com/news/windows/announcing-new-builds-for-17-august-2026/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
