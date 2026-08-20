@@ -22,6 +22,7 @@ WINDOWS_DIR = NEWS_ROOT / "windows"
 WINDOWS_INDEX = WINDOWS_DIR / "index.html"
 
 STATE_FILE = NEWS_ROOT / ".windows-news-state.json"
+SITEMAP_FILE = Path("sitemap.xml")
 
 MAX_INDEX_ITEMS = 20
 MAX_NEW_ARTICLES_PER_RUN = 3
@@ -31,7 +32,7 @@ AUTO_END = "<!-- AUTO-NEWS-END -->"
 
 USER_AGENT = (
     "Mozilla/5.0 "
-    "(compatible; UniTechLK-NewsBot/2.0; "
+    "(compatible; UniTechLK-NewsBot/2.1; "
     "+https://unitechlk.com/news/)"
 )
 
@@ -88,6 +89,16 @@ def clean_text(value: str) -> str:
         r"\s+",
         " ",
         value,
+    ).strip()
+
+    # Remove common Windows Blog RSS footer.
+    # Example:
+    # "The post ... appeared first on Windows Blog."
+    value = re.sub(
+        r"\s*(?:The\s+)?post\s+.+?\s+appeared\s+first\s+on\s+Windows\s+Blog\s*\.?\s*$",
+        "",
+        value,
+        flags=re.I,
     ).strip()
 
     return value
@@ -840,7 +851,7 @@ def create_article_page(
     return slug, True
 
 
-def find_generated_articles() -> list[dict]:
+def find_all_generated_articles() -> list[dict]:
 
     articles = []
 
@@ -912,7 +923,12 @@ def find_generated_articles() -> list[dict]:
         reverse=True,
     )
 
-    return articles[
+    return articles
+
+
+def find_generated_articles() -> list[dict]:
+
+    return find_all_generated_articles()[
         :MAX_INDEX_ITEMS
     ]
 
@@ -1050,6 +1066,146 @@ def update_windows_index() -> None:
         )
 
 
+def update_sitemap() -> None:
+
+    if not SITEMAP_FILE.exists():
+
+        log(
+            "sitemap.xml not found. "
+            "Skipping sitemap update."
+        )
+
+        return
+
+    try:
+
+        ET.register_namespace(
+            "",
+            "http://www.sitemaps.org/schemas/sitemap/0.9",
+        )
+
+        tree = ET.parse(
+            SITEMAP_FILE
+        )
+
+        root = tree.getroot()
+
+        namespace = (
+            "http://www.sitemaps.org/schemas/sitemap/0.9"
+        )
+
+        existing_urls = set()
+
+        for url_element in root.findall(
+            f"{{{namespace}}}url"
+        ):
+
+            loc = url_element.find(
+                f"{{{namespace}}}loc"
+            )
+
+            if (
+                loc is not None
+                and loc.text
+            ):
+
+                existing_urls.add(
+                    loc.text.strip()
+                )
+
+        articles = (
+            find_all_generated_articles()
+        )
+
+        added = 0
+
+        for article in articles:
+
+            article_url = (
+                f"{SITE_URL}"
+                f"/news/windows/"
+                f"{article['slug']}/"
+            )
+
+            if article_url in existing_urls:
+                continue
+
+            url_element = ET.SubElement(
+                root,
+                f"{{{namespace}}}url",
+            )
+
+            loc = ET.SubElement(
+                url_element,
+                f"{{{namespace}}}loc",
+            )
+
+            loc.text = article_url
+
+            lastmod = ET.SubElement(
+                url_element,
+                f"{{{namespace}}}lastmod",
+            )
+
+            lastmod.text = (
+                article["published"]
+                .astimezone(timezone.utc)
+                .strftime("%Y-%m-%d")
+            )
+
+            changefreq = ET.SubElement(
+                url_element,
+                f"{{{namespace}}}changefreq",
+            )
+
+            changefreq.text = "monthly"
+
+            priority = ET.SubElement(
+                url_element,
+                f"{{{namespace}}}priority",
+            )
+
+            priority.text = "0.8"
+
+            existing_urls.add(
+                article_url
+            )
+
+            added += 1
+
+        if added:
+
+            ET.indent(
+                tree,
+                space="  ",
+            )
+
+            tree.write(
+                SITEMAP_FILE,
+                encoding="UTF-8",
+                xml_declaration=True,
+            )
+
+            log(
+                f"Added {added} news article(s) "
+                "to sitemap.xml."
+            )
+
+        else:
+
+            log(
+                "Sitemap already contains "
+                "all generated Windows news articles."
+            )
+
+    except Exception as error:
+
+        log(
+            "Sitemap update failed: "
+            + str(error)
+        )
+
+
 def main() -> int:
 
     WINDOWS_DIR.mkdir(
@@ -1140,6 +1296,8 @@ def main() -> int:
 
         update_windows_index()
 
+        update_sitemap()
+
         log(
             "Baseline complete. "
             "No historical articles "
@@ -1213,6 +1371,8 @@ def main() -> int:
     )
 
     update_windows_index()
+
+    update_sitemap()
 
     log(
         f"Finished. "
