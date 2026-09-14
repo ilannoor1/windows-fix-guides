@@ -312,4 +312,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://unitechlk.com/news/windows/build-anywhere-stay-in-flow-how-windows-365-is-redefining-the-developer-experience/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unitechlk.com/news/windows/more-choice-and-possibility-with-windows-pcs-at-ifa/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
