@@ -468,4 +468,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://unitechlk.com/news/windows/discover-more-of-what-matters-every-time-you-open-a-new-tab-in-microsoft-edge/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
